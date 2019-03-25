@@ -1,8 +1,8 @@
 import os
 import sys
 import inspect
-sys.path.insert(0, os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe()))))
 import traceback
+sys.path.insert(0, os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe()))))
 import lib_paths
 from command_handler import CommandHandler
 from config_command import ConfigCommand
@@ -21,7 +21,7 @@ class Tide(object):
             self._command_handler = CommandHandler()
             self._command_handler.spawn_process(commands)
         except Exception as ex:
-            print("error in Vgdb.start_gdb(): " + str(ex))
+            print("error in Tide.start(): " + str(ex))
             print(traceback.format_exc())
 
     def stop(self):
