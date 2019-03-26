@@ -1,0 +1,21 @@
+[submodule "lib/jinja"]
+	path = lib/jinja
+	url = git@github.com:wilvk/jinja.git
+[submodule "lib/markupsafe"]
+	path = lib/markupsafe
+	url = git@github.com:wilvk/markupsafe.git
+[submodule "lib/pexpect"]
+	path = lib/pexpect
+	url = git@github.com:wilvk/pexpect.git
+[submodule "lib/ptyprocess"]
+	path = lib/ptyprocess
+	url = git@github.com:wilvk/ptyprocess.git
+[submodule "lib/pyyaml"]
+	path = lib/pyyaml
+	url = git@github.com:wilvk/pyyaml.git
+[submodule "lib/six"]
+	path = lib/six
+	url = git@github.com:wilvk/six.git
+[submodule "lib/yamlreader"]
+	path = lib/yamlreader
+	url = git@github.com:wilvk/yamlreader.git
