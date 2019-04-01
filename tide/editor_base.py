@@ -10,3 +10,7 @@ class editor_base(ABC):
     @abstractmethod
     def set_editor_dictionary(self, config_dictionary):
         raise NotImplementedError('set_editor_dictionary_defaults() must be implemented')
+
+    @abstractmethod
+    def get_current_buffer_name(self):
+        raise NotImplementedError('get_current_buffer_name() must be implemented')

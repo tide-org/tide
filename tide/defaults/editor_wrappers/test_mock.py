@@ -8,3 +8,6 @@ class test_mock(editor_base):
 
     def set_editor_dictionary(self, config_dictionary):
         pass
+
+    def get_current_buffer_name(self):
+        pass

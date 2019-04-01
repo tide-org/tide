@@ -49,3 +49,6 @@ class EditorWrapper(object):
 
     def set_editor_dictionary(self, config_dictionary):
         self._editor_object.set_editor_dictionary(self._editor_object, config_dictionary)
+
+    def get_current_buffer_name(self):
+        return self._editor_object.get_current_buffer_name(self._editor_object)

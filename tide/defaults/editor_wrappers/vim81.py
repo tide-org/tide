@@ -39,3 +39,7 @@ class vim81(editor_base):
         for match, replacement in self._replacement_dictionary.items():
             string_value = str(string_value).replace(match, replacement)
         return string_value
+
+    def get_current_buffer_name(self):
+        return vim.eval('expand("%")')
+
