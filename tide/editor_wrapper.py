@@ -52,3 +52,6 @@ class EditorWrapper(object):
 
     def get_current_buffer_name(self):
         return self._editor_object.get_current_buffer_name(self._editor_object)
+
+    def get_current_buffer_line(self):
+        return self._editor_object.get_current_buffer_line(self._editor_object)

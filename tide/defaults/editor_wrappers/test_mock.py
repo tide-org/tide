@@ -11,3 +11,6 @@ class test_mock(editor_base):
 
     def get_current_buffer_name(self):
         pass
+
+    def get_current_buffer_line(self):
+        pass

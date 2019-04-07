@@ -43,3 +43,5 @@ class vim81(editor_base):
     def get_current_buffer_name(self):
         return vim.eval('expand("%")')
 
+    def get_current_buffer_line(self):
+        return vim.eval('line(".")')
