@@ -43,7 +43,7 @@ def get_plugin_path(start_path, config_path):
         return trimmed_path
     raise RuntimeError("error: unable to get plugin path for: " + str(config_path) + " and: " + str(start_path))
 
-def get_vgdb_base_path():
+def get_tide_base_path():
     join_paths = get_python_scripts_base_path(), "..", ".."
     return os.path.join(*join_paths)
 

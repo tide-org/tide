@@ -10,7 +10,7 @@ settings:
     debugging:
         print_actions: False
         log_to_file: False
-        log_filename: 'vgdb_debug.log'
+        log_filename: 'tide_debug.log'
         debug_action: False
         debug_command_action: False
         debug_command_handler: False
@@ -28,7 +28,7 @@ settings:
         name: 'vim81'
     logging:
         use_session_log_file: true
-        session_log_filename: 'vgdb_session.log'
+        session_log_filename: 'tide_session.log'
         session_buffer_name: 'vg_session_log'
         add_timestamp: true
     plugins:
@@ -42,7 +42,7 @@ settings:
         ttl_stream_timeout: 0.08
         run_command_on_startup: 0
         command_to_run_on_startup: ''
-        command_on_startup_log_file: 'vgdb_startup.log'
+        command_on_startup_log_file: 'tide_startup.log'
         main_process_name: ''
         main_process_default_arguments: ''
         find_full_process_name: true

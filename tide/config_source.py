@@ -7,7 +7,7 @@ _config_path = "defaults"
 _config_location_file = "config_location.yaml"
 _config_location_variable = "config_location"
 _config_defaults_file = "default_config.yaml"
-_config_environment_variable ="VGDB_CONFIG_LOCATION"
+_config_environment_variable ="TIDE_CONFIG_LOCATION"
 
 def __get_config_location_from_environment_variable():
     config_location = os.environ.get(_config_environment_variable) + "/"
@@ -40,7 +40,7 @@ def __get_base_config_location():
     location_file_path = __get_config_location_from_default_location_file()
     if location_file_path:
         return location_file_path
-    raise RuntimeError("error: unable to find a matching path for the config. please either set the environment variable VGDB_CONFIG_LOCATION or specify in the file config_location.yaml")
+    raise RuntimeError("error: unable to find a matching path for the config. please either set the environment variable TIDE_CONFIG_LOCATION or specify in the file config_location.yaml")
 
 def __get_default_config_path():
     base_path = Ph.get_python_scripts_base_path()
