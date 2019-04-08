@@ -1,8 +1,8 @@
-# TIDE
+# TIDE 🌊 🏖️
 
-Text editor to IDE 🌊 🏖️
+From text editor to IDE. Use a yaml config and some script functions to give your text editor...
 
-Use a yaml config and some script functions to give your text editor super powers. 🦸
+# super powers 🦸
 
 ## So, what is this thing and how is it useful?
 
@@ -21,6 +21,6 @@ Well, I'm glad you asked. As it is cross-editor and cross-platform, there isn't 
 
 .. hmm.. no, or not yet at least.. 
 
-# 💁
+# whatevs.. 💁
 
 TODO: wiki/tutorial
