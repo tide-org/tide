@@ -19,4 +19,8 @@ Well, I'm glad you asked. As it is cross-editor and cross-platform, there isn't 
 
 ## That's great, but please stop being so sassy, and could you give me a rundown of how I can implement this please?
 
-.. hmm.. no, or not yet at least.. (TODO: wiki/tutorial).
+.. hmm.. no, or not yet at least.. 
+
+# 💁
+
+TODO: wiki/tutorial
