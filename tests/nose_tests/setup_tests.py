@@ -3,7 +3,7 @@ import inspect
 import sys
 
 current_dir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
-tide_dir = os.path.join(current_dir, "../../autoload/tide")
+tide_dir = os.path.join(current_dir, "../../tide")
 tide_actions_dir = os.path.join(tide_dir, "./actions")
 tide_filters_dir = os.path.join(tide_dir, "./filters")
 tide_functions_dir = os.path.join(tide_dir, "./functions")

@@ -9,4 +9,4 @@ services:
     working_dir: /work
     tmpfs: /tests
     volumes:
-      - .:/work
+      - ../..:/work

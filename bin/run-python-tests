@@ -2,4 +2,4 @@
 
 cd $(dirname $0)/.
 
-./test-python-environment /work/scripts/run-python-tests
+./test-python-environment /work/tests/scripts/run-python-tests
