@@ -4,6 +4,7 @@ cd /work
 
 rm -rf tide.egg-info
 rm -rf dist
+rm -rf build
 
 python ./setup.py sdist
 python ./setup.py bdist_wheel
