@@ -5,7 +5,7 @@ services:
   test-python-tide:
     build:
       context: ..
-      dockerfile: ./docker/Dockerfile-python-tests
+      dockerfile: ./docker/Dockerfile
     working_dir: /work
     tmpfs: /tests
     volumes:
