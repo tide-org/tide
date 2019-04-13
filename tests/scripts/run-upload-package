@@ -2,8 +2,11 @@
 
 cd /work
 
-echo "note to self: set password in ./tests/scripts/.pypirc before running"
+RED='\033[0;31m'
+NC='\033[0m' # No Color
 
-cp scripts/.pypirc /root
+echo -e "${RED}Note to self: set password in ./tests/scripts/.pypirc before running${NC}"
+
+cp tests/scripts/.pypirc /root
 
 twine upload dist/* --verbose
