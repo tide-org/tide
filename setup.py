@@ -14,7 +14,7 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
 
 setuptools.setup(
   name = 'tide',
-  version = '0.1.1',
+  version = '0.1.2',
   description = 'From text editor to Integrated Development Environment. This allows you to use a yaml config and some scripting to deliver cross-platform, cross-editor plugins.',
   author = 'Willem van Ketwich',
   author_email = 'willvk@gmail.com',
@@ -36,7 +36,7 @@ setuptools.setup(
       'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',
   ],
   keywords = ['editor', 'configuration'],
-  packages=setuptools.find_packages(),
+  packages = setuptools.find_packages(),
   install_requires = [
       'jinja2',
       'markupsafe',
