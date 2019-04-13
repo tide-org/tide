@@ -29,11 +29,17 @@ class vim81(editor_base):
         if isinstance(value, str):
             string_value = "'" + string_value + "'"
         let_string += " = " + string_value
-        vim.command(let_string)
+        try:
+            vim.command(let_string)
+        except:
+            pass
 
     def set_editor_dictionary(self, config_dictionary):
         config_string = self.__string_replace_for_vim(self, config_dictionary)
-        vim.command("let g:vg_config_dictionary = " + config_string)
+        try:
+            vim.command("let g:vg_config_dictionary = " + config_string)
+        except:
+            pass
 
     def __string_replace_for_vim(self, string_value):
         for match, replacement in self._replacement_dictionary.items():
@@ -41,7 +47,13 @@ class vim81(editor_base):
         return string_value
 
     def get_current_buffer_name(self):
-        return vim.eval('expand("%")')
+        try:
+            return vim.eval('expand("%")')
+        except:
+            pass
 
     def get_current_buffer_line(self):
-        return vim.eval('line(".")')
+        try:
+            return vim.eval('line(".")')
+        except:
+            pass
