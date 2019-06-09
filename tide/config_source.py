@@ -10,8 +10,9 @@ _config_defaults_file = "default_config.yaml"
 _config_environment_variable ="TIDE_CONFIG_LOCATION"
 
 def __get_config_location_from_environment_variable():
-    config_location = os.environ.get(_config_environment_variable) + "/"
-    if config_location:
+    tide_config_location = os.environ.get(_config_environment_variable)
+    if tide_config_location:
+        config_location = tide_config_location + "/"
         if os.path.isdir(config_location):
             return abspath(config_location)
         base_path = Ph.get_python_scripts_base_path()
