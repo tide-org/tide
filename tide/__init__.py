@@ -2,3 +2,5 @@
 '''
     __init__.py
 '''
+
+from .tide import Tide
