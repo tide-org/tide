@@ -1,8 +1,6 @@
-# TIDE 🌊 🏖️
+# TIDE 🏖️
 
-From text editor to IDE. Use a yaml config and some script functions to give your text editor...
-
-# super powers 🦸
+From text editor to IDE. Use a yaml config and some script functions to give your text editor super powers 🦸
 
 ## So, what is this thing and how is it useful?
 
