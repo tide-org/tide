@@ -25,7 +25,8 @@ settings:
         debug_interpolate: False
         debug_log: False
     editor:
-        name: 'vim81'
+        name: 'localhost'
+        port: 8082
     logging:
         use_session_log_file: true
         session_log_filename: 'tide_session.log'
