@@ -7,8 +7,25 @@ import os
 from os.path import dirname, abspath, join
 import argparse
 from argparse import RawTextHelpFormatter
-
 from .tide import Tide
+from .config import Config
+
+def call_on_startup_functions(tide):
+    pass
+
+def check_update_buffers(command):
+    pass
+
+def run_config_command(tide, command):
+    tide.run_config_command(command)
+    print("config command ran successfully: " + command)
+    check_update_buffers(command)
+
+def run_startup_commands(tide, position):
+    if "events" in Config().get():
+        startup_commands = Config().get()["events"].get(position + "_startup", [])
+        for startup_command in startup_commands:
+            run_config_command(tide, startup_command)
 
 def main():
     '''
@@ -25,9 +42,9 @@ def main():
         required=False
     )
     parser.add_argument('-a', '--arguments',
-        help="A quoted string of arcuments to pass \n" \
+        help="A quoted string of arguments to pass \n" \
              "to Tide on startup.\n" \
-             "e.g. \'test.exe 1 2 3\'",
+             "e.g. tide -a \'test.exe 1 2 3\'",
         metavar=('args'),
         required=False
     )
@@ -51,11 +68,13 @@ def main():
     if args["arguments"]:
         tide_args = args["arguments"]
     
-    print("Tide config location: " + os.environ.get("TIDE_CONFIG_LOCATION"))
+    print("tide config location: " + os.environ.get("TIDE_CONFIG_LOCATION"))
     if args["variables"]:
         print("Additional config variables: " + str(args["variables"]))
-    print("Initialising Tide...")
+    print("initialising Tide...")
     tide = Tide()
-    print("Staring Tide with arguments: \'" + tide_args + "\'...")
+    print("staring Tide with arguments: \'" + tide_args + "\'...")
     tide.start(tide_args)
-    print("Exiting Tide CLI.")
+    call_on_startup_functions(tide)
+    run_startup_commands(tide, "after")
+    print("exiting Tide CLI.")
