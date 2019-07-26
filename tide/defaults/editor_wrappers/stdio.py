@@ -1,8 +1,3 @@
-try:
-    import vim
-except:
-    pass
-
 from editor_base import editor_base
 
 class stdio(editor_base):
@@ -12,6 +7,15 @@ class stdio(editor_base):
         "False":   "'False'",
         ": None":  ": 'None'",
     }
+
+    @staticmethod
+    def read_from_stdin(wrapper_callback, callback_signature):
+        # read from stdin
+        return {
+            'wrapper_callback': wrapper_callback,
+            'callback_signature': callback_signature,
+            'callback_value_raw': "abc-test-string"
+        }
 
     @staticmethod
     def print_to_stdout(wrapper_command, output_string):
@@ -55,13 +59,15 @@ class stdio(editor_base):
     def get_current_buffer_name(self):
         try:
             # TODO: this needs to be a print and read
-            return vim.eval('expand("%")')
+            stdio.print_to_stdout("callback", "get_current_buffer_name")
+            return stdio.read_from_stdin("callback", "get_current_buffer_name")
         except:
             pass
 
     def get_current_buffer_line(self):
         try:
             # TODO: this needs to be a print and read
-            return vim.eval('line(".")')
+            stdio.print_to_stdout("callback", "get_current_buffer_line")
+            return stdio.read_from_stdin("callback", "get_current_buffer_line")
         except:
             pass
