@@ -1,7 +1,6 @@
 from config import Config
 from action_base import action_base
 import interpolate as Interpolate
-import vim
 
 class get_current_buffer_name(action_base):
 
