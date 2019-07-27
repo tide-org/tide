@@ -14,3 +14,6 @@ class test_mock(editor_base):
 
     def get_current_buffer_line(self):
         pass
+
+    def run_editor_function(function_file, function_name, function_args):
+        pass

@@ -3,6 +3,8 @@ try:
 except:
     pass
 
+import config_source as Cs
+import interpolate as Interpolate
 from editor_base import editor_base
 
 class vim81(editor_base):
@@ -57,3 +59,7 @@ class vim81(editor_base):
             return vim.eval('line(".")')
         except:
             pass
+
+    def run_editor_function(function_file_path, function_name, function_args={}):
+        vim.command("source " + function_file_path)
+        vim.command("call " + function_name + "(" + str(args) + ")")

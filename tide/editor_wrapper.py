@@ -55,3 +55,6 @@ class EditorWrapper(object):
 
     def get_current_buffer_line(self):
         return self._editor_object.get_current_buffer_line(self._editor_object)
+
+    def run_editor_function(self, function_file, function_name, function_args):
+        return self._editor_object.run_editor_function(function_file, function_name, function_args)

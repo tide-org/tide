@@ -1,4 +1,3 @@
-import vim
 from config import Config
 
 def check_set_remote(command_args):

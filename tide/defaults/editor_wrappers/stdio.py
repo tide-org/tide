@@ -1,3 +1,4 @@
+import interpolate as Interpolate
 from editor_base import editor_base
 
 class stdio(editor_base):
@@ -18,9 +19,9 @@ class stdio(editor_base):
         }
 
     @staticmethod
-    def print_to_stdout(wrapper_command, output_string):
+    def print_to_stdout(wrapper_command, output_value):
         print("<" + wrapper_command + ">")
-        print(output_string)
+        print(str(output_value))
         print("</" + wrapper_command + ">")
 
     @staticmethod
@@ -71,3 +72,10 @@ class stdio(editor_base):
             return stdio.read_from_stdin("callback", "get_current_buffer_line")
         except:
             pass
+
+    def run_editor_function(function_file, function_name, function_args={}):
+        stdio.print_to_stdout("editor_function", {
+            'function_file': function_file,
+            'function_name': function_name,
+            'function_args': function_args
+        })

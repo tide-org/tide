@@ -47,3 +47,6 @@ class Config:
             },
             "variables": {}
         }
+
+    def get_editor_wrapper(self):
+        return self._editor_wrapper
