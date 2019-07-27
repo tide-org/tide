@@ -45,13 +45,13 @@ class stdio(editor_base):
             pass
 
     def set_editor_dictionary(self, config_dictionary):
-        config_string = self.__string_replace_for_vim(self, config_dictionary)
+        config_string = self.__string_replace(self, config_dictionary)
         try:
             stdio.print_to_stdout("command", "let g:vg_config_dictionary = " + config_string)
         except:
             pass
 
-    def __string_replace_for_vim(self, string_value):
+    def __string_replace(self, string_value):
         for match, replacement in self._replacement_dictionary.items():
             string_value = str(string_value).replace(match, replacement)
         return string_value
