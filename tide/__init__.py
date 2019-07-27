@@ -7,6 +7,8 @@ import os
 from os.path import dirname, abspath, join
 import argparse
 from argparse import RawTextHelpFormatter
+from threading import Thread
+import asyncio
 from .tide import Tide
 from .config import Config
 
@@ -26,6 +28,15 @@ def run_startup_commands(tide, position):
         startup_commands = Config().get()["events"].get(position + "_startup", [])
         for startup_command in startup_commands:
             run_config_command(tide, startup_command)
+
+def start_loop(loop):
+    asyncio.set_event_loop(loop)
+    loop.run_forever()
+
+def start_infinite_loop():
+    new_loop = asyncio.new_event_loop()
+    t = Thread(target=start_loop, args=(new_loop,))
+    t.start()
 
 def main():
     '''
@@ -71,10 +82,11 @@ def main():
     print("tide config location: " + os.environ.get("TIDE_CONFIG_LOCATION"))
     if args["variables"]:
         print("Additional config variables: " + str(args["variables"]))
+    print("Starting Tide perpetuity.")
+    start_infinite_loop()
     print("initialising Tide...")
     tide = Tide()
     print("staring Tide with arguments: \'" + tide_args + "\'...")
     tide.start(tide_args)
     call_on_startup_functions(tide)
     run_startup_commands(tide, "after")
-    print("exiting Tide CLI.")
