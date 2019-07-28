@@ -1,3 +1,18 @@
+function! set_buffer#for_filename(...)
+   let l:event_args = get(a:, 1, {})
+   let l:highlight_line_variable = l:event_args["highlight_line_variable"]
+   let l:buffer_name = @%
+   if l:highlight_line_variable != '' && g:vg_config_dictionary['variables'][l:highlight_line_variable] != ''
+       let l:line_number = g:vg_config_dictionary['variables'][l:highlight_line_variable]
+       if l:line_number > 0
+           execute "sign unplace 2"
+           execute "sign place 2 line=" . l:line_number . " name=wholeline_breakpoint file=" . expand("%:p")
+           return
+       endif
+   endif
+   execute "sign unplace 2"
+endfunction
+
 import os
 import vim
 from action_base import action_base
@@ -14,6 +29,8 @@ class set_buffer(action_base):
     _buffer_filename = ''
     _buffer_window_number = ''
 
+# rewrite the whole thing in vim
+
     def run(self, command_item, buffer_name=''):
         self._command_item = command_item
         self._calling_buffer_name = buffer_name
@@ -23,6 +40,7 @@ class set_buffer(action_base):
         if self._buffer_filename_variable:
             self._buffer_filename = Config().get()["variables"].get(self._buffer_filename_variable, '')
         if self._buffer_filename_variable:
+# here
             mapped_file_buffers = Config().get()["internal"]["variables"].get("mapped_file_buffers", {})
             if not mapped_file_buffers:
                 Config().get()["internal"]["variables"]["mapped_file_buffers"] = {}
@@ -34,7 +52,9 @@ class set_buffer(action_base):
                 vim.command("set modifiable")                                                                                     # vim
             vim.command(str(self._buffer_window_number) + "wincmd w")                                                             # vim
             vim.command("silent edit! " + self._buffer_filename)                                                                  # vim
+# to here -> vim
         else:
+# here
             if os.path.isfile(self._file_name):
                 file_handle = open(self._file_name, 'r+')
                 lines = [line.rstrip('\n') for line in file_handle.readlines()]
@@ -43,3 +63,4 @@ class set_buffer(action_base):
             else:
                 raise RuntimeError("error: unable to find file: " + self._file_name)
             vim.command("call vg_display#default_display_buffer('" + self._buffer_name + "')")                                    # vim
+# to here -> vim
