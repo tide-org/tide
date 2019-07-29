@@ -3,6 +3,7 @@ try:
 except:
     pass
 
+import os
 import config_source as Cs
 import interpolate as Interpolate
 from editor_base import editor_base
@@ -60,6 +61,14 @@ class vim81(editor_base):
         except:
             pass
 
-    def run_editor_function(function_file_path, function_name, function_args={}):
-        vim.command("source " + function_file_path)
-        vim.command("call " + function_name + "(" + str(args) + ")")
+    def run_editor_function(function_file, function_name, function_args={}):
+        function_file_path = ''
+        test_file_path = ''
+        for functions_path in Cs.FUNCTIONS_LOCATION_ARRAY:
+            test_file_path = os.path.join(functions_path, function_file)
+            if os.path.isfile(test_file_path):
+                function_file_path = test_file_path
+        if not function_file_path:
+            function_file_path = test_file_path
+        vim.command("source " + function_file_path + ".vim")
+        vim.command("call " + function_name + "(" + str(function_args) + ")")
