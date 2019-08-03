@@ -1,5 +1,5 @@
 import os
-from os.path import abspath
+from os.path import abspath, isdir, realpath, join
 import path_helpers as Ph
 from yamlreader import yaml_load
 
@@ -7,22 +7,22 @@ _config_path = "defaults"
 _config_location_file = "config_location.yaml"
 _config_location_variable = "config_location"
 _config_defaults_file = "default_config.yaml"
-_config_environment_variable ="TIDE_CONFIG_LOCATION"
+_config_environment_variable = "TIDE_CONFIG_LOCATION"
 
 def __get_config_location_from_environment_variable():
     tide_config_location = os.environ.get(_config_environment_variable)
     if tide_config_location:
-        config_location = tide_config_location + "/"
-        if os.path.isdir(config_location):
-            return abspath(config_location)
+        real_config_location = realpath(tide_config_location)
+        if isdir(real_config_location):
+            return abspath(real_config_location)
         base_path = Ph.get_python_scripts_base_path()
-        path_from_scripts = os.path.join(base_path, config_location)
-        if path_from_scripts and os.path.isdir(path_from_scripts):
+        path_from_scripts = join(base_path, real_config_location)
+        if path_from_scripts and isdir(path_from_scripts):
             return abspath(path_from_scripts)
 
 def __get_default_config_location():
     base_path = Ph.get_python_scripts_base_path()
-    return os.path.join(base_path, _config_path, _config_location_file)
+    return join(base_path, _config_path, _config_location_file)
 
 def __get_config_location_from_default_location_file():
     config_location_location = __get_default_config_location()
@@ -30,8 +30,8 @@ def __get_config_location_from_default_location_file():
     config_location = location_config[_config_location_variable]
     if config_location:
         base_path = Ph.get_python_scripts_base_path()
-        full_config_location = os.path.join(base_path, config_location)
-        if os.path.isdir(full_config_location):
+        full_config_location = join(base_path, config_location)
+        if isdir(full_config_location):
             return abspath(full_config_location)
 
 def __get_base_config_location():
@@ -45,7 +45,7 @@ def __get_base_config_location():
 
 def __get_default_config_path():
     base_path = Ph.get_python_scripts_base_path()
-    return os.path.join(base_path, _config_path, _config_defaults_file)
+    return join(base_path, _config_path, _config_defaults_file)
 
 def __get_default_config():
     default_config = __get_default_config_path()
@@ -74,10 +74,10 @@ def __get_all_config_locations():
     base_config_path = FULL_CONFIG_LOCATION
     current_config = __get_single_config(base_config_path)
     while True:
-        temp_config_path = os.path.join(base_config_path, config_path)
-        if os.path.isdir(config_path):
+        temp_config_path = join(base_config_path, config_path)
+        if isdir(config_path):
             temp_config_path = config_path
-        if os.path.isdir(temp_config_path):
+        if isdir(temp_config_path):
             config_locations.append(abspath(temp_config_path))
             current_config = __get_single_config(temp_config_path)
             config_path = __get_config_path_from_settings(current_config)

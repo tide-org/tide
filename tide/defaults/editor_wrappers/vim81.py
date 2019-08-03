@@ -61,7 +61,8 @@ class vim81(editor_base):
         except:
             pass
 
-    def run_editor_function(function_file, function_name, function_args={}):
+    def run_editor_function(self, function_file, function_name, args_dict={}):
+        safe_args_dict = self.__string_replace_for_vim(self, args_dict)
         function_file_path = ''
         test_file_path = ''
         for functions_path in Cs.FUNCTIONS_LOCATION_ARRAY:
@@ -71,4 +72,4 @@ class vim81(editor_base):
         if not function_file_path:
             function_file_path = test_file_path
         vim.command("source " + function_file_path + ".vim")
-        vim.command("call " + function_name + "(" + str(function_args) + ")")
+        vim.command("call " + function_name + "(" + str(safe_args_dict) + ")")
