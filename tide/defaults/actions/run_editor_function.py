@@ -25,7 +25,8 @@ class run_editor_function(action_base):
        editor_wrapper = Config().get_editor_wrapper()
        result = editor_wrapper.run_editor_function(self._function_file, self._function_name, {
            'function_args': self._function_args,
-           'event_input_args': self._event_input_args
+           'event_input_args': self._event_input_args,
+           'buffer_name': self._buffer_name
        })
        return result
 
