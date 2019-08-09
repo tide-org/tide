@@ -81,14 +81,14 @@ class stdio(editor_base):
         })
 
     def switch_to_buffer_by_filename(self, buffer_filename):
-        mapped_file_buffers = Config().get()["internal"]["variables"].get("mapped_file_buffers", {})
+        mapped_file_buffers = Config().get()["variables"].get("mapped_file_buffers", {})
         if not mapped_file_buffers:
-            Config().get()["internal"]["variables"]["mapped_file_buffers"] = {}
+            Config().get()["variables"]["mapped_file_buffers"] = {}
         self._buffer_window_number = mapped_file_buffers.get(self._buffer_name, '')
         if not self._buffer_window_number:
             self._buffer_window_number = stdio.print_to_stdout("eval","vg_buffer_find#find_window_by_bufname('" + self._buffer_name + "', 1)")    # vim
             self._buffer_window_number = stdio.read_from_stdin("callback", "find_window_by_bufname")
-            Config().get()["internal"]["variables"]["mapped_file_buffers"][self._buffer_name] = self._buffer_window_number
+            Config().get()["variables"]["mapped_file_buffers"][self._buffer_name] = self._buffer_window_number
             stdio.print_to_stdout("command","set buftype=")                                                                                       # vim
             stdio.print_to_stdout("command","set modifiable")                                                                                     # vim
         stdio.print_to_stdout("command", str(self._buffer_window_number) + "wincmd w")                                                             # vim
@@ -99,7 +99,7 @@ class stdio(editor_base):
             file_handle = open(self._file_name, 'r+')
             lines = [line.rstrip('\n') for line in file_handle.readlines()]
             file_handle.close()
-            Config().get()["internal"]["buffer_caches"][self._buffer_name] = lines
+            Config().get()["buffer_caches"][self._buffer_name] = lines
         else:
             raise RuntimeError("error: unable to find file: " + self._file_name)
         stdio.print_to_stdout("command","call vg_display#default_display_buffer('" + self._buffer_name + "')")                                    # vim
