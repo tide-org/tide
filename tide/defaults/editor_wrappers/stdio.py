@@ -1,6 +1,13 @@
 import interpolate as Interpolate
 from editor_base import editor_base
 
+
+
+
+
+
+
+
 class stdio(editor_base):
 
     _replacement_dictionary = {
@@ -8,21 +15,6 @@ class stdio(editor_base):
         "False":   "'False'",
         ": None":  ": 'None'",
     }
-
-    @staticmethod
-    def read_from_stdin(wrapper_callback, callback_signature):
-        # read from stdin
-        return {
-            'wrapper_callback': wrapper_callback,
-            'callback_signature': callback_signature,
-            'callback_value_raw': "abc-test-string"
-        }
-
-    @staticmethod
-    def print_to_stdout(wrapper_command, output_value):
-        print("<" + wrapper_command + ">")
-        print(str(output_value))
-        print("</" + wrapper_command + ">")
 
     @staticmethod
     def set_dictionary_value(parent_keys, value):
@@ -73,7 +65,7 @@ class stdio(editor_base):
         except:
             pass
 
-    def run_editor_function(function_file, function_name, function_args={}):
+    def run_editor_function(self, function_file, function_name, function_args={}):
         stdio.print_to_stdout("editor_function", {
             'function_file': function_file,
             'function_name': function_name,
@@ -103,3 +95,19 @@ class stdio(editor_base):
         else:
             raise RuntimeError("error: unable to find file: " + self._file_name)
         stdio.print_to_stdout("command","call vg_display#default_display_buffer('" + self._buffer_name + "')")                                    # vim
+
+    @staticmethod
+    def read_from_stdin(wrapper_callback, callback_signature):
+        # read from stdin
+        return {
+            'wrapper_callback': wrapper_callback,
+            'callback_signature': callback_signature,
+            'callback_value_raw': "abc-test-string"
+        }
+
+    @staticmethod
+    def print_to_stdout(wrapper_command, output_value):
+        print("<" + wrapper_command + ">")
+        print(str(output_value))
+        print("</" + wrapper_command + ">")
+
