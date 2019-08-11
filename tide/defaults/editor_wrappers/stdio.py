@@ -3,44 +3,25 @@ from editor_base import editor_base
 
 class stdio(editor_base):
 
-    _replacement_dictionary = {
-        "True":    "'True'",
-        "False":   "'False'",
-        ": None":  ": 'None'",
-    }
-
     @staticmethod
     def set_dictionary_value(parent_keys, value):
-        replacement_dictionary = {
-            "True":    "'True'",    "False":   "'False'",    "None":    "'None'",
-            ": False": ": 'False'", ": True":  ": 'True'",   ": None":  ": 'None'",
-            "\\\'":    "\\\'\'"
-        }
-        let_string = "let g:vg_config_dictionary"
+        let_string = ""
         string_value = value
         for key in parent_keys:
             let_string += "['" + key + "']"
-        for match, replacement in replacement_dictionary.items():
-            string_value = str(string_value).replace(match, replacement)
         if isinstance(value, str):
             string_value = "'" + string_value + "'"
-        let_string += " = " + string_value
+        let_string = "<config_dictionary>" + let_string + " = " + str(string_value) + "</config_dictionary>"
         try:
             stdio.print_to_stdout("command", let_string)
         except:
             pass
 
     def set_editor_dictionary(self, config_dictionary):
-        config_string = self.__string_replace(self, config_dictionary)
         try:
-            stdio.print_to_stdout("command", "let g:vg_config_dictionary = " + config_string)
+            stdio.print_to_stdout("command", "<config_dictionary_all>" + str(config_dictionary) + "</config_dictionary_all>")
         except:
             pass
-
-    def __string_replace(self, string_value):
-        for match, replacement in self._replacement_dictionary.items():
-            string_value = str(string_value).replace(match, replacement)
-        return string_value
 
     def get_current_buffer_name(self):
         try:
