@@ -15,7 +15,7 @@ class Tide(object):
     _startup_commands = ''
     _command_handler = None
 
-    def start(self, commands):
+    def start(self, commands=''):
         try:
             self._startup_commands = commands
             self._command_handler = CommandHandler()
