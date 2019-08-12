@@ -1,3 +1,4 @@
+import json
 import interpolate as Interpolate
 from editor_base import editor_base
 
@@ -5,28 +6,29 @@ class stdio(editor_base):
 
     @staticmethod
     def set_dictionary_value(parent_keys, value):
-        let_string = ""
-        string_value = value
-        for key in parent_keys:
-            let_string += "['" + key + "']"
-        if isinstance(value, str):
-            string_value = "'" + string_value + "'"
-        let_string = "<config_dictionary>" + let_string + " = " + str(string_value) + "</config_dictionary>"
+        keys_dict = {}
+        reversed_parent_keys = reversed(parent_keys)
+        for key in reversed_parent_keys:
+            if not keys_dict:
+                keys_dict = { key: value }
+            else:
+                keys_dict = { key: keys_dict }
+        dictionary_value = { "config_dictionary": keys_dict }
         try:
-            stdio.print_to_stdout("command", let_string)
+            stdio.print_to_stdout("command", "set_config_dictionary_item", dictionary_value)
         except:
             pass
 
     def set_editor_dictionary(self, config_dictionary):
         try:
-            stdio.print_to_stdout("command", "<config_dictionary_all>" + str(config_dictionary) + "</config_dictionary_all>")
+            stdio.print_to_stdout("command", "set_full_config_dictionary", config_dictionary)
         except:
             pass
 
     def get_current_buffer_name(self):
         try:
             # TODO: this needs to be a print and read
-            stdio.print_to_stdout("callback", "get_current_buffer_name")
+            stdio.print_to_stdout("callback", "get_current_buffer_name", {})
             return stdio.read_from_stdin("callback", "get_current_buffer_name")
         except:
             pass
@@ -34,13 +36,13 @@ class stdio(editor_base):
     def get_current_buffer_line(self):
         try:
             # TODO: this needs to be a print and read
-            stdio.print_to_stdout("callback", "get_current_buffer_line")
+            stdio.print_to_stdout("callback", "get_current_buffer_line", {})
             return stdio.read_from_stdin("callback", "get_current_buffer_line")
         except:
             pass
 
     def run_editor_function(self, function_file, function_name, function_args={}):
-        stdio.print_to_stdout("editor_function", {
+        stdio.print_to_stdout("command", "editor_function", {
             'function_file': function_file,
             'function_name': function_name,
             'function_args': function_args
@@ -48,7 +50,7 @@ class stdio(editor_base):
 
     @staticmethod
     def read_from_stdin(wrapper_callback, callback_signature):
-        # read from stdin
+        # TODO: read from stdin
         return {
             'wrapper_callback': wrapper_callback,
             'callback_signature': callback_signature,
@@ -56,8 +58,11 @@ class stdio(editor_base):
         }
 
     @staticmethod
-    def print_to_stdout(wrapper_command, output_value):
-        print("<" + wrapper_command + ">")
-        print(str(output_value))
-        print("</" + wrapper_command + ">")
+    def print_to_stdout(command, action, value):
+        object_to_send = {
+            command: {
+                "action": action,
+                "value": value}
+        }
+        print(json.dumps(object_to_send))
 
