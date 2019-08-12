@@ -1,3 +1,4 @@
+import sys
 import json
 import interpolate as Interpolate
 from editor_base import editor_base
@@ -64,5 +65,5 @@ class stdio(editor_base):
                 "action": action,
                 "value": value}
         }
-        print(json.dumps(object_to_send))
+        json.dump(object_to_send, sys.stdout)
 
