@@ -1,5 +1,5 @@
 import sys
-import os
+from os.path import join, dirname, abspath
 import inspect
 
 LIB_PATHS = [
@@ -12,11 +12,7 @@ LIB_PATHS = [
     'six'
 ]
 
-LIB_BASE_PATH = "../lib"
+current_dir = dirname(abspath(inspect.getfile(inspect.currentframe())))
 
 for lib_path in LIB_PATHS:
-    lib_dir = os.path.join(
-        os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe()))),
-        LIB_BASE_PATH,
-        lib_path)
-    sys.path.insert(0, lib_dir)
+    sys.path.insert(0, abspath(join(current_dir, "../lib", lib_path)))
