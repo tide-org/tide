@@ -65,7 +65,6 @@ class stdio(editor_base):
                 "action": action,
                 "value": value}
         }
-        print("=== START")
-        json.dump(object_to_send, sys.stdout, indent=4)
-        print("\n=== END")
+        json.dump(object_to_send, sys.stdout)
+        print("\n")
 
