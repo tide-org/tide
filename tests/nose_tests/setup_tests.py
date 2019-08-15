@@ -1,15 +1,16 @@
-import os
+from os.path import join, dirname, abspath
 import inspect
 import sys
 
-current_dir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
-tide_dir = os.path.join(current_dir, "../../tide")
-tide_actions_dir = os.path.join(tide_dir, "./actions")
-tide_filters_dir = os.path.join(tide_dir, "./filters")
-tide_functions_dir = os.path.join(tide_dir, "./functions")
-sys.path.insert(0, current_dir)
-sys.path.insert(0, tide_dir)
-sys.path.insert(0, tide_actions_dir)
-sys.path.insert(0, tide_filters_dir)
-sys.path.insert(0, tide_functions_dir)
+current_dir = dirname(abspath(inspect.getfile(inspect.currentframe())))
+tide_dir = join(current_dir, "../../tide")
+paths_list = [current_dir, tide_dir]
+defaults_list = ['actions', 'editor_wrappers', 'filters', 'functions']
+
+for default in defaults_list:
+    paths_list.append(join(tide_dir, "defaults", default))
+
+for insert_path in paths_list:
+    sys.path.insert(0, insert_path)
+
 import lib_paths
