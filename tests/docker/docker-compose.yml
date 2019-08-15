@@ -10,3 +10,4 @@ services:
     tmpfs: /tests
     volumes:
       - ../..:/work
+      - ../../../tide-plugins/plugins:/work/plugins
