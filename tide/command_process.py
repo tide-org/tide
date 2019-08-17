@@ -36,7 +36,7 @@ class CommandProcess:
         else:
             self._process_path = self._config_settings["process"]["main_process_name"]
         if not self._process_path:
-            raise RuntimeError("error: unable to specify a process name for pexpect")
+            raise RuntimeError("error: unable to specify a process name for pexpect. Looking for: " + self._config_settings["process"]["main_process_name"])
 
     def seek_to_end_of_tty(self, timeout=None):
         if not timeout:
