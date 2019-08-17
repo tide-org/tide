@@ -22,5 +22,5 @@ class TestHelloWorldYaml():
     def test_tide_can_start(self):
         tide_object = Tide()
         tide_object.start()
-        tide_object.run_config_command()
+        tide_object.run_config_command('do_hello')
         assert type(tide_object) == Tide
