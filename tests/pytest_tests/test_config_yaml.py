@@ -2,7 +2,7 @@ import setup_tests
 import os
 import pytest
 
-os.environ["TIDE_CONFIG_LOCATION"] = "/work/plugins/test_hello"
+os.environ["TIDE_CONFIG_LOCATION"] = "/work/plugins/tests/test_hello"
 
 def test_object_is_type_tide():
     from tide import Tide
