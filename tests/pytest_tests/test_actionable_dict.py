@@ -1,8 +1,6 @@
-#!/usr/local/bin/python
-
 import setup_tests
-from nose import with_setup
-from nose.tools import nottest
+import pytest
+
 from actionable_dict import ActionableDict
 
 parent_keys_result = None
@@ -19,33 +17,28 @@ class TestActionableDict():
         assert self.test_dict['b']['c'] == 6
 
     @staticmethod
-    @nottest
     def callback_test_empty(parent_keys, value):
         pass
 
     @staticmethod
-    @nottest
     def callback_test_parent_keys(parent_keys, value):
         parent_keys_result = parent_keys
         print("value changed: " + str(value) + " with keys: " + str(parent_keys))
         assert parent_keys != None
 
     @staticmethod
-    @nottest
     def callback_test_value(parent_keys, value):
         parent_keys_result = parent_keys
         print("value changed: " + str(value) + " with keys: " + str(parent_keys))
         assert value != None
 
     @staticmethod
-    @nottest
     def callback_test_parent_keys_correct(parent_keys, value):
         parent_keys_result = parent_keys
         print("value changed: " + str(value) + " with keys: " + str(parent_keys))
         assert parent_keys == ['b', 'c']
 
     @staticmethod
-    @nottest
     def callback_test_value_correct(parent_keys, value):
         parent_keys_result = parent_keys
         print("value changed: " + str(value) + " with keys: " + str(parent_keys))

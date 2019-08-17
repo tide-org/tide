@@ -1,7 +1,6 @@
 from os.path import join, dirname, abspath
 import inspect
 import sys
-import nose
 
 current_dir = dirname(abspath(inspect.getfile(inspect.currentframe())))
 tide_dir = join(current_dir, "../../tide")
@@ -12,7 +11,7 @@ paths_list = [
 
 defaults_list = [
     'actions',
-#    'editor_wrappers',
+    'editor_wrappers',
     'filters',
     'functions',
     '.'
@@ -26,8 +25,3 @@ for insert_path in paths_list:
     sys.path.insert(0, abspath(insert_path))
 
 import lib_paths
-
-from nose_capture_plugin import Capture
-
-if __name__ == '__main__':
-    nose.main(addplugins=[Capture()])
