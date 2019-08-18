@@ -1,6 +1,7 @@
 import setup_tests
 import os
 import pytest
+import json
 
 os.environ["TIDE_CONFIG_LOCATION"] = "/work/plugins/tests/test_hello"
 
@@ -15,6 +16,15 @@ def test_tide_can_start():
     tide_object = Tide()
     tide_object.start()
     assert type(tide_object) == Tide
+    del Tide
+
+def test_tide_can_start_and_returns_json(capsys):
+    from tide import Tide
+    tide_object = Tide()
+    tide_object.start()
+    capture = capsys.readouterr()
+    json_object = json.loads(capture.out)
+    assert type(json_object) == dict
     del Tide
 
 def test_tide_can_output_to_stdout(capsys):
