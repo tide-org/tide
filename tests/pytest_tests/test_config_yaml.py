@@ -2,8 +2,19 @@ import setup_tests
 import os
 import pytest
 import json
+import sys
 
 os.environ["TIDE_CONFIG_LOCATION"] = "/work/plugins/tests/test_hello"
+
+@pytest.fixture(autouse=True)
+def run_around_tests():
+    module_list = ['command_action', 'singleton', 'logging_decorator', 'editor_base', 'lib_paths', 'command_handler', 'pexpect', 'config_source', 'config_command', 'config_command_item',  'command_output']
+    for module in module_list:
+        try:
+            del(sys.modules[module])
+        except:
+            pass
+    yield
 
 def test_object_is_type_tide():
     from tide import Tide

@@ -1,7 +1,6 @@
 from singleton import singleton
 from actionable_dict import ActionableDict
 from editor_wrapper import EditorWrapper
-import config_source as Cs
 from logging_decorator import logging
 
 @singleton
@@ -10,9 +9,17 @@ class Config:
 
     _config_dictionary = None
     _editor_wrapper = None
+    _config_source = None
 
     def __initialise_objects(self):
+        self.__set_config_source()
         self.__set_config_dictionary()
+
+
+    def __set_config_source(self):
+        if not self._config_source:
+            import config_source as Cs
+            self._config_source = Cs
 
     def __set_config_dictionary(self):
         if not self._config_dictionary:
@@ -29,10 +36,10 @@ class Config:
 
     def set(self, force=False):
         if force or not self._config_dictionary:
-            editor = Cs.CONFIG_OBJECT["settings"]["editor"]["name"]
+            editor = self._config_source.CONFIG_OBJECT["settings"]["editor"]["name"]
             self.__set_editor_wrapper(editor)
             callback = self._editor_wrapper.get_set_dictionary_value_callback()
-            self._config_dictionary = ActionableDict(Cs.CONFIG_OBJECT, callback)
+            self._config_dictionary = ActionableDict(self._config_source.CONFIG_OBJECT, callback)
             self.__set_editor_dictionary_defaults()
             self.__set_internals()
 
