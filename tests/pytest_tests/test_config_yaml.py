@@ -36,6 +36,15 @@ def test_tide_can_start_and_json_has_command_key(capsys):
     assert "command" in json_object.keys()
     del Tide
 
+def test_tide_can_start_and_command_has_action_key(capsys):
+    from tide import Tide
+    tide_object = Tide()
+    tide_object.start()
+    capture = capsys.readouterr()
+    json_object = json.loads(capture.out)
+    assert "action" in json_object["command"].keys()
+    del Tide
+
 def test_tide_can_output_to_stdout(capsys):
     from tide import Tide
     tide_object = Tide()
