@@ -63,7 +63,10 @@ class stdio(editor_base):
         object_to_send = {
             command: {
                 "action": action,
-                "value": value}
+                "value": value
+            },
+            "sender": "tide",
+            "receiver": "editor"
         }
         json.dump(object_to_send, sys.stdout)
         print("\n")
