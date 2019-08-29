@@ -26,8 +26,9 @@ def run_config_command(tide, command):
 def run_startup_commands(tide, position):
     if "events" in Config().get():
         startup_commands = Config().get()["events"].get(position + "_startup", [])
-        for startup_command in startup_commands:
-            run_config_command(tide, startup_command)
+        if startup_commands:
+            for startup_command in startup_commands:
+                run_config_command(tide, startup_command)
 
 def start_loop(loop):
     asyncio.set_event_loop(loop)
@@ -82,7 +83,7 @@ def main():
     print("tide config location: " + os.environ.get("TIDE_CONFIG_LOCATION"))
     if args["variables"]:
         print("Additional config variables: " + str(args["variables"]))
-    print("Starting Tide perpetuity.")
+    print("Starting Tide into perpetuity.")
     start_infinite_loop()
     print("initialising Tide...")
     tide = Tide()

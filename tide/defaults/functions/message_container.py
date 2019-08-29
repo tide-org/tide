@@ -2,41 +2,35 @@ import json
 
 class MessageContainer:
 
-    editor_messages = {}
+    # round-trip messages coming back from editor for tide
+    tide_callback_messages = {}
 
-    tide_messages = {}
+    # one-way messages for tide from editor
+    tide_api_messages = []
 
     def add_message(self, message_string):
         try:
-            print("MESSAGE:" + message_string)
             message_object = json.loads(message_string)
-            print("OBJECT:" + str(message_object))
             receiver = message_object.get('receiver', '')
-            event_id = message_object.get('event_id', "")
-            if receiver and event_id:
-                print("VALID")
-                if receiver.lower() == 'tide':
-                    self.add_tide_message(event_id, message_object)
+            event_id = message_object.get('event_id', '')
+            if receiver.lower() == 'tide':
+                if event_id:
+                    self.push_tide_callback_message(event_id, message_object)
                 else:
-                    self.add_editor_message(event_id, message_object)
+                    self.append_to_tide_api_messages(message_object)
         except ValueError as ex:
-            print("OH OH:" + str(ex))
             pass
 
-    def add_editor_message(self, key, message):
-        self.editor_messages[key] = message
+    def append_to_tide_api_messages(self, message):
+        self.tide_api_messages.append(message)
 
-    def add_tide_message(self, key, message):
-        self.tide_messages[key] = message
+    def pop_tide_api_message(self):
+        if len(self.tide_api_messages) > 0:
+            message = self.tide_api_messages.pop(0)
+            return message
 
-    def remove_editor_message(self, key):
-        self.editor_messages.pop(key)
+    def push_tide_callback_message(self, key, message):
+        self.tide_callback_messages[key] = message
 
-    def remove_tide_message(self, key):
-        self.tide_messages.pop(key)
-
-    def get_editor_message(self, key):
-        return self.editor_messages.get(key, {})
-
-    def get_tide_message(self, key):
-        return self.tide_messages.get(key, {})
+    def pop_tide_callback_message(self, key):
+        return self.tide_callback_messages.pop(key, None)
