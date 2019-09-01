@@ -1,3 +1,4 @@
+[ ] implement startup complete callback
 [ ] look into using async await instead of Threads
 [ ] add tests for callbacks
 [ ] add tests and config for buffers

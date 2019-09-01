@@ -58,3 +58,6 @@ class EditorWrapper(object):
 
     def run_editor_function(self, function_file, function_name, args_dict={}):
         return self._editor_object.run_editor_function(self._editor_object, function_file, function_name, args_dict)
+
+    def send_message_to_editor(self, message_object):
+        return self._editor_object.send_message_to_editor(self._editor_object, message_object)

@@ -39,6 +39,11 @@ class stdio(editor_base):
 
     @staticmethod
     def set_dictionary_value(parent_keys, value):
+        dictionary_value = stdio.__get_dictionary_value_object(parent_keys, value)
+        stdout.run_synchronous_message_event("set_config_dictionary_item", dictionary_value)
+
+    @staticmethod
+    def __get_dictionary_value_object(parent_keys, value):
         keys_dict = {}
         reversed_parent_keys = reversed(parent_keys)
         for key in reversed_parent_keys:
@@ -46,8 +51,7 @@ class stdio(editor_base):
                 keys_dict = {key: value}
             else:
                 keys_dict = {key: keys_dict}
-        dictionary_value = {"config_dictionary": keys_dict}
-        stdout.run_synchronous_message_event("set_config_dictionary_item", dictionary_value)
+        return {"config_dictionary": keys_dict}
 
     def set_editor_dictionary(self, config_dictionary):
         stdout.run_synchronous_message_event("set_full_config_dictionary", config_dictionary)
@@ -66,3 +70,6 @@ class stdio(editor_base):
                 'function_name': function_name,
                 'function_args': function_args
             })
+
+    def send_message_to_editor(self, message_object):
+        return stdout.run_synchronous_message_event("send_message_to_editor", message_object) 

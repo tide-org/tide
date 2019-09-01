@@ -25,7 +25,7 @@ class ConfigCommand(object):
             Config().get()["internal"]["buffer_caches"][buffer_name] = []
 
     def __set_error_lines(self, lines, command_action):
-        error_line = ("no buffer name. command_action_name: " + command_action.type + " command_action: " + str(command_action))
+        error_line = ("no buffer name. command_action_name: " + command_action.type + " command_action: " + str(command_action.__dict__))
         if isinstance(lines, str):
             lines += error_line
         if isinstance(lines, list):

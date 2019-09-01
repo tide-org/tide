@@ -18,3 +18,7 @@ class editor_base(ABC):
     @abstractmethod
     def run_editor_function(self, function_file, function_name, function_args):
         raise NotImplementedError('run_editor_function() must be implemented')
+
+    @abstractmethod
+    def send_message_to_editor(self, message_object):
+        raise NotImplementedError('send_message_to_editor() must be implemented')
