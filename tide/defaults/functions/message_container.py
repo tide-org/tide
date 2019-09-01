@@ -6,7 +6,7 @@ class MessageContainer:
 
     editor_callback_messages = {}
 
-    def get_event_id(message_object):
+    def get_event_id(self, message_object):
         event_id = message_object.get('event_id', None)
         if event_id:
             return event_id
@@ -16,12 +16,11 @@ class MessageContainer:
     def push_message(self, message_string):
         try:
             message_object = json.loads(message_string)
-            print("PUSHING: " + str(message_object))
             event_id = self.get_event_id(message_object)
             receiver = message_object.get('receiver', '')
-            has_callback = message_object.get('has_callback', 'false').lower()
+            has_callback = message_object.get('has_callback', False)
             if receiver.lower() == 'tide':
-                if has_callback == 'false':
+                if not has_callback:
                     self.push_tide_message(event_id, message_object)
                 else:
                     self.push_editor_message(event_id, message_object)
