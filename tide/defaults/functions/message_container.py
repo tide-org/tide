@@ -36,5 +36,7 @@ class MessageContainer:
     def push_editor_message(self, key, message):
         self.editor_callback_messages[key] = message
 
-    def pop_editor_message(self, key):
-        return self.editor_callback_messages.pop(key, None)
+    def pop_editor_message(self):
+        if len(self.editor_callback_messages) > 0:
+            key = list(self.editor_callback_messages.keys())[0]
+            return self.editor_callback_messages.pop(key)
