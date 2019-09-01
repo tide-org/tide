@@ -28,6 +28,7 @@ class stdout():
         }
         json.dump(object_to_send, sys.stdout)
         print("\n")
+        sys.stdout.flush()
         return event_id
 
     @staticmethod
