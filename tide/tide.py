@@ -8,7 +8,9 @@ from command_handler import CommandHandler
 from config_command import ConfigCommand
 from config_command_item import ConfigCommandItem
 from logging_decorator import logging
+from singleton import singleton
 
+@singleton
 @logging
 class Tide(object):
 

@@ -2,8 +2,9 @@ import datetime
 import filter as Filter
 from config import Config
 from logging_decorator import logging
+import config_source as Cs
 
-LOGGING_SETTINGS = Config().get()["settings"]["logging"]
+LOGGING_SETTINGS = Cs.CONFIG_OBJECT["settings"]["logging"]
 USE_SESSION_LOG_FILE = LOGGING_SETTINGS["use_session_log_file"]
 SESSION_LOG_FILENAME = LOGGING_SETTINGS["session_log_filename"]
 SESSION_BUFFER_NAME = LOGGING_SETTINGS["session_buffer_name"]
