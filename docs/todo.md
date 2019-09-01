@@ -1,4 +1,6 @@
-[ ] implement receiver: "tide" in stdio stdin for atide
+[x] implement receiver: "tide" in stdio stdin for atide
+[ ] add tests for callbacks
+[ ] add callbacks from editor
 [ ] add tests and config for buffers
 [n] Move startup logic out of `from tide import Tide` and place in `Tide.__init__`
 [ ] determine tests to be created for stdio and add config
