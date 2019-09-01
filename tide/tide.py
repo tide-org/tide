@@ -5,6 +5,9 @@ import traceback
 sys.path.insert(0, os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe()))))
 import lib_paths
 from logging_decorator import logging
+from command_handler import CommandHandler
+from config_command import ConfigCommand
+from config_command_item import ConfigCommandItem
 
 @logging
 class Tide(object):
@@ -14,9 +17,6 @@ class Tide(object):
 
     def start(self, commands=''):
         try:
-            from command_handler import CommandHandler
-            from config_command import ConfigCommand
-            from config_command_item import ConfigCommandItem
             self._startup_commands = commands
             self._command_handler = CommandHandler()
             self._command_handler.spawn_process(commands)
@@ -29,8 +29,6 @@ class Tide(object):
         del self._command_handler
 
     def run_config_command(self, command, buffer_name='', event_input_args_name=''):
-        from config_command import ConfigCommand
-        from config_command_item import ConfigCommandItem
         config_command_item = ConfigCommandItem()
         config_command_item.command = command
         config_command_item.buffer_name = buffer_name
