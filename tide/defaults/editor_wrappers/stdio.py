@@ -64,7 +64,6 @@ class stdio(editor_base):
 
     def run_editor_function(self, function_file, function_name, function_args={}):
         return stdout.run_synchronous_message_event(
-            self,
             'editor_function', {
                 'function_file': function_file,
                 'function_name': function_name,
