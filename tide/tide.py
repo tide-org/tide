@@ -4,6 +4,7 @@ import inspect
 import traceback
 sys.path.insert(0, os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe()))))
 import lib_paths
+from logging_decorator import logging
 from command_handler import CommandHandler
 from config_command import ConfigCommand
 from config_command_item import ConfigCommandItem

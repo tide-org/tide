@@ -20,6 +20,7 @@ def write_to_log(log_string):
             LOG_FILE_HANDLE.write("--- {0} ---".format(datetime.datetime.utcnow()) + "\n")
         LOG_FILE_HANDLE.write(log_string)
     log_lines = Filter.filter_string(log_string, SESSION_BUFFER_NAME)
+    full_cache = Config().get().get("internal", {}).get("buffer_caches", {}).get(SESSION_BUFFER_NAME, {})
     full_cache = Config().get()["internal"]["buffer_caches"][SESSION_BUFFER_NAME]
     if ADD_TIMESTAMP:
         full_cache.append("--- {0} ---".format(datetime.datetime.utcnow()))

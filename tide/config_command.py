@@ -19,11 +19,13 @@ class ConfigCommand(object):
             self.__set_buffer_cache_lines(lines, cci, command_action)
 
     def __initialise_buffer(self, buffer_name):
-        if buffer_name not in Config().get()["internal"]["buffer_caches"]:
+        if buffer_name not in Config().get().get("internal", {}).get("buffer_caches", {}):
+            if not Config().get().get("internal", {}):
+                Config().get()["internal"] = {}
             Config().get()["internal"]["buffer_caches"][buffer_name] = []
 
     def __set_error_lines(self, lines, command_action):
-        error_line = ("no buffer name. command_action_name: " + command_action.type + " command_action: " + str(command_action))
+        error_line = ("no buffer name. command_action_name: " + command_action.type + " command_action: " + str(command_action.__dict__))
         if isinstance(lines, str):
             lines += error_line
         if isinstance(lines, list):

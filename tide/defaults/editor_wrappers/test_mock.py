@@ -17,3 +17,6 @@ class test_mock(editor_base):
 
     def run_editor_function(function_file, function_name, function_args):
         pass
+
+    def send_message_to_editor(self, message_object):
+        pass

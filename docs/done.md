@@ -1,3 +1,6 @@
+[n] Move startup logic out of `from tide import Tide` and place in `Tide.__init__`
+[x] add callbacks from editor
+[x] implement receiver: "tide" in stdio stdin for atide
 [x] add non-blocking infinite loop to cli
 [x] convert tests from nose to pytest
 [x] run tests in a docker container
