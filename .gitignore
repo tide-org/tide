@@ -4,3 +4,4 @@ tide.egg-info/
 dist/
 build/
 tests/scripts/.pypirc
+plugins
