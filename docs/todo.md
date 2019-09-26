@@ -1,3 +1,4 @@
+[ ] fix ./vim/assembly plugin - use stdio version
 [ ] implement startup complete callback
 [ ] look into using async await instead of Threads
 [ ] add tests for callbacks
