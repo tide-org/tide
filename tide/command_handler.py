@@ -19,7 +19,6 @@ class CommandHandler:
         try:
             self._command_process.spawn_process(startup_commands)
             self.__get_output_and_handle_filtering()
-            Config().get_editor_wrapper().send_message_to_editor({"startup_complete": True})
         except Exception as ex:
             print("error in command_handler.spawn_child_process(): " + str(ex) + "\n" + traceback.format_exc())
 
