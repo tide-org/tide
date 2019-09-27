@@ -28,6 +28,7 @@ class Tide(object):
                 self._run_after_startup_commands()
             if run_buffer_commands:
                 self._run_buffer_commands()
+            Config().get_editor_wrapper().send_message_to_editor({"startup_complete": True})
         except Exception as ex:
             print("error in Tide.start(): " + str(ex))
             print(traceback.format_exc())

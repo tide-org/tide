@@ -1,4 +1,3 @@
-[ ] fix stdio reading to handle doing all buffer startup
 [ ] look into using async await instead of Threads
 [ ] add tests for callbacks
 [ ] add tests and config for buffers

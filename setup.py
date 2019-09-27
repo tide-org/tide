@@ -20,7 +20,7 @@ setup(
 
   name = 'tide',
 
-  version = '0.1.81',
+  version = '0.1.82',
 
   description = 'From text editor to Integrated Development Environment. This allows you to use a yaml config and some scripting to deliver cross-platform, cross-editor plugins.',
 
