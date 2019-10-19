@@ -10,7 +10,10 @@ class stdout():
     @staticmethod
     def run_synchronous_message_event(action, value={}):
         event_id = stdout.print_to_stdout(action, value)
-        return ThreadWrapper().get_message_by_key(event_id)
+        message = ThreadWrapper().get_message_by_key(event_id)
+        command = message.get("command")
+        if command:
+            return command.get("value", "")
 
     @staticmethod
     def print_to_stdout(action, value, event_id=''):
