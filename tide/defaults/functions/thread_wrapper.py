@@ -6,6 +6,7 @@ from singleton import singleton
 from tide import Tide
 import json
 import sys
+from io import StringIO
 
 def stdin_loop(messages):
     while True:
@@ -35,9 +36,9 @@ def send_message_ack(request):
             'action': command_action , 'value': '' },
             'has_callback': False, 'sender': 'tide', 'receiver': 'editor', 'event_id': event_id
     }
-    json.dump(response_object, sys.stdout)
-    print("\n")
-    sys.stdout.flush()
+    io = StringIO()
+    json.dump(response_object, io)
+    print(io.getvalue() + "\n", flush=True)
 
 @singleton
 class ThreadWrapper:
