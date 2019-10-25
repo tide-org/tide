@@ -1,4 +1,5 @@
 [ ] stop stdio read taking up all processor
+[ ] define filters in config as well as files
 [ ] look into using async await instead of Threads
 [ ] add tests for callbacks
 [ ] add tests and config for buffers
