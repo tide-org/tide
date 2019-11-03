@@ -37,11 +37,8 @@ class CommandHandler:
 
     def __run_event_commands(self, event_name, process_command, buffer_name, lines=[]):
         buffers = Config().get()["buffers"]
-        buffer_by_name = buffers.get(buffer_name)
-        if buffer_by_name:
-            buffer_events = buffer_by_name.get("events")
-        else:
-           return
+        buffer_by_name = buffers.get(buffer_name, {})
+        buffer_events = buffer_by_name.get("events", {})
         if buffer_events:
             for command in buffer_events.get(event_name) or []:
                 cci = ConfigCommandItem()

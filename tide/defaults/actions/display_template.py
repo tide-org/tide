@@ -7,13 +7,14 @@ import jinja2
 class display_template(action_base):
 
     def run(self, command_item, buffer_name=''):
-        template_paths = Ph.get_paths_for_plugin('templates')
-        template_filename = command_item.get("filename", '')
-        for templates_path in template_paths:
-            template_filename_path = os.path.join(templates_path, template_filename)
-            if os.path.isfile(template_filename_path):
-                self.__process_template_file(buffer_name, templates_path, template_filename)
-                break
+        if buffer_name:
+            template_paths = Ph.get_paths_for_plugin('templates')
+            template_filename = command_item.get("filename", '')
+            for templates_path in template_paths:
+                template_filename_path = os.path.join(templates_path, template_filename)
+                if os.path.isfile(template_filename_path):
+                    self.__process_template_file(buffer_name, templates_path, template_filename)
+                    break
 
     def __process_template_file(self, buffer_name, templates_path, template_filename):
             template_loader = jinja2.FileSystemLoader(searchpath=templates_path)

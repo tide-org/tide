@@ -40,11 +40,12 @@ class Tide(object):
     def run_config_command(self, command, buffer_name='', event_input_args_name=''):
         config_command_item = self._get_config_command_item(command, buffer_name, event_input_args_name)
         ConfigCommand().run_config_command(config_command_item)
+        for buffer_name_after in Config().get()["buffers"].keys():
+            self._run_config_events(buffer_name_after, "after_command")
 
     def _run_after_startup_commands(self):
         after_startup_commands = Config().get()["events"].get("after_startup", [])
         for command in after_startup_commands:
-            print("running command: " + command)
             self.run_config_command(command)
 
     def _run_buffer_commands(self):
@@ -57,17 +58,25 @@ class Tide(object):
             self._run_config_events(buffer_name, "after_command")
 
     def _run_config_events(self, buffer_name, event_name):
-        has_events = "events" in Config().get()["buffers"].get(buffer_name, "")
-        if has_events:
+        if "events" in Config().get()["buffers"].get(buffer_name, ""):
             event_commands = Config().get()["buffers"][buffer_name]["events"].get(event_name, [])
             for event_command in event_commands:
                 command = event_command.get("command")
                 if command:
-                    self.run_config_command(command, buffer_name, event_name)
+                    config_command_item = self._get_config_command_item(command, buffer_name, event_name)
+                    ConfigCommand().run_config_command(config_command_item)
 
     def _get_config_command_item(self, command, buffer_name, event_input_args_name):
         config_command_item = ConfigCommandItem()
         config_command_item.command = command
-        config_command_item.buffer_name = buffer_name
+        config_command_item.buffer_name = self._get_buffer_name(buffer_name, command)
         config_command_item.event_input_args_name = event_input_args_name
         return config_command_item
+
+    def _get_buffer_name(self, buffer_name, command):
+        if buffer_name:
+            return buffer_name
+        command_config = Config().get()['commands'].get(command)
+        if command_config:
+            return command_config.get('buffer_name', '')
+        return ''

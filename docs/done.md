@@ -8,3 +8,7 @@
 [x] implement startup complete callback
 [x] fix startup_complete showing in atide - library issue
 [x] fix stdio reading to handle doing all buffer startup
+[x] implement local server for IDEs that don't have python integrated
+[x] abstract all vim-related code:
+  - `./defaults/actions/set_buffer.py`
+[x] `update internal._buffer_caches` for template buffers
