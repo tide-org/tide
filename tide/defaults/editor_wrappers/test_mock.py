@@ -20,3 +20,6 @@ class test_mock(editor_base):
 
     def send_message_to_editor(self, message_object):
         pass
+
+    def stop_tide(self):
+        pass

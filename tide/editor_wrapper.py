@@ -61,3 +61,6 @@ class EditorWrapper(object):
 
     def send_message_to_editor(self, message_object):
         return self._editor_object.send_message_to_editor(self._editor_object, message_object)
+
+    def stop_tide(self):
+        return self._editor_object.stop_tide(self._editor_object)

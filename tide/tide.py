@@ -35,13 +35,18 @@ class Tide(object):
 
     def stop(self):
         self._command_handler.close_command_handler()
+        Config().get().get_editor_wrapper().stop_tide()
         del self._command_handler
 
     def run_config_command(self, command, buffer_name='', event_input_args_name=''):
+        self._run_positional_buffer_commands("before_command")
         config_command_item = self._get_config_command_item(command, buffer_name, event_input_args_name)
         ConfigCommand().run_config_command(config_command_item)
-        for buffer_name_after in Config().get()["buffers"].keys():
-            self._run_config_events(buffer_name_after, "after_command")
+        self._run_positional_buffer_commands("after_command")
+
+    def _run_positional_buffer_commands(self, position):
+        for buffer_name in Config().get()["buffers"].keys():
+            self._run_config_events(buffer_name, position)
 
     def _run_after_startup_commands(self):
         after_startup_commands = Config().get()["events"].get("after_startup", [])

@@ -7,15 +7,21 @@ from tide import Tide
 import json
 import sys
 from io import StringIO
+from time import sleep
+
+REQUEST_LOOP_CAN_RUN = True
+STDIN_LOOP_CAN_RUN = True
+
 
 def stdin_loop(messages):
-    while True:
+    while STDIN_LOOP_CAN_RUN:
+        sleep(0.05)
         for line in fileinput.input():
             if line:
                 messages.push_message(line)
 
 def editor_request_loop(messages):
-    while True:
+    while REQUEST_LOOP_CAN_RUN:
         request = messages.pop_editor_message()
         if request:
             command_action = request["command"]["action"]
@@ -26,7 +32,6 @@ def editor_request_loop(messages):
                 event_input_args = command_value.get("event_input_args", "")
                 Tide().run_config_command(command, buffer_name, event_input_args)
                 send_message_ack(request)
-
 
 def send_message_ack(request):
     event_id = request.get("event_id", "")
@@ -49,9 +54,11 @@ class ThreadWrapper:
         self.stdin_thread.start()
         self.editor_request_thread = Thread(target=editor_request_loop, args=(self.message_container,))
         self.editor_request_thread.start()
+        self.can_loop = True
 
     def get_message_by_key(self, key):
-        while True:
+        while self.can_loop:
+            sleep(0.05)
             message = self.message_container.pop_tide_message(key)
             if message:
                 return message

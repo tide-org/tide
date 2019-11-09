@@ -2,7 +2,7 @@ import sys
 import json
 import interpolate as Interpolate
 from editor_base import editor_base
-from thread_wrapper import ThreadWrapper
+import thread_wrapper as TW
 import uuid
 
 class stdout():
@@ -10,7 +10,7 @@ class stdout():
     @staticmethod
     def run_synchronous_message_event(action, value={}):
         event_id = stdout.print_to_stdout(action, value)
-        message = ThreadWrapper().get_message_by_key(event_id)
+        message = TW.ThreadWrapper().get_message_by_key(event_id)
         command = message.get("command")
         if command:
             return command.get("value", "")
@@ -20,15 +20,8 @@ class stdout():
         if not event_id:
             event_id = stdout.generate_event_id()
         object_to_send = {
-            "command": {
-                "action": action,
-                "value": value
-            },
-            "sender": "tide",
-            "receiver": "editor",
-            "has_callback": True,
-            "event_id": event_id
-        }
+            "command": { "action": action, "value": value },
+            "sender": "tide", "receiver": "editor", "has_callback": True, "event_id": event_id }
         json.dump(object_to_send, sys.stdout)
         print("\n")
         sys.stdout.flush()
@@ -75,3 +68,8 @@ class stdio(editor_base):
 
     def send_message_to_editor(self, message_object):
         return stdout.run_synchronous_message_event("send_message_to_editor", message_object) 
+
+    def stop_tide(self):
+        TW.REQUEST_LOOP_CAN_RUN = False
+        TW.STDIN_LOOP_CAN_RUN = False
+        TW.ThreadWrapper().can_loop = False

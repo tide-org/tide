@@ -1,3 +1,7 @@
+[ ] implement a shutdown call
+[ ] do cleanup in test_config_yaml.py correcly
+[ ] move common classes into module paths
+[ ] add linting
 [ ] stop stdio read taking up all processor
 [ ] ability to define filters in config as well as files
 [ ] look into using async await instead of Threads
