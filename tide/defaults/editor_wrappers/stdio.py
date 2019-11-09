@@ -2,7 +2,7 @@ import sys
 import json
 import interpolate as Interpolate
 from editor_base import editor_base
-import thread_wrapper as TW
+from thread_wrapper import ThreadWrapper
 import uuid
 
 class stdout():
@@ -10,7 +10,7 @@ class stdout():
     @staticmethod
     def run_synchronous_message_event(action, value={}):
         event_id = stdout.print_to_stdout(action, value)
-        message = TW.ThreadWrapper().get_message_by_key(event_id)
+        message = ThreadWrapper().get_message_by_key(event_id)
         command = message.get("command")
         if command:
             return command.get("value", "")
@@ -70,6 +70,4 @@ class stdio(editor_base):
         return stdout.run_synchronous_message_event("send_message_to_editor", message_object) 
 
     def stop_tide(self):
-        TW.REQUEST_LOOP_CAN_RUN = False
-        TW.STDIN_LOOP_CAN_RUN = False
-        TW.ThreadWrapper().can_loop = False
+        ThreadWrapper().stop_loop = True

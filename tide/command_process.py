@@ -24,6 +24,9 @@ class CommandProcess:
             print("error in command_handler.spawn_child_process(): " + str(ex) + "\n" + traceback.format_exc())
 
     def close_command_process(self):
+        self._child.close(force=True)
+        if self._child.isalive():
+            self._child.terminate(force=True)
         del self._child
 
     def send_command_to_process(self, command):
