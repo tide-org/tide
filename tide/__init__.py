@@ -4,6 +4,8 @@
 '''
 
 import os
+import sys
+from time import sleep
 from os.path import dirname, abspath, join
 import argparse
 from argparse import RawTextHelpFormatter
@@ -30,13 +32,21 @@ def run_startup_commands(tide, position):
             for startup_command in startup_commands:
                 run_config_command(tide, startup_command)
 
+
+def start_loop_seconds(loop, timeout_seconds):
+    future = asyncio.wait_for(loop.run_in_executor(None, sleep, timeout_seconds), None)
+    loop.run_until_complete(future)
+
 def start_loop(loop):
     asyncio.set_event_loop(loop)
     loop.run_forever()
 
-def start_infinite_loop():
+def start_new_loop(timeout_seconds):
     new_loop = asyncio.new_event_loop()
-    t = Thread(target=start_loop, args=(new_loop,))
+    if not timeout_seconds:
+        t = Thread(target=start_loop, args=(new_loop, ))
+    else:
+        t = Thread(target=start_loop_seconds, args=(new_loop, timeout_seconds, ))
     t.start()
 
 def main():
@@ -51,6 +61,13 @@ def main():
     parser.add_argument('-c', '--config',
         help='The path to the Tide Config file(s).',
         metavar=('config'),
+        required=False
+    )
+    parser.add_argument('-t', '--timeout',
+        help="A timeout value in seconds to specify for how long\n" \
+              "the main thread will stay alive for. If not specified,\n" \
+              "will default to infinite.",
+        metavar=('timeout'),
         required=False
     )
     parser.add_argument('-a', '--arguments',
@@ -71,6 +88,7 @@ def main():
              "e.g. `-v settings.editor.name stdio`\n",
         required=False
     )
+
     args = vars(parser.parse_args())
     tide_args = ''
 
@@ -81,12 +99,21 @@ def main():
         tide_args = args["arguments"]
     
     print("tide config location: " + os.environ.get("TIDE_CONFIG_LOCATION"))
+
     if args["variables"]:
         print("Additional config variables: " + str(args["variables"]))
-    print("Starting Tide into perpetuity.")
-    start_infinite_loop()
+
+    if args["timeout"]:
+        print("Starting Tide for " + args["timeout"] + " seconds.")
+    else:
+        print("Starting Tide into perpetuity.")
+    sleep_seconds = int(args["timeout"] or 0)
+    start_new_loop(sleep_seconds)
+
     print("initialising Tide...")
+
     tide = Tide()
+
     print("staring Tide with arguments: \'" + tide_args + "\'...")
     tide.start(tide_args)
     call_on_startup_functions(tide)

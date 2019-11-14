@@ -70,4 +70,4 @@ class stdio(editor_base):
         return stdout.run_synchronous_message_event("send_message_to_editor", message_object) 
 
     def stop_tide(self):
-        ThreadWrapper().stop_loop = True
+        ThreadWrapper().stop()

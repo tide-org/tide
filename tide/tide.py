@@ -34,8 +34,8 @@ class Tide(object):
             print(traceback.format_exc())
 
     def stop(self):
+        Config().get_editor_wrapper().stop_tide()
         self._command_handler.close_command_handler()
-        Config().get().get_editor_wrapper().stop_tide()
         del self._command_handler
 
     def run_config_command(self, command, buffer_name='', event_input_args_name=''):
@@ -50,8 +50,9 @@ class Tide(object):
 
     def _run_after_startup_commands(self):
         after_startup_commands = Config().get()["events"].get("after_startup", [])
-        for command in after_startup_commands:
-            self.run_config_command(command)
+        if after_startup_commands:
+            for command in after_startup_commands:
+                self.run_config_command(command)
 
     def _run_buffer_commands(self):
         buffer_names = Config().get()["buffers"].keys()

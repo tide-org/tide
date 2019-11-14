@@ -12,3 +12,6 @@
 [x] abstract all vim-related code:
   - `./defaults/actions/set_buffer.py`
 [x] `update internal._buffer_caches` for template buffers
+[x] stop stdio read taking up all processor
+[x] do tracing on tide package to determine what is holding package open after shutdown
+[x] implement a shutdown/stop_tide call
