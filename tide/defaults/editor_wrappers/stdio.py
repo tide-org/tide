@@ -2,7 +2,7 @@ import sys
 import json
 import interpolate as Interpolate
 from editor_base import editor_base
-from thread_wrapper import ThreadWrapper
+from stdio_lib.thread_wrapper import ThreadWrapper
 import uuid
 
 class stdout():

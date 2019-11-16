@@ -15,3 +15,6 @@
 [x] stop stdio read taking up all processor
 [x] do tracing on tide package to determine what is holding package open after shutdown
 [x] implement a shutdown/stop_tide call
+[x] do cleanup in test_config_yaml.py correcly
+[x] move stdio functions to under editor_wrappers 
+[x] move stdio editor functions into folder under editor_wrappers

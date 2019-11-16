@@ -1,7 +1,7 @@
 import fileinput
 import os
 from threading import Thread
-from message_container import MessageContainer
+from stdio_lib.message_container import MessageContainer
 from singleton import singleton
 from tide import Tide
 import json
@@ -10,6 +10,8 @@ from io import StringIO
 from time import sleep
 import config_source as Cs
 
+LOOP_SLEEP_SECONDS = 0.01
+
 def stdin_loop(messages, stop_loop):
     while True:
         for line in sys.stdin:
@@ -17,7 +19,7 @@ def stdin_loop(messages, stop_loop):
                 messages.push_message(line)
         if stop_loop():
             break
-        sleep(0.05)
+        sleep(LOOP_SLEEP_SECONDS)
 
 def editor_request_loop(messages, stop_loop):
     while True:
@@ -33,7 +35,7 @@ def editor_request_loop(messages, stop_loop):
                 send_message_ack(request)
         if stop_loop():
             break
-        sleep(0.05)
+        sleep(LOOP_SLEEP_SECONDS)
 
 def send_message_ack(request):
     event_id = request.get("event_id", "")
@@ -76,4 +78,4 @@ class ThreadWrapper:
             message = self.message_container.pop_tide_message(key)
             if message:
                 return message
-            sleep(0.05)
+            sleep(LOOP_SLEEP_SECONDS)
