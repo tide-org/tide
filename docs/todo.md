@@ -1,5 +1,7 @@
+[ ] use object in stdio request and response objects
 [ ] move common classes into module paths - action, command, config, editor, filter, logging, helpers
 [ ] move filters into config. convert code to regexes or code in yaml.
+[ ] implement stop command from editor
 [ ] ability to define filters in config as well as files
 [ ] export editor function code to editor.
 [ ] add linting and docker container for this
