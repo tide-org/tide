@@ -27,3 +27,4 @@
 [x] write more tests
 [x] add tests for callbacks
 [x] determine tests to be created for stdio and add config
+[x] move to github.com/tide
