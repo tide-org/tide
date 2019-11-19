@@ -18,3 +18,12 @@
 [x] do cleanup in test_config_yaml.py correcly
 [x] move stdio functions to under editor_wrappers 
 [x] move stdio editor functions into folder under editor_wrappers
+[n] use object in stdio request and response objects
+[n] move common classes into module paths - action, command, config, editor, filter, logging, helpers
+[n] implement shutdown/stop command from editor
+[n] move filters into config. convert code to regexes or code in yaml.
+[n] ability to define filters in config as well as files - to use a parser - https://en.wikipedia.org/wiki/Compiler-compiler - and - https://en.wikipedia.org/wiki/Yacc
+[x] fix tests
+[x] write more tests
+[x] add tests for callbacks
+[x] determine tests to be created for stdio and add config

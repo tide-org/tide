@@ -1,15 +1,9 @@
-[ ] use object in stdio request and response objects
-[ ] move common classes into module paths - action, command, config, editor, filter, logging, helpers
-[ ] move filters into config. convert code to regexes or code in yaml.
-[ ] implement stop command from editor
-[ ] ability to define filters in config as well as files
 [ ] export editor function code to editor.
+[ ] move all plugin functions to plugin/functions path
 [ ] add linting and docker container for this
 [ ] create a build pipeline in shippable.io
-[ ] look into using async await instead of Threads
-[ ] add tests for callbacks
-[ ] add tests and config for buffers
-[ ] determine tests to be created for stdio and add config
+[ ] look into using async await instead of Thread while loops
+[?] add tests and config for buffers
 [ ] implement tcp/ip as alternative to pexpect (to allow other remote debuggers to integrate into tide)
 [ ] write a setup tutorial
 [ ] write documentation
