@@ -37,7 +37,7 @@ class CommandAction(object):
 
     def get_action_args(self):
         command_action_value = next(iter(self._command_action.values()))
-        event_input_args = self._command_action.get("event_input_args", "")
+        event_input_args = self._command_action.get("event_input_args", {})
         action_args = {
             "command_item": command_action_value,
             "buffer_name": self._buffer_name
@@ -45,7 +45,7 @@ class CommandAction(object):
         if event_input_args:
             action_args["command_item"]["event_input_args"] = event_input_args
         if self._args_dict:
-            action_args["command_args"] = self._args_dict
+            action_args["command_item"]["event_input_args"] = self._args_dict
         return action_args
 
     def __get_when_condition(self):

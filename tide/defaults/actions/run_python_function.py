@@ -31,7 +31,7 @@ class run_python_function(action_base):
 
     def __update_command_args(self):
         if self._command_args:
-            self._interpolated_input_args["command_args"] = self._command_args
+            self._interpolated_input_args["event_input_args"] = self._command_args
 
     def __set_function_module_locals(self):
         self._function_module = importlib.import_module(self._function_module_name)

@@ -41,11 +41,18 @@ class CommandHandler:
         buffer_events = buffer_by_name.get("events", {})
         if buffer_events:
             for command in buffer_events.get(event_name) or []:
-                cci = ConfigCommandItem()
-                cci.command = command
-                cci.buffer_name = buffer_name
-                cci.args_dict = {'process_command': process_command, 'lines': lines, 'event_name': event_name}
-                ConfigCommand().run_config_command(cci)
+                if isinstance(command, dict):
+                    cci = ConfigCommandItem()
+                    cci.command = command.get("command")
+                    cci.buffer_name = buffer_name
+                    cci.args_dict = command.get("input_args")
+                    ConfigCommand().run_config_command(cci)
+                else:
+                    cci = ConfigCommandItem()
+                    cci.command = command
+                    cci.buffer_name = buffer_name
+                    cci.args_dict = {'process_command': process_command, 'lines': lines, 'event_name': event_name}
+                    ConfigCommand().run_config_command(cci)
 
     def __get_output_and_handle_filtering(self, buffer_name=''):
         output_string = self._command_process.seek_to_end_of_tty()
