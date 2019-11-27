@@ -3,6 +3,8 @@ import filter as Filter
 from config import Config
 from logging_decorator import logging
 import config_source as Cs
+import os
+import sys
 
 LOGGING_SETTINGS = Cs.CONFIG_OBJECT["settings"]["logging"]
 USE_SESSION_LOG_FILE = LOGGING_SETTINGS["use_session_log_file"]
@@ -11,7 +13,14 @@ SESSION_BUFFER_NAME = LOGGING_SETTINGS["session_buffer_name"]
 ADD_TIMESTAMP = LOGGING_SETTINGS["add_timestamp"]
 
 if USE_SESSION_LOG_FILE:
-    LOG_FILE_HANDLE = open(SESSION_LOG_FILENAME, "w+")
+    full_log_filename = os.path.abspath(SESSION_LOG_FILENAME)
+    log_path = os.path.dirname(full_log_filename)
+    if log_path == '/':
+        running_file = sys.argv[0]
+        pathname = os.path.dirname(running_file)
+        running_path = os.path.abspath(pathname)
+        full_log_filename = os.path.join(running_path, SESSION_LOG_FILENAME)
+    LOG_FILE_HANDLE = open(full_log_filename, "w+")
 
 @logging
 def write_to_log(log_string):
