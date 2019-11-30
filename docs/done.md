@@ -29,3 +29,4 @@
 [x] determine tests to be created for stdio and add config
 [x] move to github.com/tide
 [x] fix log.py permission denied when file to write to is set without a path
+[x] fix function_args in function_args with stdio

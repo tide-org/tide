@@ -10,7 +10,6 @@ class ConfigCommandItem(object):
     _base_command = ''
     _buffer_name = ''
     _event_input_args_name = ''
-    _args_dict = {}
     _user_command_args = []
 
     @property
@@ -46,20 +45,15 @@ class ConfigCommandItem(object):
         self._event_input_args_name = value
 
     @property
-    def args_dict(self):
-        return self._args_dict
-
-    @args_dict.setter
-    def args_dict(self, value):
-        self._args_dict = value
-
-    @property
     def command(self):
         return self._command
 
     @command.setter
     def command(self, value):
-        split_command = value.split(' ')
+        if isinstance(value, dict):
+            split_command = [value.get("command", '')]
+        else:
+            split_command = value.split(' ')
         if len(split_command) > 1:
             self._base_command = split_command[0]
             self._user_command_args = split_command[1:]
@@ -78,12 +72,11 @@ class ConfigCommandItem(object):
             if event_input_args:
                 self.event_input_args = event_input_args
                 updated_command_action["event_input_args"] = event_input_args
-            ucal.append(CommandAction(updated_command_action, self._buffer_name, self._args_dict))
+            ucal.append(CommandAction(updated_command_action, self._buffer_name))
         return ucal
 
     def __get_event_input_args(self):
         if self._base_command and self.buffer_name and self.event_input_args_name:
-           args_dict = {}
            event_command_list = Config().get()["buffers"][self.buffer_name]["events"][self.event_input_args_name]
            for event_command in event_command_list:
                if event_command["command"] == self.base_command:

@@ -1,3 +1,4 @@
+[ ] add more fine-grained unit tests
 [ ] export editor function code to editor.
 [ ] move all plugin functions to plugin/functions path
 [ ] add linting and docker container for this
