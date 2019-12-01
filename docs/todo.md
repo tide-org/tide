@@ -1,4 +1,8 @@
 [ ] add more fine-grained unit tests
+[ ] remove function_args showing in input_args with stdio
+[ ] clean up having both function_args and event_input_args in function_args (possibly rename) ./defaults/actions/run_editor_function.py
+    (see test_c info_source vs set_highlight_line)
+[ ] make option for commands to not show for users (user_callable) for atide
 [ ] export editor function code to editor.
 [ ] move all plugin functions to plugin/functions path
 [ ] add linting and docker container for this

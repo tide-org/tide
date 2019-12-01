@@ -23,12 +23,18 @@ class run_editor_function(action_base):
 
     def __run_command(self):
        editor_wrapper = Config().get_editor_wrapper()
-       result = editor_wrapper.run_editor_function(self._function_file, self._function_name, {
-           'function_args': self._function_args,
-           'event_input_args': self._event_input_args,
-           'buffer_name': self._buffer_name
-       })
+       result = editor_wrapper.run_editor_function(self._function_file, self._function_name, self.__create_args_dict())
        return result
+
+    def __create_args_dict(self):
+        args_dict = {}
+        if self._function_args:
+            args_dict["function_args"] = self._function_args
+        if self._event_input_args:
+            args_dict["event_input_args"] = self._event_input_args
+        if self._buffer_name:
+            args_dict["buffer_name"] = self._buffer_name
+        return args_dict
 
     def __set_locals(self, command_item, buffer_name):
         self._command_item = command_item
