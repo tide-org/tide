@@ -1,3 +1,5 @@
+[ ] reconcile missing buffer_name 
+[ ] rework config command stuff into smaller, more manageable classes. add tests
 [ ] export editor function code to editor.
 [ ] move all plugin functions to plugin/functions path
 [ ] add linting and docker container for this
