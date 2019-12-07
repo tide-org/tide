@@ -78,7 +78,7 @@ class ConfigCommandItem(object):
             if event_input_args:
                 self.event_input_args = event_input_args
                 updated_command_action["event_input_args"] = event_input_args
-            ucal.append(CommandAction(updated_command_action, self._buffer_name, self._args_dict))
+            ucal.append(CommandAction(updated_command_action, self.buffer_name, self.args_dict))
         return ucal
 
     def __get_event_input_args(self):
