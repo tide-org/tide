@@ -16,7 +16,8 @@ class ConfigCommand(object):
             self.__initialise_buffer(cci.buffer_name)
             action_args = command_action.get_action_args()
             lines = Action.run_action(command_action.type, action_args)
-            self.__set_buffer_cache_lines(lines, cci, command_action)
+            # TODO: reconcile/mergs action_args with cci buffer_name here
+            self.__set_buffer_cache_lines(lines, cci, command_action, action_args)
 
     def __initialise_buffer(self, buffer_name):
         if buffer_name not in Config().get().get("internal", {}).get("buffer_caches", {}):
@@ -32,11 +33,18 @@ class ConfigCommand(object):
             lines.insert(0, error_line)
         return lines
 
-    def __set_buffer_cache_lines(self, lines, cci, command_action):
+    def __set_buffer_cache_lines(self, lines, cci, command_action, action_args):
         if lines:
-            if not cci.buffer_name:
-                lines = self.__set_error_lines(lines, command_action)
-                internal_buffer_name = 'default'
-            else:
+            if not cci.buffer_name and not cci._buffer_name:
+                buffer_name = action_args.get("command_item", {}).get("buffer_name", "")
+                if buffer_name:
+                    internal_buffer_name = buffer_name
+                else:
+                    lines = self.__set_error_lines(lines, command_action)
+                    internal_buffer_name = 'default'
+            elif cci.buffer_name:
                 internal_buffer_name = cci.buffer_name
+            # TODO is this necessary?
+            elif cci._buffer_name:
+                internal_buffer_name = cci._buffer_name
             Config().get()["internal"]["buffer_caches"][internal_buffer_name] = lines

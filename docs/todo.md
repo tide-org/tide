@@ -1,3 +1,11 @@
+[ ] reconcile missing buffer_name 
+[ ] rework config command stuff into smaller, more manageable classes. add tests
+[ ] refactor out dict checks in run_command
+[ ] refactor run_config_command to be smaller and testable
+[ ] fix recursive info registers when added to do_buffer_diff in assembly config
+    and refactor command comfig item to allow any type of config command in event_args
+[ ] fix vg_registers not updating for stdio on stepi command
+  {"command":{"action":"set_config_dictionary_item","value":""},"sender":"editor","receiver":"tide","has_callback":false,"event_id":"102722b2-c158-497b-ae54-45b4646a7f5e"}
 [ ] add more fine-grained unit tests
 [ ] remove function_args showing in input_args with stdio
 [ ] clean up having both function_args and event_input_args in function_args (possibly rename) ./defaults/actions/run_editor_function.py
