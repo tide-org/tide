@@ -39,10 +39,9 @@ class Tide(object):
         del self._command_handler
 
     def run_config_command(self, command, buffer_name='', event_input_args_name=''):
-        self._run_positional_buffer_commands("before_command")
         config_command_item = self._get_config_command_item(command, buffer_name, event_input_args_name)
         ConfigCommand().run_config_command(config_command_item)
-        self._run_positional_buffer_commands("after_command")
+        self._run_buffer_commands()
 
     def _run_positional_buffer_commands(self, position):
         for buffer_name in Config().get()["buffers"].keys():
@@ -57,10 +56,9 @@ class Tide(object):
     def _run_buffer_commands(self):
         buffer_names = Config().get()["buffers"].keys()
         for buffer_name in buffer_names:
-            self._run_config_events(buffer_name, "before_command")
             buffer_command = Config().get()["buffers"][buffer_name].get("command")
-            if buffer_command:
-                self.run_config_command(buffer_command, buffer_name)
+            self._run_config_events(buffer_name, "before_command")
+            self._run_single_command(buffer_command, buffer_name)
             self._run_config_events(buffer_name, "after_command")
 
     def _run_config_events(self, buffer_name, event_name):
@@ -68,11 +66,14 @@ class Tide(object):
             event_commands = Config().get()["buffers"][buffer_name]["events"].get(event_name, [])
             for event_command in event_commands:
                 command = event_command.get("command")
-                if command:
-                    config_command_item = self._get_config_command_item(command, buffer_name, event_name)
-                    ConfigCommand().run_config_command(config_command_item)
+                self._run_single_command(command, buffer_name, event_name)
 
-    def _get_config_command_item(self, command, buffer_name, event_input_args_name):
+    def _run_single_command(self, command, buffer_name, event_name=''):
+        if command:
+            config_command_item = self._get_config_command_item(command, buffer_name, event_name)
+            ConfigCommand().run_config_command(config_command_item)
+
+    def _get_config_command_item(self, command, buffer_name, event_input_args_name=''):
         config_command_item = ConfigCommandItem()
         config_command_item.command = command
         config_command_item.buffer_name = self._get_buffer_name(buffer_name, command)
