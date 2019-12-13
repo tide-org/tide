@@ -72,7 +72,12 @@ class vim81(editor_base):
         if not function_file_path:
             function_file_path = test_file_path
         vim.command("source " + function_file_path + ".vim")
-        vim.command("call " + function_file + "#" + function_name + "(" + str(safe_args_dict) + ")")
+        try:
+            vim.command("call " + function_file + "#" + function_name + "(" + str(safe_args_dict) + ")")
+        except Exception as ex:
+            print("exception raised calling vim:")
+            print("  vim.command(\"call " + function_file + "#" + function_name + "(" + str(safe_args_dict) + ")")
+            raise ex
 
     def send_message_to_editor(self, message_object):
         pass
