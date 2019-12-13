@@ -1,3 +1,4 @@
+[ ] move before_command, command and after_command to tide from vgdb (and so it doesn't need to be implemented in atide)
 [ ] reconcile missing buffer_name 
 [ ] rework config command stuff into smaller, more manageable classes. add tests
 [ ] refactor out dict checks in run_command
