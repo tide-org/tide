@@ -1,5 +1,5 @@
 import os
-import setup_tests
+from pytest_tests import setup_tests
 import pytest
 
 os.environ["TIDE_CONFIG_LOCATION"] = "/work/plugins/tests/test_hello_3"

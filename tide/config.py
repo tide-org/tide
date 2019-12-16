@@ -10,6 +10,7 @@ class Config:
 
     _config_dictionary = None
     _editor_wrapper = None
+    _editor_wrapper_name = ''
 
     def __initialise_objects(self):
         self.__set_config_dictionary()
@@ -29,7 +30,7 @@ class Config:
 
     def set(self, force=False):
         if force or not self._config_dictionary:
-            editor = Cs.CONFIG_OBJECT["settings"]["editor"]["name"]
+            editor = self._editor_wrapper_name if self._editor_wrapper_name else Cs.CONFIG_OBJECT["settings"]["editor"]["name"]
             self.__set_editor_wrapper(editor)
             callback = self._editor_wrapper.get_set_dictionary_value_callback()
             self._config_dictionary = ActionableDict(Cs.CONFIG_OBJECT, callback)
@@ -45,6 +46,9 @@ class Config:
             "buffer_caches": { session_log_buffer: [] },
             "variables": {}
         }
+
+    def set_editor_wrapper_name(self, editor_wrapper_name):
+        self._editor_wrapper_name = editor_wrapper_name
 
     def get_editor_wrapper(self):
         return self._editor_wrapper

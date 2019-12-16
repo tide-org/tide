@@ -1,5 +1,5 @@
 import setup_tests
-import pytest
+from pytest_tests import setup_tests
 
 from actionable_dict import ActionableDict
 

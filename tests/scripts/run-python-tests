@@ -2,4 +2,5 @@
 
 cd /work/tests/pytest_tests
 
-py.test
+py.test --ignore=./stdio -s
+py.test ./stdio

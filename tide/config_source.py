@@ -99,9 +99,6 @@ def __get_function_paths_and_add_to_sys_path():
     return function_paths
 
 FULL_CONFIG_LOCATION = __get_base_config_location()
-
 CONFIG_LOCATION_ARRAY = __get_all_config_locations()
-
 CONFIG_OBJECT = __get_all_configs()
-
 FUNCTIONS_LOCATION_ARRAY = __get_function_paths_and_add_to_sys_path()
