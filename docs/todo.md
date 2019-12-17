@@ -1,6 +1,4 @@
-[ ] allow editor type to be set on startup
-[ ] move before_command, command and after_command to tide from vgdb (and so it doesn't need to be implemented in atide)
-[ ] reconcile missing buffer_name 
+[ ] add makefile
 [ ] rework config command stuff into smaller, more manageable classes. add tests
 [ ] refactor out dict checks in run_command
 [ ] refactor run_config_command to be smaller and testable
@@ -9,7 +7,6 @@
 [ ] fix vg_registers not updating for stdio on stepi command
   {"command":{"action":"set_config_dictionary_item","value":""},"sender":"editor","receiver":"tide","has_callback":false,"event_id":"102722b2-c158-497b-ae54-45b4646a7f5e"}
 [ ] add more fine-grained unit tests
-[ ] remove function_args showing in input_args with stdio
 [ ] clean up having both function_args and event_input_args in function_args (possibly rename) ./defaults/actions/run_editor_function.py
     (see test_c info_source vs set_highlight_line)
 [ ] make option for commands to not show for users (user_callable) for atide

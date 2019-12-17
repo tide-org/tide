@@ -30,3 +30,7 @@
 [x] move to github.com/tide
 [x] fix log.py permission denied when file to write to is set without a path
 [x] fix function_args in function_args with stdio
+[x] allow editor type to be set on startup
+[x] move before_command, command and after_command to tide from vgdb (and so it doesn't need to be implemented in atide)
+[x] remove function_args showing in input_args with stdio
+[?] reconcile missing buffer_name 
