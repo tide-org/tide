@@ -23,6 +23,7 @@ class CommandAction(object):
     def type(self):
         return next(iter(self._command_action))
 
+    # TODO: move this to an conditional/ActionWhen type class. CommandAction should just be a popo object with command action and buffer
     def is_ok_to_run(self):
         when_condition = self.__get_when_condition()
         if when_condition:

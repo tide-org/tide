@@ -2,5 +2,6 @@
 
 cd /work/tests/pytest_tests
 
-py.test --ignore=./stdio -s
+py.test --ignore=./stdio --ignore=./test_command_action.py -s
+py.test ./test_command_action.py -s
 py.test ./stdio

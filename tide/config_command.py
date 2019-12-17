@@ -11,6 +11,7 @@ class ConfigCommand(object):
         for command_action in cci.command_action_list:
             self.__run_config_command_action(command_action, cci)
 
+    # TODO: this should go in it's own class for Action pre-processing
     def __run_config_command_action(self, command_action, cci):
         if command_action.is_ok_to_run():
             self.__initialise_buffer(cci.buffer_name)
