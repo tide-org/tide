@@ -8,7 +8,7 @@ from config import Config
 from command_handler import CommandHandler
 
 
-def test__CommandHandler():
+def test__can_spawn_process():
     try:
         pass
     except Exception as ex:
