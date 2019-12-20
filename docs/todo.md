@@ -1,6 +1,10 @@
+[ ] consoloidate filter, action and editor_wrapper classes find files functionality into separate class
+[ ] implement correct python logging subsystem
 [ ] complete SysPathContainer and tests
 [ ] create a CommandProcessSettings object for config settings in CommandProcess __init__
-[ ] add makefile
+[ ] add makefile for all commands
+[ ] place logical components into separate folders
+[ ] create a filter path helpers class filter_paths
 [ ] rework config command stuff into smaller, more manageable classes. add tests
 [ ] refactor out dict checks in run_command
 [ ] refactor run_config_command to be smaller and testable

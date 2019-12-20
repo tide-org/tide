@@ -41,7 +41,7 @@ def __get_base_config_location():
     location_file_path = __get_config_location_from_default_location_file()
     if location_file_path:
         return location_file_path
-    raise RuntimeError("error: unable to find a matching path for the config. please either set the environment variable TIDE_CONFIG_LOCATION or specify in the file config_location.yaml")
+    raise RuntimeError("error: unable to find a matching path for the config.\r\nplease either set the environment variable TIDE_CONFIG_LOCATION \rnor specify in the file config_location.yaml")
 
 def __get_default_config_path():
     base_path = Ph.get_python_scripts_base_path()
