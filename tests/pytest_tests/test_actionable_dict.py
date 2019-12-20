@@ -1,6 +1,4 @@
-import setup_tests
 from pytest_tests import setup_tests
-
 from actionable_dict import ActionableDict
 
 parent_keys_result = None

@@ -1,3 +1,4 @@
+[ ] complete SysPathContainer and tests
 [ ] create a CommandProcessSettings object for config settings in CommandProcess __init__
 [ ] add makefile
 [ ] rework config command stuff into smaller, more manageable classes. add tests

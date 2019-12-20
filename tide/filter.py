@@ -2,7 +2,7 @@ import importlib
 import sys
 import os
 from os import listdir
-from os.path import isfile, join
+from os.path import isfile, join, basename
 import path_helpers as Ph
 from logging_decorator import logging
 
@@ -20,7 +20,7 @@ def __get_files_from_path():
 def __get_files_as_list(filter_files):
     files_list = []
     for filter_file in filter_files:
-        if filter_file[-3:].lower() == ".py" and filter_file.lower() != "__init__.py":
+        if filter_file[-3:].lower() == ".py" and basename(filter_file).lower() != "__init__.py":
             files_list.append(filter_file)
     return list(set(files_list))
 
@@ -35,6 +35,11 @@ def __get_filters_list():
     for filter_file in FILTERED_BUFFERS_FILE_LIST:
         filters_list.append(os.path.splitext(os.path.basename(filter_file))[0])
     return list(set(filters_list))
+
+@logging
+def __get_buffer_filter(filter_name):
+    importlib.import_module(filter_name)
+    return getattr(sys.modules[filter_name], filter_name)
 
 FILTERED_BUFFERS_FILE_LIST = __get_filters_file_list()
 FILTERED_BUFFERS_LIST = __get_filters_list()
@@ -51,8 +56,3 @@ def filter_string(lines, filter_name):
         buffer_filter = __get_buffer_filter(filter_name)
         return buffer_filter(lines).processed_lines
     return lines
-
-@logging
-def __get_buffer_filter(filter_name):
-    importlib.import_module(filter_name)
-    return getattr(sys.modules[filter_name], filter_name)
