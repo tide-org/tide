@@ -39,3 +39,4 @@
 [x] rework config command stuff into smaller, more manageable classes. add tests
 [?] refactor out dict checks in run_command
 [x] refactor run_config_command to be smaller and testable
+[x] create a CommandProcessSettings object for config settings in CommandProcess __init__

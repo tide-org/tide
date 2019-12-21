@@ -6,6 +6,7 @@ from config_command_item import ConfigCommandItem
 from command_process import CommandProcess
 from command_output import CommandOutput
 from logging_decorator import logging
+from command_process_config import CommandProcessConfig
 
 @singleton
 @logging
@@ -13,7 +14,8 @@ class CommandHandler:
 
     def __init__(self):
         self._child = None
-        self._command_process = CommandProcess()
+        self.__command_process_config = CommandProcessConfig() 
+        self._command_process = CommandProcess(self.__command_process_config)
 
     def spawn_process(self, startup_commands):
         try:

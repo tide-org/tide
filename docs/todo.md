@@ -1,5 +1,4 @@
 [ ] complete SysPathContainer and tests
-[ ] create a CommandProcessSettings object for config settings in CommandProcess __init__
 [ ] add makefile for all commands
 [ ] place logical components into separate folders
 [ ] refactor action_name and type in Action and ConfigCommandItem
