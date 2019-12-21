@@ -1,28 +1,17 @@
 import importlib
 import sys
 import os
-from os import listdir
 from os.path import isfile, join
-from pathlib import Path
 from logging_decorator import logging
-import path_helpers as Ph
 import config_source as Cs
+import python_files as Pf
 
 PRINT_ACTIONS = Cs.CONFIG_OBJECT["settings"]["debugging"]["print_actions"]
 
 @logging
 def __get_actions_list():
-    actions_list = []
-    all_action_files = []
-    actions_paths = Ph.get_paths_for_plugin("actions")
-    for actions_path in actions_paths:
-        action_files = [f for f in listdir(actions_path) if isfile(join(actions_path, f))]
-        if action_files and actions_path not in sys.path:
-            sys.path.insert(0, actions_path)
-        all_action_files.extend(action_files)
-    for action_file in all_action_files:
-        if Path(action_file).suffix.lower() == ".py" and action_file.lower() != "__init__.py":
-            actions_list.append(Path(action_file).stem.lower())
+    all_action_files = Pf.get_valid_files_from_paths_for_plugin_and_add_to_sys_path("actions")
+    actions_list = Pf.get_filtered_list(all_action_files, base_name=True)
     return actions_list
 
 ACTIONS_LIST = __get_actions_list()
@@ -30,12 +19,11 @@ ACTIONS_LIST = __get_actions_list()
 @logging
 def run_action(action_name, args_dict):
     if PRINT_ACTIONS:
-        print("Action: " + action_name + " args: " + str(args_dict))
+        print(f"Action: {action_name} args: {str(args_dict)}")
     if action_name.lower() in ACTIONS_LIST:
         return __call_action_class(action_name, args_dict)
     else:
-
-        raise TypeError("error: action: " + action_name + " is not a valid action in ACTIONS_LIST: " + str(ACTIONS_LIST))
+        raise TypeError(f"error: action: {action_name} is not a valid action in ACTIONS_LIST: {str(ACTIONS_LIST)}")
 
 @logging
 def __call_action_class(action_name, args_dict):

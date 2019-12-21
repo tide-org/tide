@@ -5,7 +5,7 @@ from os import listdir
 from os.path import isfile, join
 from pathlib import Path
 from logging_decorator import logging
-import path_helpers as Ph
+import python_files as Pf
 
 @logging
 class EditorWrapper(object):
@@ -26,7 +26,7 @@ class EditorWrapper(object):
         if self._editor_name.lower() in self._editors_list:
             return self.__create_editor_object()
         else:
-            raise TypeError("error: python file for editor: " + self._editor_name + " is not a valid editor")
+            raise TypeError(f"error: python file for editor: {self._editor_name} is not a valid editor")
 
     def __create_editor_object(self):
         editor_module = self._editor_name
@@ -35,14 +35,8 @@ class EditorWrapper(object):
 
     def __get_editors_list(self):
         if not self._editors_list:
-            editor_wrapper_paths = Ph.get_paths_for_plugin("editor_wrappers")
-            for editors_path in editor_wrapper_paths:
-                if editors_path not in sys.path:
-                    sys.path.insert(0, editors_path)
-                editor_files = [f for f in listdir(editors_path) if isfile(join(editors_path, f))]
-                for editor_file in editor_files:
-                    if Path(editor_file).suffix.lower() == ".py" and editor_file.lower() != "__init__.py":
-                        self._editors_list.append(Path(editor_file).stem.lower())
+            editor_files = Pf.get_valid_files_from_paths_for_plugin_and_add_to_sys_path("editor_wrappers")
+            self._editors_list = Pf.get_filtered_list(editor_files, base_name=True)
 
     def get_set_dictionary_value_callback(self):
         return self._editor_object.set_dictionary_value

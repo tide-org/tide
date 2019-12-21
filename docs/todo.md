@@ -1,5 +1,4 @@
 [ ] refactor action_name and type in Action and ConfigCommandItem
-[ ] consoloidate filter, action and editor_wrapper classes find files functionality into separate class
 [ ] implement correct python logging subsystem
 [ ] complete SysPathContainer and tests
 [ ] create a CommandProcessSettings object for config settings in CommandProcess __init__

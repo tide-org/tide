@@ -2,6 +2,7 @@ import os
 from os.path import abspath, isdir, realpath, join
 import path_helpers as Ph
 from yamlreader import yaml_load
+import sys
 
 _config_path = "defaults"
 _config_location_file = "config_location.yaml"
@@ -64,9 +65,7 @@ def __get_all_configs():
     return full_config
 
 def __get_config_path_from_settings(config):
-    if config and config.get("settings") and config["settings"].get("plugins") and config["settings"]["plugins"].get("config_path"):
-        return config["settings"]["plugins"]["config_path"]
-    return ''
+    return (config or {}).get("settings", {}).get("plugins", {}).get("config_path", '')
 
 def __get_all_config_locations():
     config_locations = []
@@ -90,8 +89,6 @@ def __get_all_config_locations():
     return config_locations[::-1]
 
 def __get_function_paths_and_add_to_sys_path():
-    import path_helpers as Ph
-    import sys
     function_paths = Ph.get_paths_for_plugin("functions")
     for function_path in function_paths:
         if function_path not in sys.path:

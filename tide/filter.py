@@ -3,6 +3,7 @@ import sys
 from os import listdir
 from os.path import isfile, join, basename, splitext
 import path_helpers as Ph
+import python_files as Pf
 from logging_decorator import logging
 
 @logging
@@ -16,17 +17,9 @@ def __get_files_from_path():
     return all_filter_files
 
 @logging
-def __get_files_as_list(filter_files):
-    files_list = []
-    for filter_file in filter_files:
-        if filter_file.lower().endswith(".py") and basename(filter_file).lower() != "__init__.py":
-            files_list.append(filter_file)
-    return files_list
-
-@logging
 def __get_filters_file_list():
     filter_files = __get_files_from_path()
-    return __get_files_as_list(filter_files)
+    return Pf.get_filtered_list(filter_files) 
 
 @logging
 def __get_filters_list():

@@ -35,3 +35,4 @@
 [x] remove function_args showing in input_args with stdio
 [?] reconcile missing buffer_name 
 [x] create Config().getEvents() and getBuffers() methods
+[x] consoloidate filter, action and editor_wrapper classes find files functionality into separate class
