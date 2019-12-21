@@ -20,7 +20,7 @@ class CommandHandler:
             self._command_process.spawn_process(startup_commands)
             self.__get_output_and_handle_filtering()
         except Exception as ex:
-            print("error in command_handler.spawn_child_process(): " + str(ex) + "\n" + traceback.format_exc())
+            print(f"error in command_handler.spawn_child_process(): {str(ex)}\n{traceback.format_exc()}")
 
     def run_command(self, command, buffer_name=''):
         try:
@@ -30,7 +30,7 @@ class CommandHandler:
             self.__run_event_commands("after_command", command, buffer_name, lines)
             return lines
         except Exception as ex:
-            print("error in CommandHandler.run_command(): " + str(ex) + "\n" + traceback.format_exc())
+            print(f"error in command_handler.run_command(): {str(ex)}\n{traceback.format_exc()}")
 
     def close_command_handler(self):
         self._command_process.close_command_process()

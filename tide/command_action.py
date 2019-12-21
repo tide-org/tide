@@ -49,11 +49,14 @@ class CommandAction(object):
         return self._command_action.get("when", '')
 
     def __process_when_condition(self, when_condition):
-        variable_names = Config().get()["variables"].keys()
-        for variable in variable_names:
+        for variable in Config().get_variable_names(): 
             if variable in when_condition:
-                config_variable = str(Config().get()["variables"][variable])
-                if " " in config_variable or config_variable == '':
-                    config_variable = "'" + config_variable + "'"
+                config_variable = self.__sanitise_config_variable(variable) 
                 when_condition = when_condition.replace(variable, config_variable)
         return when_condition
+
+    def __sanitise_config_variable(self, variable):
+        config_variable = str(Config().get_variable(variable))
+        if " " in config_variable or config_variable == '':
+            config_variable = "'" + config_variable + "'"
+        return config_variable

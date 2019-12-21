@@ -34,3 +34,4 @@
 [x] move before_command, command and after_command to tide from vgdb (and so it doesn't need to be implemented in atide)
 [x] remove function_args showing in input_args with stdio
 [?] reconcile missing buffer_name 
+[x] create Config().getEvents() and getBuffers() methods

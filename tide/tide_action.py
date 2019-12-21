@@ -7,7 +7,6 @@ from tide_action_buffer_commands import TideActionBufferCommands
 from tide_action_startup_commands import TideActionStartupCommands
 from tide_action_single_command import TideActionSingleCommand
 
-
 @logging
 class TideAction(object):
 
@@ -19,8 +18,7 @@ class TideAction(object):
 
     def start(self, editor_wrapper_name, startup_commands):
         try:
-            if editor_wrapper_name:
-                Config().set_editor_wrapper_name(editor_wrapper_name)
+            Config().set_editor_wrapper_name(editor_wrapper_name)
             self.__command_handler = CommandHandler()
             self.__command_handler.spawn_process(startup_commands)
             self.__startup_commands.run()
