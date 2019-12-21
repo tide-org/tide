@@ -43,9 +43,6 @@ class ConfigCommand(object):
                 else:
                     lines = self.__set_error_lines(lines, command_action)
                     internal_buffer_name = 'default'
-            elif cci.buffer_name:
-                internal_buffer_name = cci.buffer_name
-            # TODO is this necessary?
             elif cci._buffer_name:
                 internal_buffer_name = cci._buffer_name
             Config().get()["internal"]["buffer_caches"][internal_buffer_name] = lines

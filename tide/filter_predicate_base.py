@@ -49,7 +49,7 @@ class filter_predicate_base(ABC):
         for line in lines:
             match = re.search(matcher['regex'], line)
             if match:
-                Config().get()["variables"][matcher["variable_name"]] = 1
+                Config().get_variables()[matcher["variable_name"]] = 1
                 return
 
     def __iterate_lines_for_array_match(self, lines, matcher):
@@ -58,7 +58,7 @@ class filter_predicate_base(ABC):
             match = re.search(matcher['regex'], line)
             if match:
                 matches_list.append(match.group(1))
-        Config().get()["variables"][matcher["variable_name"]] = matches_list
+        Config().get_variables()[matcher["variable_name"]] = matches_list
 
     def __run_pre_processors(self, lines):
         for processor in self.pre_processors:

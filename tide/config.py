@@ -12,6 +12,9 @@ class Config:
     _editor_wrapper = None
     _editor_wrapper_name = ''
 
+    def __init__(self):
+        self.__set_config_dictionary()
+
     def __set_config_dictionary(self):
         if not self._config_dictionary:
             self.set()
@@ -67,8 +70,17 @@ class Config:
     def get_after_startup_events(self):
         return self._config_dictionary.get("events", {}).get("after_startup", [])
 
+    def get_variables(self):
+        return self._config_dictionary.get("variables", {})
+
     def get_variable_names(self):
-        return self._config_dictionary.get("variables", {}).keys()
+        return self.get_variables().keys()
 
     def get_variable(self, variable):
         return self._config_dictionary.get("variables", {}).get(variable, '')
+
+    def get_command_steps(self, command):
+        return self._config_dictionary.get("commands", {}).get(command, {}).get("steps", [])
+
+    def get_command_names(self):
+        return self._config_dictionary.get("commands", {}).keys()

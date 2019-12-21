@@ -6,7 +6,6 @@ from os.path import isfile, join
 from pathlib import Path
 from logging_decorator import logging
 import path_helpers as Ph
-from config import Config
 import config_source as Cs
 
 PRINT_ACTIONS = Cs.CONFIG_OBJECT["settings"]["debugging"]["print_actions"]

@@ -64,20 +64,20 @@ class ConfigCommandItem(object):
 
     @property
     def command_action_list(self):
-        cal = list(Config().get()["commands"][self.base_command]["steps"])
-        ucal = []
-        for command_action in cal:
+        command_action_list = Config().get_command_steps(self.base_command) 
+        updated_command_action_list = []
+        for command_action in command_action_list:
             updated_command_action = command_action.copy()
             event_input_args = self.__get_event_input_args()
             if event_input_args:
                 self.event_input_args = event_input_args
                 updated_command_action["event_input_args"] = event_input_args
-            ucal.append(CommandAction(updated_command_action, self._buffer_name))
-        return ucal
+            updated_command_action_list.append(CommandAction(updated_command_action, self._buffer_name))
+        return updated_command_action_list
 
     def __get_event_input_args(self):
         if self._base_command and self.buffer_name and self.event_name:
-           event_command_list = Config().get()["buffers"][self.buffer_name]["events"][self.event_name]
+           event_command_list = Config().get_buffer_events_by_name(self.buffer_name, self.event_name)
            for event_command in event_command_list:
                if event_command["command"] == self.base_command:
                    return event_command.get("input_args", [])
@@ -87,6 +87,5 @@ class ConfigCommandItem(object):
             Config().get()["variables"]["user_input_args"] = " ".join(self._user_command_args)
 
     def __validate_command(self):
-        commands_list = Config().get()["commands"].keys()
-        if not self._base_command in commands_list:
+        if not self._base_command in Config().get_command_names():
             raise RuntimeError("error: command " + self._base_command + " does not exist in config")
