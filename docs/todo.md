@@ -1,3 +1,4 @@
+[ ] create Config().getEvents() and getBuffers() methods
 [ ] consoloidate filter, action and editor_wrapper classes find files functionality into separate class
 [ ] implement correct python logging subsystem
 [ ] complete SysPathContainer and tests
