@@ -1,0 +1,5 @@
+fileignoreconfig:
+- filename: bin/dev-environment
+  checksum: 0fee5970805375664a6c7805c0c247c594ac2bf4777180a8057116c4ea070c4a
+  ignore_detectors: []
+scopeconfig: []
