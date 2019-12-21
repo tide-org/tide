@@ -25,8 +25,7 @@ class EditorWrapper(object):
     def __validate_and_create_editor_object(self):
         if self._editor_name.lower() in self._editors_list:
             return self.__create_editor_object()
-        else:
-            raise TypeError(f"error: python file for editor: {self._editor_name} is not a valid editor")
+        raise TypeError(f"error: python file for editor: {self._editor_name} is not a valid editor")
 
     def __create_editor_object(self):
         editor_module = self._editor_name

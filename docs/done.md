@@ -36,3 +36,6 @@
 [?] reconcile missing buffer_name 
 [x] create Config().getEvents() and getBuffers() methods
 [x] consoloidate filter, action and editor_wrapper classes find files functionality into separate class
+[x] rework config command stuff into smaller, more manageable classes. add tests
+[?] refactor out dict checks in run_command
+[x] refactor run_config_command to be smaller and testable

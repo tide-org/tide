@@ -1,13 +1,10 @@
-[ ] refactor action_name and type in Action and ConfigCommandItem
-[ ] implement correct python logging subsystem
 [ ] complete SysPathContainer and tests
 [ ] create a CommandProcessSettings object for config settings in CommandProcess __init__
 [ ] add makefile for all commands
 [ ] place logical components into separate folders
+[ ] refactor action_name and type in Action and ConfigCommandItem
+[ ] implement correct python logging subsystem
 [ ] create a filter path helpers class filter_paths
-[ ] rework config command stuff into smaller, more manageable classes. add tests
-[ ] refactor out dict checks in run_command
-[ ] refactor run_config_command to be smaller and testable
 [ ] fix recursive info registers when added to do_buffer_diff in assembly config
     and refactor command comfig item to allow any type of config command in event_args
 [ ] fix vg_registers not updating for stdio on stepi command
@@ -17,8 +14,8 @@
     (see test_c info_source vs set_highlight_line)
 [ ] make option for commands to not show for users (user_callable) for atide
 [ ] export editor function code to editor.
-[ ] move all plugin functions to plugin/functions path
-[ ] add linting and docker container for this
+[ ] move all plugin functions to plugin/functions path from atide
+[ ] add linting and docker container for linting
 [ ] create a build pipeline in shippable.io
 [ ] look into using async await instead of Thread while loops - https://gist.github.com/debugtalk/3d26581686b63c28227777569c02cf2c
 [?] add tests and config for buffers
