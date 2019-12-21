@@ -1,7 +1,6 @@
 import shutil
 import traceback
 import pexpect
-from config import Config
 from logging_decorator import logging
 
 

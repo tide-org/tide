@@ -46,3 +46,10 @@ class ConfigBase:
 
     def get_editor_wrapper(self):
         return self._editor_wrapper
+
+    def get_settings(self):
+        return self._config_dictionary.get("settings", {})
+
+    def get_setting(self, first_level, second_level):
+        return self.get_settings().get(first_level, {}).get(second_level, "")
+
