@@ -1,9 +1,6 @@
 import traceback
 from logging_decorator import logging
 from command_handler import CommandHandler
-from config_command import ConfigCommand
-from config_command_item import ConfigCommandItem
-from logging_decorator import logging
 from singleton import singleton
 from config import Config
 from tide_action_buffer_commands import TideActionBufferCommands
@@ -11,7 +8,6 @@ from tide_action_startup_commands import TideActionStartupCommands
 from tide_action_single_command import TideActionSingleCommand
 
 
-@singleton
 @logging
 class TideAction(object):
 
@@ -27,8 +23,8 @@ class TideAction(object):
                 Config().set_editor_wrapper_name(editor_wrapper_name)
             self.__command_handler = CommandHandler()
             self.__command_handler.spawn_process(startup_commands)
-            self.__startup_commands.run_after_startup_commands()
-            self.__buffer_commands.run_buffer_commands()
+            self.__startup_commands.run()
+            self.__buffer_commands.run()
             Config().get_editor_wrapper().send_message_to_editor({"startup_complete": True})
         except Exception as ex:
             print(f"error in TideAction.start(): {str(ex)}\n Traceback: {traceback.format_exc()}")
@@ -44,7 +40,7 @@ class TideAction(object):
 
     def run_config_command(self, command, buffer_name, event_input_args_name):
         try:
-            self.__single_command.run_single_command(command, buffer_name, event_input_args_name)
-            self.__buffer_commands.run_buffer_commands()
+            self.__single_command.run(command, buffer_name, event_input_args_name)
+            self.__buffer_commands.run()
         except Exception as ex:
             print(f"error in TideAction.run_config_command(): {str(ex)}\n Traceback: {traceback.format_exc()}")

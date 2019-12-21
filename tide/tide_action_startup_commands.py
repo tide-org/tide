@@ -10,7 +10,7 @@ class TideActionStartupCommands(object):
         self.__single_command = TideActionSingleCommand()
         self.__buffer_commands = TideActionBufferCommands()
 
-    def run_after_startup_commands(self):
+    def run(self):
         for command in Config().get().get("events", {}).get("after_startup", []) or []:
-            self.__single_command.run_single_command(command, buffer_name, event_input_args_name)
-            self.__buffer_commands.run_buffer_commands()
+            self.__single_command.run(command)
+            self.__buffer_commands.run()
