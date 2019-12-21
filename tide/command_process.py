@@ -24,7 +24,7 @@ class CommandProcess:
             self._child = pexpect.spawnu(self._process_path + self.__default_args + " " + startup_commands)
             self._child.expect(self.__end_of_output_regex)
         except Exception as ex:
-            print("error in command_handler.spawn_child_process(): " + str(ex) + "\n" + traceback.format_exc())
+            print(f"error in command_handler.spawn_child_process(): {str(ex)} \n {traceback.format_exc()}")
 
     def close_command_process(self):
         self._child.close(force=True)
@@ -42,7 +42,7 @@ class CommandProcess:
         else:
             self._process_path = self.__main_proc_name
         if not self._process_path:
-            raise RuntimeError("error: unable to specify a process name for pexpect. Looking for: " + self.__main_proc_name)
+            raise RuntimeError(f"error: unable to specify a process name for pexpect. Looking for: {self.__main_proc_name}")
 
     def seek_to_end_of_tty(self, timeout=None):
         if not timeout:

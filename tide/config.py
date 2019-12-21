@@ -40,9 +40,9 @@ class Config:
         self._editor_wrapper.set_editor_dictionary(self._config_dictionary)
 
     def __set_internals(self):
-        session_log_buffer = self._config_dictionary["settings"]["logging"]["session_buffer_name"]
+        session_buffer = self.get_setting("logging", "session_buffer_name") or "no_session_buffer_name_set"
         self._config_dictionary["internal"] = {
-            "buffer_caches": { session_log_buffer: [] },
+            "buffer_caches": { session_buffer: [] },
             "variables": {}
         }
 
@@ -53,7 +53,7 @@ class Config:
         return self._editor_wrapper
 
     def get_buffer(self, buffer_name):
-        return self._config_dictionary.get("buffers", {}).get(buffer_name, "")
+        return self._config_dictionary.get("buffers", {}).get(buffer_name, {})
 
     def get_buffer_events_by_name(self, buffer_name, event_name):
         return self.get_buffer(buffer_name).get("events", {}).get(event_name, [])
@@ -84,3 +84,15 @@ class Config:
 
     def get_command_names(self):
         return self._config_dictionary.get("commands", {}).keys()
+
+    def get_settings(self):
+        return self._config_dictionary.get("settings", {})
+
+    def get_setting(self, first_level, second_level):
+        return self.get_settings().get(first_level, {}).get(second_level, "")
+
+    def get_internal(self):
+        return self._config_dictionary.get("internal", {})
+
+    def get_internal_buffer_caches(self):
+        return self.get_internal().get("buffer_caches", {})
