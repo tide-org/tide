@@ -3,3 +3,9 @@ fileignoreconfig:
   checksum: 0fee5970805375664a6c7805c0c247c594ac2bf4777180a8057116c4ea070c4a
   ignore_detectors: []
 scopeconfig: []
+
+fileignoreconfig:
+- filename: docs/todo.md
+  checksum: e050fddf459a03fab7ae2de1af984d3d0b24962bfe36c5eaf5f86a24beb70ea3
+  ignore_detectors: []
+scopeconfig: []
