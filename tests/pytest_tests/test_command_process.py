@@ -6,7 +6,6 @@ from config import Config
 from command_process import CommandProcess
 from command_process_config import CommandProcessConfig
 
-
 def test__can_spawn_process_with_startup_command():
     try:
         command_process = CommandProcess(CommandProcessConfig())

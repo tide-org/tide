@@ -1,6 +1,7 @@
 from config import Config
 from command_action import CommandAction
 from logging_decorator import logging
+from config_converter import ConfigConverter
 
 @logging
 class ConfigCommandItem(object):
@@ -64,23 +65,8 @@ class ConfigCommandItem(object):
 
     @property
     def command_action_list(self):
-        command_action_list = Config().get_command_steps(self.base_command) 
-        updated_command_action_list = []
-        for command_action in command_action_list:
-            updated_command_action = command_action.copy()
-            event_input_args = self.__get_event_input_args()
-            if event_input_args:
-                self.event_input_args = event_input_args
-                updated_command_action["event_input_args"] = event_input_args
-            updated_command_action_list.append(CommandAction(updated_command_action, self._buffer_name))
-        return updated_command_action_list
-
-    def __get_event_input_args(self):
-        if self._base_command and self.buffer_name and self.event_name:
-           event_command_list = Config().get_buffer_events_by_name(self.buffer_name, self.event_name)
-           for event_command in event_command_list:
-               if event_command["command"] == self.base_command:
-                   return event_command.get("input_args", [])
+        convert = ConfigConverter(self._base_command, self._buffer_name, self._event_name)
+        return convert.to_action_list()
 
     def __set_config_for_user_command_args(self):
         if len(self._user_command_args) > 0:
