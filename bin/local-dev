@@ -1,5 +1,0 @@
-#! /bin/sh -e
-
-DIR=$(realpath .)
-
-pip install $DIR

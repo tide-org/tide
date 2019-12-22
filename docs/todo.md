@@ -1,6 +1,5 @@
 [ ] fix filter.py to use python_file.py
 [ ] complete SysPathContainer and tests
-[ ] add makefile for all commands
 [ ] place logical components into separate folders
 [ ] refactor action_name and type in Action and ConfigCommandItem
 [ ] implement correct python logging subsystem

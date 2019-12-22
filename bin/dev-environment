@@ -1,7 +1,0 @@
-#! /bin/sh -e
-
-cd $(dirname $0)/../tests/docker
-
-docker-compose build
-
-docker-compose -f docker-compose.yml run --rm --service-ports test-python-tide "${@-sh}"

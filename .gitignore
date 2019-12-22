@@ -5,3 +5,4 @@ dist/
 build/
 tests/scripts/.pypirc
 plugins
+.pytest_cache

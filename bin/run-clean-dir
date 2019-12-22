@@ -1,7 +1,0 @@
-#! /bin/sh -e
-
-cd $(dirname $0)/..
-
-rm -rf dist
-rm -rf tide.egg-info
-rm -rf build
