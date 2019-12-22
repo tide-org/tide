@@ -1,4 +1,5 @@
 import traceback
+import sys_path_container as SPC
 from logging_decorator import logging
 from command_handler import CommandHandler
 from singleton import singleton
@@ -33,6 +34,7 @@ class TideAction(object):
             self.__command_handler.close_command_handler()
             del self.__command_handler
             self.__command_handler = None
+            SPC.remove_all()
         except Exception as ex:
             print(f"error in TideAction.stop(): {str(ex)}\n Traceback: {traceback.format_exc()}")
 

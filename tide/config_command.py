@@ -15,5 +15,5 @@ class ConfigCommand(object):
         if command_action.is_ok_to_run():
             buffer_cache = ConfigCommandBufferCache(config_command_item.buffer_name)
             action_args = command_action.get_action_args()
-            lines = Action.run_action(command_action.type, action_args)
+            lines = Action.run_action(command_action.action_name, action_args)
             buffer_cache.set(lines, config_command_item, command_action, action_args)

@@ -6,9 +6,13 @@
 .PHONY:local-dev
 .PHONY:docker-dev
 
+define DOCKER_COMPOSE
+docker-compose -f ./tests/docker/docker-compose.yml build
+docker-compose -f ./tests/docker/docker-compose.yml run --rm --service-ports test-python-tide 
+endef
+
 test:
-	docker-compose -f ./tests/docker/docker-compose.yml build
-	docker-compose -f ./tests/docker/docker-compose.yml run --rm --service-ports test-python-tide /work/tests/scripts/run-python-tests
+	$(DOCKER_COMPOSE) /work/tests/scripts/run-python-tests
 
 clean:
 	rm -rf dist
@@ -20,17 +24,14 @@ git-install:
 	git submodule update
 
 build:
-	docker-compose -f ./tests/docker/docker-compose.yml build
-	docker-compose -f ./tests/docker/docker-compose.yml run --rm --service-ports test-python-tide /work/tests/scripts/run-build-package
+	$(DOCKER_COMPOSE) /work/tests/scripts/run-build-package
 
 upload:
-	docker-compose -f ./tests/docker/docker-compose.yml build
-	docker-compose -f ./tests/docker/docker-compose.yml run --rm --service-ports test-python-tide /work/tests/scripts/run-upload-package
+	$(DOCKER_COMPOSE) /work/tests/scripts/run-upload-package
 
 local-dev:
-	DIR=$(realpath .)
-	pip install $DIR
+	export DIR=$(realpath .)
+	pip install $(DIR)
 
 docker-dev:
-	docker-compose -f ./tests/docker/docker-compose.yml build
-	docker-compose -f ./tests/docker/docker-compose.yml run --rm --service-ports test-python-tide sh
+	$(DOCKER_COMPOSE) sh

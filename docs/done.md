@@ -41,3 +41,15 @@
 [x] refactor run_config_command to be smaller and testable
 [x] create a CommandProcessSettings object for config settings in CommandProcess __init__
 [x] add makefile for all commands
+[x] refactor action_name and type in Action and ConfigCommandItem
+[x] fix filter.py to use python_file.py
+[x] create a filter path helpers class filter_paths
+[x] fix recursive info registers when added to do_buffer_diff in assembly config
+    and refactor command comfig item to allow any type of config command in event_args
+[x] fix vg_registers not updating for stdio on stepi command
+  {"command":{"action":"set_config_dictionary_item","value":""},"sender":"editor","receiver":"tide","has_callback":false,"event_id":"102722b2-c158-497b-ae54-45b4646a7f5e"}
+[x] add more fine-grained unit tests
+[x] complete SysPathContainer and tests
+[x] add tests and config for buffers
+[n] clean up having both function_args and event_input_args in function_args (possibly rename) ./defaults/actions/run_editor_function.py
+    (see test_c info_source vs set_highlight_line)

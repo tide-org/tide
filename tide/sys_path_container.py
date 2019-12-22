@@ -1,20 +1,19 @@
 import sys
 
-class SysPathContainer(object):
+PATH_LIST = []
 
-    def __init__(self):
-        self.__added_list = []
+def insert(path, insert_at=0):
+    global PATH_LIST
+    sys.path.insert(insert_at, path)
+    PATH_LIST.append(path)
 
-    def insert(self, path, insert_at=0):
-       if path not in sys.path:
-           sys.path.insert(insert_at, path)
-           self.__added_list.append(path)
+def remove(path):
+    global PATH_LIST
+    sys.path = list(filter(lambda spath: spath != path, sys.path))
+    PATH_LIST = list(filter(lambda spath: spath != path, PATH_LIST))
 
-    def remove(self, path):
-        sys.path.remove(path)
-        self.__added_list.remove(path)
-
-    def remove_all(self):
-        list_copy = self.__added_list[:]
-        for path in list_copy:
-            self.remove(path)
+def remove_all():
+    global PATH_LIST
+    for path in PATH_LIST:
+        sys.path = list(filter(lambda spath: spath != path, sys.path))
+    PATH_LIST = []

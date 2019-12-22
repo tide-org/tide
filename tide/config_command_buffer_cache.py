@@ -32,7 +32,7 @@ class ConfigCommandBufferCache(object):
 
     def __set_lines_on_no_buffer_name(self, internal_buffer_name, lines, command_action):
         if internal_buffer_name == self.__default_buffer_name:
-            error_line = self.__error_line.format(ca_type=command_action.type, ca_dict=str(command_action.__dict__))
+            error_line = self.__error_line.format(ca_type=command_action.action_name, ca_dict=str(command_action.__dict__))
             if isinstance(lines, str):
                 lines += error_line 
             if isinstance(lines, list):

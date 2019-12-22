@@ -2,6 +2,8 @@
 
 cd /work/tests/pytest_tests
 
-py.test --ignore=./stdio --ignore=./test_command_action.py -s -v
-py.test ./test_command_action.py -s -v
-py.test ./stdio
+coverage run -m pytest --ignore=./stdio --ignore=./test_command_action.py -s -v
+coverage run -m pytest ./test_command_action.py -s -v
+coverage run -m pytest ./stdio
+
+coverage report -m --include=/work/tide/*

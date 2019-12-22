@@ -6,30 +6,26 @@ from command_action_converter import CommandActionConverter
 @logging
 class CommandAction(object):
 
-    _command_action = {}
-    _buffer_name = ''
-
     def __init__(self, command_action, buffer_name):
-        self._command_action = command_action
-        self._buffer_name = buffer_name
+        self.__command_action = command_action
+        self.__buffer_name = buffer_name
+        self.__action_name = list(self.__command_action.keys())[0]
+        self.__action_value = self.__command_action.get(self.__action_name, {})
+        self.__when_condition = self.__command_action.get("when", "")
+        self.__event_input_args = self.__command_action.get("event_input_args", {})
 
     @property
-    def command_action(self):
-        return self._command_action
-
-    @command_action.setter
-    def command_action(self, value):
-        self._command_action = value
+    def action_name(self):
+        return self.__action_name
 
     @property
-    def type(self):
-        return next(iter(self._command_action))
+    def action_value(self):
+        return self.__action_value
 
     def is_ok_to_run(self):
-        check = CommandActionCondition(self._command_action.get("when", ""))
+        check = CommandActionCondition(self.__when_condition)
         return check.is_ok_to_run()
 
     def get_action_args(self):
-        action_name = list(self._command_action.keys())[0]
-        convert = CommandActionConverter(action_name, self._command_action, self._buffer_name)
+        convert = CommandActionConverter(self.__action_value, self.__event_input_args, self.__buffer_name)
         return convert.to_action_args()

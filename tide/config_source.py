@@ -3,6 +3,7 @@ from os.path import abspath, isdir, realpath, join
 import path_helpers as Ph
 from yamlreader import yaml_load
 import sys
+import sys_path_container as SPC
 
 _config_path = "defaults"
 _config_location_file = "config_location.yaml"
@@ -88,11 +89,12 @@ def __get_all_config_locations():
     config_locations.append(__get_default_config_path())
     return config_locations[::-1]
 
+# TODO: use python_files
 def __get_function_paths_and_add_to_sys_path():
     function_paths = Ph.get_paths_for_plugin("functions")
     for function_path in function_paths:
         if function_path not in sys.path:
-            sys.path.insert(0, function_path)
+            SPC.insert(function_path)
     return function_paths
 
 FULL_CONFIG_LOCATION = __get_base_config_location()

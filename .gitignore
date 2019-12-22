@@ -6,3 +6,4 @@ build/
 tests/scripts/.pypirc
 plugins
 .pytest_cache
+tests/pytest_tests/.coverage

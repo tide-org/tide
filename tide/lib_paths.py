@@ -1,6 +1,7 @@
 import sys
 from os.path import join, dirname, abspath
 import inspect
+import sys_path_container as SPC
 
 LIB_PATHS = [
     'ptyprocess',
@@ -13,6 +14,7 @@ LIB_PATHS = [
 ]
 
 current_dir = dirname(abspath(inspect.getfile(inspect.currentframe())))
+SPC.insert(current_dir)
 
 for lib_path in LIB_PATHS:
-    sys.path.insert(0, abspath(join(current_dir, "../lib", lib_path)))
+    SPC.insert(abspath(join(current_dir, "../lib", lib_path)))

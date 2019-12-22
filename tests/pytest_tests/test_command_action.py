@@ -8,32 +8,16 @@ from command_action import CommandAction
 
 def test_does_not_raise_exception_on_initialisation():
     try:
-        config_command_action_list = list(Config().get()["commands"]["test_command"]["steps"])
+        config_command_action_list = Config().get()["commands"]["test_command"]["steps"][0]
         command_action = CommandAction(config_command_action_list, '')
     except Exception as ex:
         pytest.fail("error initialising CommandAction: " + str(ex))
 
 def test_has_command_action_of_type_run_command():
     try:
-        config_command_action_list = list(Config().get()["commands"]["test_command"]["steps"])
+        config_command_action_list = Config().get()["commands"]["test_command"]["steps"][0]
         command_action = CommandAction(config_command_action_list, '')
-        assert 'run_command' in list(command_action.command_action[0].keys())
-    except Exception as ex:
-        pytest.fail("error initialising CommandAction: " + str(ex))
-
-def test_has_run_command_value_of_command():
-    try:
-        config_command_action_list = list(Config().get()["commands"]["test_command"]["steps"])
-        command_action = CommandAction(config_command_action_list, '')
-        assert 'command' in command_action.command_action[0]["run_command"].keys()
-    except Exception as ex:
-        pytest.fail("error initialising CommandAction: " + str(ex))
-
-def test_has_run_command_command_value_of_hello():
-    try:
-        config_command_action_list = list(Config().get()["commands"]["test_command"]["steps"])
-        command_action = CommandAction(config_command_action_list, '')
-        assert command_action.command_action[0]["run_command"]["command"] == 'echo "hello"'
+        assert 'run_command' == command_action.action_name
     except Exception as ex:
         pytest.fail("error initialising CommandAction: " + str(ex))
 
