@@ -11,13 +11,6 @@ def test__can_get_filtered_buffers_list():
     except Exception as ex:
         pytest.fail("error in filter tests: " + str(ex))
 
-def test__can_get_filtered_buffers_file_list():
-    try:
-        assert set(['/work/tide/defaults/filters/vg_base.py',
-                    '/work/tide/defaults/filters/vg_session_log.py']) == set(Filter.FILTERED_BUFFERS_FILE_LIST)
-    except Exception as ex:
-        pytest.fail("error in filter tests: " + str(ex))
-
 def test__filter_lines_for_buffer():
     try:
         buffer_name = 'vg_base'
