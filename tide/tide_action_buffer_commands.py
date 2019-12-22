@@ -11,10 +11,9 @@ class TideActionBufferCommands(object):
     def run(self):
         for buffer_name in Config().get_buffer_names():
             buffer_command = Config().get_buffer_command(buffer_name)
-            if buffer_command:
-                self.__run_buffer_events(buffer_name, "before_command")
-                self.__single_command.run(buffer_command, buffer_name)
-                self.__run_buffer_events(buffer_name, "after_command")
+            self.__run_buffer_events(buffer_name, "before_command")
+            self.__single_command.run(buffer_command, buffer_name)
+            self.__run_buffer_events(buffer_name, "after_command")
 
     def __run_buffer_events(self, buffer_name, event_name):
         if "events" in Config().get_buffer(buffer_name):
