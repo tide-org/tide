@@ -16,6 +16,7 @@ class CommandHandler:
         self._child = None
         self.__command_process_config = CommandProcessConfig() 
         self._command_process = CommandProcess(self.__command_process_config)
+        self.__print_commands = Config().get_setting("debugging", "print_commands")
 
     def spawn_process(self, startup_commands):
         try:
@@ -27,6 +28,8 @@ class CommandHandler:
     # called from actions/
     def run_command(self, command, buffer_name=''):
         try:
+            if self.__print_commands:
+                print(f"Command: {str(command)} buffer_name: {str(buffer_name)}")
             self.__run_event_commands("before_command", buffer_name)
             self._command_process.send_command_to_process(command)
             lines = self.__get_output_and_handle_filtering(buffer_name)
