@@ -11,11 +11,11 @@ from tide_action import TideAction
 @logging
 class Tide(object):
 
-    def __init__(self):
-        self.__tide_action = TideAction()
+    def __init__(self, editor_wrapper_name=''):
+        self.__tide_action = TideAction(editor_wrapper_name)
 
-    def start(self, editor_wrapper='', startup_commands=''):
-       self.__tide_action.start(editor_wrapper, startup_commands)
+    def start(self, startup_commands=''):
+       self.__tide_action.start(startup_commands)
 
     def stop(self):
         self.__tide_action.stop()

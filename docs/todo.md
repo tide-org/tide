@@ -1,5 +1,4 @@
 [ ] add more comprehensive tests
-[ ] add codecov to make file
 [ ] look into using async await instead of Thread while loops - https://gist.github.com/debugtalk/3d26581686b63c28227777569c02cf2c
 [ ] add linting and docker container for linting
 [ ] place logical components into separate folders - use modules approach with __init__.py files

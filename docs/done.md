@@ -53,3 +53,4 @@
 [x] add tests and config for buffers
 [n] clean up having both function_args and event_input_args in function_args (possibly rename) ./defaults/actions/run_editor_function.py
     (see test_c info_source vs set_highlight_line)
+[x] add codecov to make file

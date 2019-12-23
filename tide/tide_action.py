@@ -2,7 +2,6 @@ import traceback
 import sys_path_container as SPC
 from logging_decorator import logging
 from command_handler import CommandHandler
-from singleton import singleton
 from config import Config
 from tide_action_buffer_commands import TideActionBufferCommands
 from tide_action_startup_commands import TideActionStartupCommands
@@ -11,15 +10,15 @@ from tide_action_single_command import TideActionSingleCommand
 @logging
 class TideAction(object):
 
-    def __init__(self):
+    def __init__(self, editor_wrapper_name):
+        Config(editor_wrapper_name)
         self.__command_handler = None
         self.__buffer_commands = TideActionBufferCommands()
         self.__startup_commands = TideActionStartupCommands()
         self.__single_command = TideActionSingleCommand()
 
-    def start(self, editor_wrapper_name, startup_commands):
+    def start(self, startup_commands):
         try:
-            Config().set_editor_wrapper_name(editor_wrapper_name)
             self.__command_handler = CommandHandler()
             self.__command_handler.spawn_process(startup_commands)
             self.__startup_commands.run()
