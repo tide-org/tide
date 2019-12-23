@@ -1,7 +1,8 @@
 import sys
-from os.path import join, dirname, abspath
+from os.path import dirname, abspath
 import inspect
-sys.path.insert(0, dirname(abspath(inspect.getfile(inspect.currentframe())))) 
+from . import sys_path_container as SPC
+SPC.insert(dirname(abspath(inspect.getfile(inspect.currentframe())))) 
 import lib_paths
 from logging_decorator import logging
 from singleton import singleton
