@@ -1,15 +1,14 @@
 import traceback
-from singleton import singleton
+from tide.singleton import singleton
 from config import Config
-from config_command import ConfigCommand
-from config_command_item import ConfigCommandItem
-from command_process import CommandProcess
-from command_output import CommandOutput
+from tide.config_command import ConfigCommand
+from tide.config_command_item import ConfigCommandItem
+from tide.command.command_process import CommandProcess
+from tide.command.command_output import CommandOutput
+from tide.command.command_process_config import CommandProcessConfig
 from logging_decorator import logging
-from command_process_config import CommandProcessConfig
 
 @singleton
-@logging
 class CommandHandler:
 
     def __init__(self):
@@ -28,7 +27,7 @@ class CommandHandler:
     # called from actions/
     def run_command(self, command, buffer_name=''):
         try:
-            if self.__print_commands:
+            if Config().get_setting("debugging", "print_commands"):
                 print(f"Command: {str(command)} buffer_name: {str(buffer_name)}")
             self.__run_event_commands("before_command", buffer_name)
             self._command_process.send_command_to_process(command)

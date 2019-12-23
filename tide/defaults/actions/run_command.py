@@ -1,5 +1,5 @@
 from action_base import action_base
-from command_handler import CommandHandler
+from tide.command.command_handler import CommandHandler
 
 class run_command(action_base):
 

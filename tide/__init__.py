@@ -4,8 +4,10 @@ import argparse
 from argparse import RawTextHelpFormatter
 from threading import Thread
 import asyncio
-from .tide import Tide
+from .tide_container import Tide
 from .config import Config
+from .command import *
+
 
 def start_loop_seconds(loop, timeout_seconds):
     future = asyncio.wait_for(loop.run_in_executor(None, sleep, timeout_seconds), None)

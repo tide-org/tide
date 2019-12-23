@@ -2,9 +2,9 @@ import shutil
 import traceback
 import pexpect
 from logging_decorator import logging
+from tide.singleton import singleton
 
-
-@logging
+@singleton
 class CommandProcess:
 
     def __init__(self, config_settings):

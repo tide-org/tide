@@ -3,8 +3,8 @@ os.environ["TIDE_CONFIG_LOCATION"] = "/work/plugins/tests/test_hello_6"
 import pytest
 from pytest_tests import setup_tests
 from config import Config
-from command_process import CommandProcess
-from command_process_config import CommandProcessConfig
+from command.command_process import CommandProcess
+from command.command_process_config import CommandProcessConfig
 
 def test__can_spawn_process_with_startup_command():
     try:

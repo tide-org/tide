@@ -1,5 +1,5 @@
 from config import Config
-from command_action import CommandAction
+from tide.command.command_action import CommandAction
 from logging_decorator import logging
 from config_converter import ConfigConverter
 

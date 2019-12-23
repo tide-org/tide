@@ -5,7 +5,7 @@ from pytest_tests import setup_tests
 import pytest
 
 from config import Config
-from command_handler import CommandHandler
+from tide.command.command_handler import CommandHandler
 
 
 def test__can_spawn_process():
