@@ -4,7 +4,7 @@
 [ ] only run buffer commands for open buffers - check editor what buffers are open
 [ ] look into using async await instead of Thread while loops - https://gist.github.com/debugtalk/3d26581686b63c28227777569c02cf2c
 [ ] add linting and docker container for linting
-[ ] place logical components into separate folders - use modules approach with __init__.py files
+[ ] place logical components into separate folders - use modules approach with __init__.py files add packages to lib_paths.py
 [ ] make option for commands to not show for users (user_callable) for atide
 [ ] export editor function code to editor.
 [ ] move all plugin functions to plugin/functions path from atide
