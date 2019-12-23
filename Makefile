@@ -30,8 +30,7 @@ upload:
 	$(DOCKER_COMPOSE) /work/tests/scripts/run-upload-package
 
 local-dev:
-	export DIR=$(realpath .)
-	pip install $(DIR)
+	pip install -e .
 
 docker-dev:
 	$(DOCKER_COMPOSE) sh
