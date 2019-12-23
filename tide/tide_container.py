@@ -4,7 +4,7 @@ import inspect
 sys.path.insert(0, dirname(abspath(inspect.getfile(inspect.currentframe()))))
 import lib_paths
 from singleton import singleton
-from tide_action import TideAction
+from .tide_action import TideAction
 
 @singleton
 class Tide(object):

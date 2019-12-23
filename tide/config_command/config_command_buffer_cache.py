@@ -1,5 +1,5 @@
 from tide.config.config import Config
-from logging_decorator import logging
+from tide.logging_decorator import logging
 
 @logging
 class ConfigCommandBufferCache(object):
@@ -11,10 +11,7 @@ class ConfigCommandBufferCache(object):
 
     def set(self, lines, config_command_item, command_action, action_args):
         if lines:
-            if not config_command_item.buffer_name:
-                internal_buffer_name = self.__get_internal_buffer_name(action_args)
-            else:
-                internal_buffer_name = config_command_item.buffer_name
+            internal_buffer_name = config_command_item.buffer_name or self.__get_internal_buffer_name(action_args)
             lines = self.__set_lines_where_no_buffer_name(internal_buffer_name, lines, command_action)
             Config().set_internal_buffer_cache(internal_buffer_name, lines)
 

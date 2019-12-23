@@ -1,6 +1,6 @@
 from action_base import action_base
-from config_command import ConfigCommand
-from config_command_item import ConfigCommandItem
+from tide.config_command.config_command import ConfigCommand
+from tide.config_command.config_command_item import ConfigCommandItem
 
 class run_config_command(action_base):
 

@@ -1,7 +1,7 @@
 from singleton import singleton
 import action as Action
 from logging_decorator import logging
-from config_command_buffer_cache import ConfigCommandBufferCache
+from tide.config_command.config_command_buffer_cache import ConfigCommandBufferCache
 
 @singleton
 @logging

@@ -15,7 +15,6 @@ class ConfigConverter:
             updated_command_action_config = command_action_config.copy()
             event_input_args = self.__get_event_input_args()
             if event_input_args:
-                self.event_input_args = event_input_args
                 updated_command_action_config["event_input_args"] = event_input_args
             command_action_object = CommandAction(updated_command_action_config, self.__buffer_name)
             updated_command_action_list.append(command_action_object)

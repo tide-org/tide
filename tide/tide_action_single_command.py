@@ -1,6 +1,6 @@
 from logging_decorator import logging
-from config_command import ConfigCommand
-from config_command_item import ConfigCommandItem
+from tide.config_command.config_command import ConfigCommand
+from tide.config_command.config_command_item import ConfigCommandItem
 from tide.config.config import Config
 
 @logging

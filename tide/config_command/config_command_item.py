@@ -1,7 +1,7 @@
 from tide.config.config import Config
 from tide.command.command_action import CommandAction
 from logging_decorator import logging
-from config_converter import ConfigConverter
+from tide.config_command.config_converter import ConfigConverter
 
 @logging
 class ConfigCommandItem(object):

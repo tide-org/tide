@@ -1,8 +1,8 @@
 import traceback
 from tide.singleton import singleton
 from tide.config.config import Config
-from tide.config_command import ConfigCommand
-from tide.config_command_item import ConfigCommandItem
+from tide.config_command.config_command import ConfigCommand
+from tide.config_command.config_command_item import ConfigCommandItem
 from tide.command.command_process import CommandProcess
 from tide.command.command_output import CommandOutput
 from tide.command.command_process_config import CommandProcessConfig
