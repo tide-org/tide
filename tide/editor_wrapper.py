@@ -6,11 +6,12 @@ from os.path import isfile, join
 from pathlib import Path
 from logging_decorator import logging
 import python_files as Pf
+from object_creator import create_object
 
 @logging
 class EditorWrapper(object):
 
-    _editor_name = None
+    _editor_name = ''
     _editor_object = None
     _editors_list = []
 
@@ -24,8 +25,9 @@ class EditorWrapper(object):
 
     def __validate_and_create_editor_object(self):
         if self._editor_name.lower() in self._editors_list:
-            return self.__create_editor_object()
-        raise TypeError(f"error: python file for editor: {self._editor_name} is not a valid editor")
+            self._editor_object = create_object(self._editor_name)
+        else:
+            raise TypeError(f"error: python file for editor: {self._editor_name} is not a valid editor")
 
     def __create_editor_object(self):
         editor_module = self._editor_name
