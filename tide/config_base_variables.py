@@ -10,4 +10,7 @@ class ConfigBaseVariables:
         return self.get_variables().keys()
 
     def get_variable(self, variable):
-        return self._config_dictionary.get("variables", {}).get(variable, '')
+        return self.get_variables().get(variable, '')
+
+    def set_variable(self, variable_name, variable_value):
+        self.get_variables()[variable_name] = variable_value
