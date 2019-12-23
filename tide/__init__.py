@@ -5,7 +5,6 @@ from argparse import RawTextHelpFormatter
 from threading import Thread
 import asyncio
 from .tide_container import Tide
-from .config import Config
 from .command import *
 
 

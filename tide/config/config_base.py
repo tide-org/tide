@@ -1,7 +1,7 @@
-from actionable_dict import ActionableDict
-from editor_wrapper import EditorWrapper
-import config_source as Cs
-from logging_decorator import logging
+from tide.actionable_dict import ActionableDict
+from tide.editor_wrapper import EditorWrapper
+import tide.config_source as Cs
+from tide.logging_decorator import logging
 
 @logging
 class ConfigBase:

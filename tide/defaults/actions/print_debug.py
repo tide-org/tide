@@ -1,6 +1,6 @@
 from action_base import action_base
 import interpolate as Interpolate
-from config import Config
+from tide.config.config import Config
 import json
 import sys
 

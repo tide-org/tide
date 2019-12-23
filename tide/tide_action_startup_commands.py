@@ -1,5 +1,5 @@
 from logging_decorator import logging
-from config import Config
+from tide.config.config import Config
 from tide_action_single_command import TideActionSingleCommand
 from tide_action_buffer_commands import TideActionBufferCommands
 

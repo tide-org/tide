@@ -1,4 +1,4 @@
-from config import Config
+from tide.config.config import Config
 from tide.command.command_action import CommandAction
 
 class ConfigConverter:

@@ -1,4 +1,4 @@
-from logging_decorator import logging
+from tide.logging_decorator import logging
 
 @logging
 class ConfigBaseBuffers:

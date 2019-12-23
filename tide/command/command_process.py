@@ -1,7 +1,7 @@
 import shutil
 import traceback
 import pexpect
-from logging_decorator import logging
+from tide.logging_decorator import logging
 from tide.singleton import singleton
 
 @singleton

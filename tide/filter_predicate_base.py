@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 import re
-from config import Config
+from tide.config.config import Config
 
 class filter_predicate_base(ABC):
 

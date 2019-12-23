@@ -1,8 +1,8 @@
 import filter as Filter
 import log as Log
-from config import Config
+from tide.config.config import Config
 from tide.singleton import singleton
-from logging_decorator import logging
+from tide.logging_decorator import logging
 
 @singleton
 @logging

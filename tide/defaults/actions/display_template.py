@@ -1,6 +1,6 @@
 import os
 from action_base import action_base
-from config import Config
+from tide.config.config import Config
 import path_helpers as Ph
 import jinja2
 

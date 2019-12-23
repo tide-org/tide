@@ -1,4 +1,4 @@
-from config import Config
+from tide.config.config import Config
 
 class CommandProcessConfig:
 

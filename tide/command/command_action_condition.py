@@ -1,5 +1,5 @@
-from config import Config
-from logging_decorator import logging
+from tide.config.config import Config
+from tide.logging_decorator import logging
 
 @logging
 class CommandActionCondition(object):

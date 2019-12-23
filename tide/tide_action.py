@@ -2,7 +2,7 @@ import traceback
 import sys_path_container as SPC
 from logging_decorator import logging
 from command.command_handler import CommandHandler
-from config import Config
+from tide.config.config import Config
 from tide_action_buffer_commands import TideActionBufferCommands
 from tide_action_startup_commands import TideActionStartupCommands
 from tide_action_single_command import TideActionSingleCommand

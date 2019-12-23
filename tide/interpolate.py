@@ -1,4 +1,4 @@
-from config import Config
+from tide.config.config import Config
 from jinja2 import Template
 from logging_decorator import logging
 

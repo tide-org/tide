@@ -1,6 +1,6 @@
 import datetime
 import filter as Filter
-from config import Config
+from tide.config.config import Config
 from logging_decorator import logging
 import config_source as Cs
 import os
