@@ -51,15 +51,7 @@ class ConfigCommandItem(object):
 
     @command.setter
     def command(self, value):
-        if isinstance(value, dict):
-            split_command = [value.get("command", '')]
-        else:
-            split_command = value.split(' ')
-        if len(split_command) > 1:
-            self._base_command = split_command[0]
-            self._user_command_args = split_command[1:]
-        else:
-            self._base_command = value
+        self.__split_command(value)
         self.__validate_command()
         self.__set_config_for_user_command_args()
 
@@ -68,9 +60,17 @@ class ConfigCommandItem(object):
         convert = ConfigConverter(self._base_command, self._buffer_name, self._event_name)
         return convert.to_action_list()
 
+    def __split_command(self, value):
+        split_command = value.split(' ')
+        if len(split_command) > 1:
+            self._base_command = split_command[0]
+            self._user_command_args = split_command[1:]
+        else:
+            self._base_command = value
+
     def __set_config_for_user_command_args(self):
         if len(self._user_command_args) > 0:
-            Config().get_variables()["user_input_args"] = " ".join(self._user_command_args)
+            Config().set_variable("user_input_args"," ".join(self._user_command_args))
 
     def __validate_command(self):
         if not self._base_command in Config().get_command_names():
