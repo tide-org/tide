@@ -1,6 +1,7 @@
 import os
-os.environ["TIDE_CONFIG_LOCATION"] = "/work/plugins/tests/test_hello_3"
 import pytest
+
+os.environ["TIDE_CONFIG_LOCATION"] = "/work/plugins/tests/test_hello_3"
 from pytest_tests import setup_tests
 import action as ACTION
 
