@@ -26,5 +26,4 @@ class ConfigConverter:
            event_command_list = Config().get_buffer_events_by_name(self.__buffer_name, self.__event_name)
            for event_command in event_command_list:
                if event_command["command"] == self.__base_command:
-                   # TODO: this should be adding all input_args to a list, not just finding the first 
                    return event_command.get("input_args", [])
