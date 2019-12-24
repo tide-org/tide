@@ -1,18 +1,18 @@
 import os
-from os.path import abspath, isdir, realpath, join
-import path_helpers as Ph
-from yamlreader import yaml_load
 import sys
-import sys_path_container as SPC
+from os.path import abspath, isdir, realpath, join
+import tide.utils.path_helpers as Ph
+from yamlreader import yaml_load
+import tide.utils.sys_path_container as SPC
 
 _config_path = "defaults"
 _config_location_file = "config_location.yaml"
 _config_location_variable = "config_location"
 _config_defaults_file = "default_config.yaml"
-_config_environment_variable = "TIDE_CONFIG_LOCATION"
+__CONFIG_ENVIRONMENT_VARIABLE = "TIDE_CONFIG_LOCATION"
 
 def __get_config_location_from_environment_variable():
-    tide_config_location = os.environ.get(_config_environment_variable)
+    tide_config_location = os.environ.get(__CONFIG_ENVIRONMENT_VARIABLE)
     if tide_config_location:
         real_config_location = realpath(tide_config_location)
         if isdir(real_config_location):

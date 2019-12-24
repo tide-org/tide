@@ -55,3 +55,4 @@
     (see test_c info_source vs set_highlight_line)
 [x] add codecov to make file
 [x] create a common object creation class - filters, editor_wrappers, etc.
+[x] place logical components into separate folders - use modules approach with __init__.py files add packages to lib_paths.py

@@ -2,7 +2,7 @@ import os
 import sys
 from os.path import abspath, join, isdir, dirname
 from yamlreader import yaml_load
-import config_source as Cs
+import tide.utils.config_source as Cs
 
 VALID_PLUGIN_NAMES = [
     'actions',
@@ -41,11 +41,11 @@ def get_plugin_path(start_path, config_path):
     raise RuntimeError(f"error: unable to get plugin path for: {str(config_path)} and: {str(start_path)}")
 
 def get_tide_base_path():
-    join_paths = get_python_scripts_base_path(), "..", ".."
+    join_paths = get_python_scripts_base_path(), ".."
     return join(*join_paths)
 
 def get_python_scripts_base_path():
-    return dirname(os.path.realpath(__file__))
+    return abspath(join(dirname(os.path.realpath(__file__)), ".."))
 
 def get_paths_for_plugin(plugin_name):
     validate_plugin_name(plugin_name)

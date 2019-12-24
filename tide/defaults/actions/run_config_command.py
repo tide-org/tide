@@ -1,4 +1,4 @@
-from action_base import action_base
+from tide.plugin.action_base import action_base
 from tide.config_command.config_command import ConfigCommand
 from tide.config_command.config_command_item import ConfigCommandItem
 

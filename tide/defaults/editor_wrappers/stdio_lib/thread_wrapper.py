@@ -2,13 +2,13 @@ import fileinput
 import os
 from threading import Thread
 from stdio_lib.message_container import MessageContainer
-from singleton import singleton
+from tide.utils.singleton import singleton
 from tide import Tide
 import json
 import sys
 from io import StringIO
 from time import sleep
-import config_source as Cs
+import tide.utils.config_source as Cs
 
 LOOP_SLEEP_SECONDS = 0.01
 

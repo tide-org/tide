@@ -1,6 +1,6 @@
-from tide.actionable_dict import ActionableDict
-from tide.editor_wrapper import EditorWrapper
-import tide.config_source as Cs
+from tide.utils.actionable_dict import ActionableDict
+from tide.plugin.editor_wrapper import EditorWrapper
+import tide.utils.config_source as Cs
 from tide.logging_decorator import logging
 
 @logging

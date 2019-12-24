@@ -1,6 +1,6 @@
 from tide.config.config import Config
-from action_base import action_base
-import interpolate as Interpolate
+from tide.plugin.action_base import action_base
+import tide.utils.interpolate as Interpolate
 
 class set_var(action_base):
 

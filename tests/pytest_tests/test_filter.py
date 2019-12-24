@@ -2,7 +2,7 @@ import os
 os.environ["TIDE_CONFIG_LOCATION"] = "/work/plugins/tests/test_hello_7"
 import pytest
 from pytest_tests import setup_tests
-import filter as Filter
+import tide.plugin.filter as Filter
 
 
 def test__can_get_filtered_buffers_list():

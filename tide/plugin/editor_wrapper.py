@@ -5,8 +5,8 @@ from os import listdir
 from os.path import isfile, join
 from pathlib import Path
 from logging_decorator import logging
-import python_files as Pf
-from object_creator import create_object
+import tide.utils.python_files as Pf
+from tide.utils.object_creator import create_object
 
 @logging
 class EditorWrapper(object):

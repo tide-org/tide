@@ -12,4 +12,4 @@ for default in ['actions', 'editor_wrappers', 'filters', 'functions', '.']:
 for insert_path in paths_list:
     sys.path.insert(0, abspath(insert_path))
 
-import lib_paths
+import tide.utils.lib_paths

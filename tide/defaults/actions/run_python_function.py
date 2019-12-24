@@ -1,8 +1,8 @@
 import sys
 import importlib
 from tide.config.config import Config
-from action_base import action_base
-import interpolate as Interpolate
+from tide.plugin.action_base import action_base
+import tide.utils.interpolate as Interpolate
 
 class run_python_function(action_base):
 

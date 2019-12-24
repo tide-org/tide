@@ -1,4 +1,4 @@
-from editor_base import editor_base
+from tide.plugin.editor_base import editor_base
 
 class test_mock(editor_base):
 

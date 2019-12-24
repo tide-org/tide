@@ -2,9 +2,9 @@ import sys
 from os.path import dirname, abspath
 import inspect
 sys.path.insert(0, dirname(abspath(inspect.getfile(inspect.currentframe()))))
-import lib_paths
-from singleton import singleton
-from .tide_action import TideAction
+import tide.utils.lib_paths
+from tide.utils.singleton import singleton
+from tide_action.tide_action import TideAction
 
 @singleton
 class Tide(object):

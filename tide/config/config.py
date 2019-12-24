@@ -1,4 +1,4 @@
-from tide.singleton import singleton
+from tide.utils.singleton import singleton
 from tide.logging_decorator import logging
 from tide.config.config_base import ConfigBase
 from tide.config.config_base_buffers import ConfigBaseBuffers

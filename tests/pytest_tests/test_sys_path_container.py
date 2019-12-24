@@ -1,7 +1,7 @@
 import sys
 import pytest
 from pytest_tests import setup_tests
-import sys_path_container as PathContainer 
+import tide.utils.sys_path_container as PathContainer 
 from time import sleep
 
 def test__sys_path_container_count_increases_with_insert():

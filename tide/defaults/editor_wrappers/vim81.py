@@ -1,12 +1,12 @@
+import os
+import tide.utils.config_source as Cs
+from tide.plugin.editor_base import editor_base
+
 try:
     import vim
 except:
     pass
 
-import os
-import config_source as Cs
-import interpolate as Interpolate
-from editor_base import editor_base
 
 class vim81(editor_base):
 

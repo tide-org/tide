@@ -1,7 +1,7 @@
 import os
-from action_base import action_base
-import config_source as Cs
-import interpolate as Interpolate
+from tide.plugin.action_base import action_base
+import tide.utils.config_source as Cs
+import tide.utils.interpolate as Interpolate
 from tide.config.config import Config
 
 class run_editor_function(action_base):

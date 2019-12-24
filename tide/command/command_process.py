@@ -2,7 +2,7 @@ import shutil
 import traceback
 import pexpect
 from tide.logging_decorator import logging
-from tide.singleton import singleton
+from tide.utils.singleton import singleton
 
 @singleton
 class CommandProcess:

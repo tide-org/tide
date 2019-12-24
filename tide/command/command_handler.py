@@ -1,5 +1,5 @@
 import traceback
-from tide.singleton import singleton
+from tide.utils.singleton import singleton
 from tide.config.config import Config
 from tide.config_command.config_command import ConfigCommand
 from tide.config_command.config_command_item import ConfigCommandItem

@@ -1,6 +1,6 @@
 from logging_decorator import logging
 from tide.config.config import Config
-from tide_action_single_command import TideActionSingleCommand
+from tide.tide_action.tide_action_single_command import TideActionSingleCommand
 
 @logging
 class TideActionBufferCommands(object):

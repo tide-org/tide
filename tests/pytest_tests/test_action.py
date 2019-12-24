@@ -3,7 +3,7 @@ import pytest
 
 os.environ["TIDE_CONFIG_LOCATION"] = "/work/plugins/tests/test_hello_3"
 from pytest_tests import setup_tests
-import action as ACTION
+import tide.plugin.action as ACTION
 
 
 def test__get_actions_list__has_correct_count():

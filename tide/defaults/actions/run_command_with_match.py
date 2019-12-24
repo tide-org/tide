@@ -1,7 +1,7 @@
 import re
 from tide.config.config import Config
 from tide.command.command_handler import CommandHandler
-from action_base import action_base
+from tide.plugin.action_base import action_base
 
 class run_command_with_match(action_base):
 

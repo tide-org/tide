@@ -2,10 +2,10 @@ import os
 import sys
 import pytest
 import json
+os.environ["TIDE_CONFIG_LOCATION"] = "/work/plugins/tests/test_hello_3"
 sys.path.append('..')
 from pytest_tests import setup_tests
 
-os.environ["TIDE_CONFIG_LOCATION"] = "/work/plugins/tests/test_hello_3"
 
 timeout_seconds = 1
 tide_object = None

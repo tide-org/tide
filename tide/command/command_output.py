@@ -1,10 +1,8 @@
-import filter as Filter
+import tide.plugin.filter as Filter
 import log as Log
 from tide.config.config import Config
-from tide.singleton import singleton
 from tide.logging_decorator import logging
 
-@singleton
 @logging
 class CommandOutput:
 

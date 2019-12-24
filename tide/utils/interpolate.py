@@ -1,6 +1,6 @@
 from tide.config.config import Config
 from jinja2 import Template
-from logging_decorator import logging
+from tide.logging_decorator import logging
 
 @logging
 def interpolate_variables(message):

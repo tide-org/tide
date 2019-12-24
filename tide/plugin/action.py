@@ -2,9 +2,9 @@ import importlib
 import sys
 import os
 from logging_decorator import logging
-import config_source as Cs
-import python_files as Pf
-from object_creator import create_object
+import tide.utils.config_source as Cs
+import tide.utils.python_files as Pf
+from tide.utils.object_creator import create_object
 
 PRINT_ACTIONS = Cs.CONFIG_OBJECT["settings"]["debugging"]["print_actions"]
 

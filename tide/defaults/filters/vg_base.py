@@ -1,4 +1,4 @@
-from filter_predicate_base import filter_predicate_base
+from tide.plugin.filter_predicate_base import filter_predicate_base
 
 class vg_base(filter_predicate_base):
 

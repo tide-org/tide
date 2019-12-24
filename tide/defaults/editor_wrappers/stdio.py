@@ -1,9 +1,8 @@
 import sys
 import json
-import interpolate as Interpolate
-from editor_base import editor_base
-from stdio_lib.thread_wrapper import ThreadWrapper
 import uuid
+from stdio_lib.thread_wrapper import ThreadWrapper
+from tide.plugin.editor_base import editor_base
 
 class stdout():
 

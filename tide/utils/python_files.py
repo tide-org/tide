@@ -2,8 +2,8 @@ from pathlib import Path
 import sys
 from os import listdir
 from os.path import basename, isfile, join
-import path_helpers as Ph
-import sys_path_container as SPC
+import tide.utils.path_helpers as Ph
+import tide.utils.sys_path_container as SPC
 
 def get_filtered_list(path_list, base_name=False):
     filtered_list = []

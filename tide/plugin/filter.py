@@ -2,9 +2,9 @@ import importlib
 import sys
 from os import listdir
 from os.path import basename, splitext
-import python_files as Pf
+import tide.utils.python_files as Pf
 from logging_decorator import logging
-from object_creator import create_object
+from tide.utils.object_creator import create_object
 
 @logging
 def __get_filters_list():

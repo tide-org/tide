@@ -3,7 +3,7 @@ import datetime
 import inspect
 import json
 import types
-import config_source as Cs
+import tide.utils.config_source as Cs
 
 DEBUG_SETTINGS = Cs.CONFIG_OBJECT["settings"]["debugging"]
 DEBUG_KEYS = DEBUG_SETTINGS.keys()

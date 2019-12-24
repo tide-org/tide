@@ -1,4 +1,4 @@
-from action_base import action_base
+from tide.plugin.action_base import action_base
 from tide.command.command_handler import CommandHandler
 
 class run_command(action_base):

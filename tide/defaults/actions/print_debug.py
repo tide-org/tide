@@ -1,5 +1,5 @@
-from action_base import action_base
-import interpolate as Interpolate
+from tide.plugin.action_base import action_base
+import tide.utils.interpolate as Interpolate
 from tide.config.config import Config
 import json
 import sys
