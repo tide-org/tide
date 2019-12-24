@@ -5,10 +5,10 @@ import tide.utils.path_helpers as Ph
 from yamlreader import yaml_load
 import tide.utils.sys_path_container as SPC
 
-_config_path = "defaults"
-_config_location_file = "config_location.yaml"
-_config_location_variable = "config_location"
-_config_defaults_file = "default_config.yaml"
+__CONFIG_PATH = "defaults"
+__CONFIG_LOCATION_FILE = "config_location.yaml"
+__CONFIG_LOCATION_VARIABLE = "config_location"
+__CONFIG_DEFAULTS_FILE = "default_config.yaml"
 __CONFIG_ENVIRONMENT_VARIABLE = "TIDE_CONFIG_LOCATION"
 
 def __get_config_location_from_environment_variable():
@@ -24,12 +24,12 @@ def __get_config_location_from_environment_variable():
 
 def __get_default_config_location():
     base_path = Ph.get_python_scripts_base_path()
-    return join(base_path, _config_path, _config_location_file)
+    return join(base_path, __CONFIG_PATH, __CONFIG_LOCATION_FILE)
 
 def __get_config_location_from_default_location_file():
     config_location_location = __get_default_config_location()
     location_config = yaml_load(config_location_location)
-    config_location = location_config[_config_location_variable]
+    config_location = location_config[__CONFIG_LOCATION_VARIABLE]
     if config_location:
         base_path = Ph.get_python_scripts_base_path()
         full_config_location = join(base_path, config_location)
@@ -47,7 +47,7 @@ def __get_base_config_location():
 
 def __get_default_config_path():
     base_path = Ph.get_python_scripts_base_path()
-    return join(base_path, _config_path, _config_defaults_file)
+    return join(base_path, __CONFIG_PATH, __CONFIG_DEFAULTS_FILE)
 
 def __get_default_config():
     default_config = __get_default_config_path()
