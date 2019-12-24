@@ -56,3 +56,5 @@
 [x] add codecov to make file
 [x] create a common object creation class - filters, editor_wrappers, etc.
 [x] place logical components into separate folders - use modules approach with __init__.py files add packages to lib_paths.py
+[x] make option for commands to not show for users (user_callable) for atide - this is an editor-specific thing from the config
+[-] rename editor references to interface - maybe later
