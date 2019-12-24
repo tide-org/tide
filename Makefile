@@ -1,10 +1,4 @@
-.PHONY:test
-.PHONY:clean
-.PHONY:git-install
-.PHONY:build
-.PHONY:upload
-.PHONY:local-dev
-.PHONY:docker-dev
+.PHONY: test clean git-install build upload local-dev docker-dev pylint
 
 define DOCKER_COMPOSE
 docker-compose -f ./tests/docker/docker-compose.yml build
@@ -34,3 +28,6 @@ local-dev:
 
 docker-dev:
 	$(DOCKER_COMPOSE) sh
+
+pylint:
+	docker run --rm -v $(PWD)/tide:/code eeacms/pylint --rcfile=/code/.pylintrc /code
