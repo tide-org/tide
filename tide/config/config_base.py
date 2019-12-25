@@ -20,8 +20,8 @@ class ConfigBase:
         self.__set_config_dictionary()
         return self._config_dictionary
 
-    def set(self, force=False):
-        if force or not self._config_dictionary:
+    def set(self):
+        if not self._config_dictionary:
             callback = self._editor_wrapper.get_set_dictionary_value_callback()
             self._config_dictionary = ActionableDict(Cs.CONFIG_OBJECT, callback)
             self._editor_wrapper.set_editor_dictionary(self._config_dictionary)
