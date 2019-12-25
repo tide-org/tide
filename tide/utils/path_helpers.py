@@ -1,5 +1,6 @@
 import os
 import sys
+import shutil
 from os.path import abspath, join, isdir, dirname
 from yamlreader import yaml_load
 import tide.utils.config_source as Cs
@@ -43,3 +44,9 @@ def get_paths_for_plugin(plugin_name):
         if resolved_path:
             plugin_paths.append(resolved_path)
     return plugin_paths
+
+def find_process_path(find_full_proc_name, main_proc_name):
+    if find_full_proc_name:
+       return shutil.which(main_proc_name)
+    else:
+        return main_proc_name
