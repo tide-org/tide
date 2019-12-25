@@ -1,4 +1,5 @@
-[ ] create a build pipeline in shippable.io
+[ ] split config source into base, environment and default - possibly remove default config location as it's not really required
+[ ] create a build pipeline in shippable.io and add shippable.yml to repo
 [ ] look at implementing filters as regex in config where possible. look at lex language options where not possible
 [ ] clean up path_helpers and config_source and log.py
 [ ] set linting rules for pylint
