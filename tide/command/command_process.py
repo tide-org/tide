@@ -1,17 +1,18 @@
-import shutil
 import traceback
 import pexpect
 from tide.logging_decorator import logging
 from tide.utils.singleton import singleton
+import tide.utils.path_helpers as Ph
 
 @singleton
 class CommandProcess:
 
     def __init__(self, config_settings):
-        self._child = None
-        self._process_path = ''
         self.__settings = config_settings
-        self.__set_process_path()
+        self._child = None
+        self._process_path = Ph.find_process_path(self.__settings.find_full_proc_name, self.__settings.main_proc_name)
+        if not self._process_path:
+                raise RuntimeError(f"error: unable to specify a process name for pexpect. Looking for: {self.__main_proc_name}")
 
     def spawn_process(self, startup_commands):
         try:
@@ -30,17 +31,8 @@ class CommandProcess:
         self._child.sendline(command)
         self._child.expect(self.__settings.end_of_output_regex)
 
-    def __set_process_path(self):
-        if self.__settings.find_full_proc_name:
-            self._process_path = shutil.which(self.__settings.main_proc_name)
-        else:
-            self._process_path = self.__settings.main_proc_name
-        if not self._process_path:
-            raise RuntimeError(f"error: unable to specify a process name for pexpect. Looking for: {self.__main_proc_name}")
-
     def seek_to_end_of_tty(self, timeout=None):
-        if not timeout:
-            timeout = self.__settings.ttl_stream_timeout
+        timeout = timeout or self.__settings.ttl_stream_timeout
         output_string = self._child.before
         try:
             while not self._child.expect(r'.+', timeout=timeout):
