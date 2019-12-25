@@ -89,7 +89,6 @@ def __get_all_config_locations():
     config_locations.append(__get_default_config_path())
     return config_locations[::-1]
 
-# TODO: use python_files
 def __get_function_paths_and_add_to_sys_path():
     function_paths = Ph.get_paths_for_plugin("functions")
     for function_path in function_paths:
