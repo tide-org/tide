@@ -21,18 +21,12 @@ class EditorWrapper(object):
 
     def __set_editor_object(self):
         self.__get_editors_list()
-        self.__validate_and_create_editor_object()
-
-    def __validate_and_create_editor_object(self):
-        if self._editor_name.lower() in self._editors_list:
-            self._editor_object = create_object(self._editor_name)
-        else:
-            raise TypeError(f"error: python file for editor: {self._editor_name} is not a valid editor")
+        self.__create_editor_object()
 
     def __create_editor_object(self):
-        editor_module = self._editor_name
-        importlib.import_module(editor_module)
-        self._editor_object = getattr(sys.modules[editor_module], self._editor_name)
+        if self._editor_name.lower() not in self._editors_list:
+            raise TypeError(f"error: python file for editor: {self._editor_name} is not a valid editor")
+        self._editor_object = create_object(self._editor_name)
 
     def __get_editors_list(self):
         if not self._editors_list:
