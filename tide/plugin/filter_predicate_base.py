@@ -45,7 +45,6 @@ class filter_predicate_base(ABC):
                 self.__iterate_lines_for_bool_match(lines, matcher)
 
     def __iterate_lines_for_bool_match(self, lines, matcher):
-        regex = re.compile(matcher['regex'])
         for line in lines:
             match = re.search(matcher['regex'], line)
             if match:

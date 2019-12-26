@@ -3,7 +3,7 @@ class ActionableDict(dict):
     parent = None
     callback = None
 
-    def __init__(self, initial_dict, callback = None, parent = None):
+    def __init__(self, initial_dict, callback=None, parent=None):
         self.parent = parent
         self.callback = callback
         for key, value in initial_dict.items():
@@ -22,8 +22,8 @@ class ActionableDict(dict):
 
     def __traverse_parents(self, item):
         test_item = self
-        parent_keys = [ item ]
-        while(hasattr(test_item, 'parent') and test_item.parent != None):
+        parent_keys = [item]
+        while hasattr(test_item, 'parent') and test_item.parent != None:
             for key, value in test_item.parent.items():
                 if value == test_item:
                     parent_keys.append(key)

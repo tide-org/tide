@@ -1,5 +1,5 @@
 import tide.plugin.action as Action
-from logging_decorator import logging
+from tide.logging_decorator import logging
 from tide.config_command.config_command_buffer_cache import ConfigCommandBufferCache
 
 @logging

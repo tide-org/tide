@@ -21,7 +21,7 @@ def get_valid_files_from_paths_for_plugin_and_add_to_sys_path(plugin, recurse=Fa
     all_files = []
     for single_path in paths_list:
         if recurse:
-            path_files.extend( [join(single_path, f) for f in listdir(single_path) if isfile(join(single_path, f))] )
+            path_files.extend([join(single_path, f) for f in listdir(single_path) if isfile(join(single_path, f))])
         else:
             path_files.extend([f for f in listdir(single_path) if isfile(join(single_path, f))])
         if path_files and single_path not in sys.path:

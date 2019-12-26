@@ -4,7 +4,7 @@ import uuid
 from stdio_lib.thread_wrapper import ThreadWrapper
 from tide.plugin.editor_base import editor_base
 
-class stdout():
+class stdout(object):
 
     @staticmethod
     def run_synchronous_message_event(action, value={}):
@@ -18,9 +18,7 @@ class stdout():
     def print_to_stdout(action, value, event_id=''):
         if not event_id:
             event_id = stdout.generate_event_id()
-        object_to_send = {
-            "command": { "action": action, "value": value },
-            "sender": "tide", "receiver": "editor", "has_callback": True, "event_id": event_id }
+        object_to_send = {"command": {"action": action, "value": value}, "sender": "tide", "receiver": "editor", "has_callback": True, "event_id": event_id}
         json.dump(object_to_send, sys.stdout)
         print("\n")
         sys.stdout.flush()
@@ -66,7 +64,7 @@ class stdio(editor_base):
             })
 
     def send_message_to_editor(self, message_object):
-        return stdout.run_synchronous_message_event("send_message_to_editor", message_object) 
+        return stdout.run_synchronous_message_event("send_message_to_editor", message_object)
 
     def stop_tide(self):
         ThreadWrapper().stop()

@@ -17,11 +17,11 @@ class display_template(action_base):
                     break
 
     def __process_template_file(self, buffer_name, templates_path, template_filename):
-            template_loader = jinja2.FileSystemLoader(searchpath=templates_path)
-            template_env = jinja2.Environment(loader=template_loader)
-            template = template_env.get_template(template_filename)
-            config_variables = Config().get_variables()
-            output_text = template.render(config_variables)
-            if output_text:
-                output_text_array = output_text.split('\n')
-                Config().set_internal_buffer_cache(buffer_name, output_text_array)
+        template_loader = jinja2.FileSystemLoader(searchpath=templates_path)
+        template_env = jinja2.Environment(loader=template_loader)
+        template = template_env.get_template(template_filename)
+        config_variables = Config().get_variables()
+        output_text = template.render(config_variables)
+        if output_text:
+            output_text_array = output_text.split('\n')
+            Config().set_internal_buffer_cache(buffer_name, output_text_array)

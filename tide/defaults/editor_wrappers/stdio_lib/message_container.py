@@ -1,6 +1,6 @@
 import json
 
-class MessageContainer:
+class MessageContainer(object):
 
     tide_callback_messages = {}
 
@@ -11,7 +11,6 @@ class MessageContainer:
         if event_id:
             return event_id
         raise ValueError("error: no event_id found in message: " + str(message_object))
-        return event_id
 
     def push_message(self, message_string):
         try:
@@ -24,7 +23,7 @@ class MessageContainer:
                     self.push_tide_message(event_id, message_object)
                 else:
                     self.push_editor_message(event_id, message_object)
-        except ValueError as ex:
+        except ValueError:
             pass
 
     def push_tide_message(self, key, message):

@@ -14,6 +14,6 @@ class TideActionSingleCommand(object):
     def __create_config_command_item(self, command, buffer_name, event_name):
         config_command_item = ConfigCommandItem()
         config_command_item.command = command
-        config_command_item.buffer_name = buffer_name if buffer_name else Config().get_buffer_name_for_command(command) 
+        config_command_item.buffer_name = buffer_name if buffer_name else Config().get_buffer_name_for_command(command)
         config_command_item.event_name = event_name
         return config_command_item

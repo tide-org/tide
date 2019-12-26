@@ -8,7 +8,7 @@ from tide.command.command_process_config import CommandProcessConfig
 from tide.logging_decorator import logging
 
 @singleton
-class CommandHandler:
+class CommandHandler(object):
 
     def __init__(self):
         self._child = None

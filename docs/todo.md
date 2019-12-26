@@ -1,7 +1,5 @@
 [ ] create a build pipeline in shippable.io and add shippable.yml to repo
 [ ] look at implementing filters as regex in config where possible. look at lex language options where not possible
-[ ] clean up path_helpers and config_source and log.py
-[ ] set linting rules for pylint
 [ ] add more comprehensive tests
 [ ] implement plugins for go and python
 [ ] only run buffer commands for open buffers - check editor what buffers are open

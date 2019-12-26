@@ -16,7 +16,7 @@ class ConfigCommandBufferCache(object):
             Config().set_internal_buffer_cache(internal_buffer_name, lines)
 
     def __initialise_buffer_in_config(self, buffer_name):
-        if buffer_name not in Config().get_internal_buffer_caches(): 
+        if buffer_name not in Config().get_internal_buffer_caches():
             if not Config().get_internal_buffer_caches():
                 Config().set_internal("buffer_caches", {})
             Config().set_internal_buffer_cache(buffer_name, [])
@@ -31,8 +31,7 @@ class ConfigCommandBufferCache(object):
         if internal_buffer_name == self.__default_buffer_name:
             error_line = self.__error_line.format(ca_type=command_action.action_name, ca_dict=str(command_action.__dict__))
             if isinstance(lines, str):
-                lines += error_line 
+                lines += error_line
             if isinstance(lines, list):
-                lines.insert(0, error_line) 
+                lines.insert(0, error_line)
         return lines
-

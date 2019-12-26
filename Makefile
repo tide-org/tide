@@ -1,11 +1,11 @@
-.PHONY: test clean git-install build upload local-dev docker-dev pylint
+.PHONY: tests clean git-install build upload local-dev docker-dev pylint
 
 define DOCKER_COMPOSE
 docker-compose -f ./tests/docker/docker-compose.yml build
 docker-compose -f ./tests/docker/docker-compose.yml run --rm --service-ports test-python-tide 
 endef
 
-test:
+tests:
 	$(DOCKER_COMPOSE) /work/tests/scripts/run-python-tests
 
 clean:

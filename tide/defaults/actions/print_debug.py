@@ -1,8 +1,8 @@
+import sys
+import json
 from tide.plugin.action_base import action_base
 import tide.utils.interpolate as Interpolate
 from tide.config.config import Config
-import json
-import sys
 
 class print_debug(action_base):
 

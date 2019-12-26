@@ -1,6 +1,4 @@
-import os
 from tide.plugin.action_base import action_base
-import tide.utils.config_source as Cs
 import tide.utils.interpolate as Interpolate
 from tide.config.config import Config
 
@@ -22,9 +20,9 @@ class run_editor_function(action_base):
         return self.__run_command()
 
     def __run_command(self):
-       editor_wrapper = Config().get_editor_wrapper()
-       result = editor_wrapper.run_editor_function(self._function_file, self._function_name, self.__create_args_dict())
-       return result
+        editor_wrapper = Config().get_editor_wrapper()
+        result = editor_wrapper.run_editor_function(self._function_file, self._function_name, self.__create_args_dict())
+        return result
 
     def __create_args_dict(self):
         args_dict = {}

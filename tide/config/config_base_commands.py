@@ -1,7 +1,7 @@
 from tide.logging_decorator import logging
 
 @logging
-class ConfigBaseCommands:
+class ConfigBaseCommands(object):
 
     def get_command_steps(self, command):
         return self._config_dictionary.get("commands", {}).get(command, {}).get("steps", [])

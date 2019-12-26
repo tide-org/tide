@@ -5,14 +5,14 @@ from tide.utils.singleton import singleton
 import tide.utils.path_helpers as Ph
 
 @singleton
-class CommandProcess:
+class CommandProcess(object):
 
     def __init__(self, config_settings):
         self.__settings = config_settings
         self._child = None
         self._process_path = Ph.find_process_path(self.__settings.find_full_proc_name, self.__settings.main_proc_name)
         if not self._process_path:
-                raise RuntimeError(f"error: unable to specify a process name for pexpect. Looking for: {self.__main_proc_name}")
+            raise RuntimeError(f"error: unable to specify a process name for pexpect. Looking for: {self.__main_proc_name}")
 
     def spawn_process(self, startup_commands):
         try:

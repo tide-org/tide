@@ -5,7 +5,7 @@ from tide.logging_decorator import logging
 class CommandActionCondition(object):
 
     def __init__(self, when_condition):
-        self.__when_condition = when_condition 
+        self.__when_condition = when_condition
         self.__eval_when_condition = None
 
     def is_ok_to_run(self):
@@ -19,9 +19,9 @@ class CommandActionCondition(object):
 
     def __process_when_condition(self):
         when_condition = self.__when_condition
-        for variable in Config().get_variable_names(): 
+        for variable in Config().get_variable_names():
             if variable in self.__when_condition:
-                config_variable = self.__sanitise_config_variable(variable) 
+                config_variable = self.__sanitise_config_variable(variable)
                 when_condition = when_condition.replace(variable, config_variable)
         self.__eval_when_condition = eval(when_condition or self.__when_condition)
 

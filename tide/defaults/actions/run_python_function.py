@@ -34,7 +34,6 @@ class run_python_function(action_base):
         if self._command_args:
             self._interpolated_input_args["event_input_args"] = self._command_args
 
-    # TODO - use create_object when checking test_c
     def __set_function_module_locals(self):
         self._function_module = importlib.import_module(self._function_module_name)
         self._function = getattr(sys.modules[self._function_module_name], self._function_name)

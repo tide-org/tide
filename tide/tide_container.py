@@ -13,7 +13,7 @@ class Tide(object):
         self.__tide_action = TideAction(editor_wrapper_name)
 
     def start(self, startup_commands=''):
-       self.__tide_action.start(startup_commands)
+        self.__tide_action.start(startup_commands)
 
     def stop(self):
         self.__tide_action.stop()

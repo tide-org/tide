@@ -27,9 +27,15 @@ def parse_args():
     parser = argparse.ArgumentParser(description='Tide - From Text editor to Integrated Development Environment', formatter_class=RawTextHelpFormatter)
     parser.add_argument('-c', '--config', help='The path to the Tide Config file(s).', metavar=('config'), required=False)
     parser.add_argument('-e', '--editor', help='The name of the edotor wrapper to target.', metavar=('editor'), required=False)
-    parser.add_argument('-t', '--timeout', help="A timeout value in seconds to specify for how long\nthe main thread will stay alive for. If not specified,\nwill default to infinite.", metavar=('timeout'), required=False)
-    parser.add_argument('-a', '--arguments', help="A quoted string of arguments to pass \nto Tide on startup.\ne.g. tide -a \'test.exe 1 2 3\'", metavar=('args'), required=False)
-    parser.add_argument('-v','--variables', action='append', nargs=2, metavar=('key','value'), help="Used to specify config variables to be\nadded/replaced to the configuration.\nCan be called multiple times.\nConfig key names can be dot-chained.\ne.g. `-v settings.editor.name stdio`\n", required=False)
+    parser.add_argument('-t', '--timeout',
+                        help="A timeout in seconds to specify how long\nthe main thread will stay alive for. If not specified,\nwill default to infinite.",
+                        metavar=('timeout'), required=False)
+    parser.add_argument('-a', '--arguments',
+                        help="A quoted string of arguments to pass \nto Tide on startup.\ne.g. tide -a \'test.exe 1 2 3\'", metavar=('args'), required=False)
+    parser.add_argument('-v', '--variables', action='append', nargs=2, metavar=('key', 'value'),
+                        help='''Used to specify config variables to be\nadded/replaced to the configuration.\nCan be called multiple times.
+Config key names can be dot-chained.\ne.g. `-v settings.editor.name stdio`\n''',
+                        required=False)
     return parser.parse_args()
 
 def main():

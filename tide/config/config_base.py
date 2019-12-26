@@ -4,7 +4,7 @@ import tide.utils.config_source as Cs
 from tide.logging_decorator import logging
 
 @logging
-class ConfigBase:
+class ConfigBase(object):
 
     def __init__(self, editor_wrapper_name=''):
         self._config_dictionary = None
@@ -29,7 +29,7 @@ class ConfigBase:
 
     def __set_internals(self):
         session_buffer = self.get_setting("logging", "session_buffer_name") or "no_session_buffer_name_set"
-        self._config_dictionary["internal"] = {"buffer_caches": { session_buffer: [] },"variables": {}}
+        self._config_dictionary["internal"] = {"buffer_caches": {session_buffer: []}, "variables": {}}
 
     def get_editor_wrapper(self):
         return self._editor_wrapper

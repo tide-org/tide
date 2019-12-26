@@ -1,10 +1,10 @@
 import datetime
-import tide.plugin.filter as Filter
-from tide.config.config import Config
-from logging_decorator import logging
-import tide.utils.config_source as Cs
 import sys
 from os.path import dirname, abspath, join
+import tide.plugin.filter as Filter
+from tide.config.config import Config
+from tide.logging_decorator import logging
+import tide.utils.config_source as Cs
 
 LOGGING_SETTINGS = Cs.CONFIG_OBJECT["settings"]["logging"]
 USE_SESSION_LOG_FILE = LOGGING_SETTINGS["use_session_log_file"]

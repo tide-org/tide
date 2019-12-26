@@ -1,4 +1,3 @@
-from tide.config.config import Config
 from logging_decorator import logging
 from .command_action_condition import CommandActionCondition
 from .command_action_converter import CommandActionConverter

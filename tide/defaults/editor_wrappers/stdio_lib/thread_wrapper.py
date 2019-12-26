@@ -40,17 +40,14 @@ def editor_request_loop(messages, stop_loop):
 def send_message_ack(request):
     event_id = request.get("event_id", "")
     command_action = request.get("command", {}).get("action", "")
-    response_object = {
-        'command': {'action': command_action , 'value': ''},
-        'has_callback': False, 'sender': 'tide', 'receiver': 'editor', 'event_id': event_id
-    }
+    response_object = {'command': {'action': command_action , 'value': ''}, 'has_callback': False, 'sender': 'tide', 'receiver': 'editor', 'event_id': event_id}
     io = StringIO()
     json.dump(response_object, io)
     print(io.getvalue() + "\n", flush=True)
 
 
 @singleton
-class ThreadWrapper:
+class ThreadWrapper(object):
 
     def __init__(self):
         self.daemonise = Cs.CONFIG_OBJECT.get("variables", {}).get("tide_test_mode_daemonise", False)
