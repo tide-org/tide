@@ -62,3 +62,4 @@
 [x] split config source into base, environment and default - possibly remove default config location as it's not really required
 [x] clean up path_helpers and config_source and log.py
 [x] set linting rules for pylint
+[x] fix tests
