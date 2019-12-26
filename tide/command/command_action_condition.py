@@ -4,12 +4,13 @@ from tide.logging_decorator import logging
 @logging
 class CommandActionCondition(object):
 
-    def __init__(self, when_condition):
-        self.__when_condition = when_condition
+    def __init__(self):
+        self.__when_condition = ''
         self.__eval_when_condition = None
 
-    def is_ok_to_run(self):
-        if self.__when_condition:
+    def is_ok_to_run(self, when_condition):
+        if when_condition:
+            self.__when_condition = when_condition
             try:
                 self.__process_when_condition()
             except SyntaxError:

@@ -1,6 +1,4 @@
 from logging_decorator import logging
-from .command_action_condition import CommandActionCondition
-from .command_action_converter import CommandActionConverter
 
 @logging
 class CommandAction(object):
@@ -21,10 +19,14 @@ class CommandAction(object):
     def action_value(self):
         return self.__action_value
 
-    def is_ok_to_run(self):
-        check = CommandActionCondition(self.__when_condition)
-        return check.is_ok_to_run()
+    @property
+    def buffer_name(self):
+        return self.__buffer_name
 
-    def get_action_args(self):
-        convert = CommandActionConverter(self.__action_value, self.__event_input_args, self.__buffer_name)
-        return convert.to_action_args()
+    @property
+    def event_input_args(self):
+        return self.__event_input_args
+
+    @property
+    def when_condition(self):
+        return self.__when_condition

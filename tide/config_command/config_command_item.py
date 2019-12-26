@@ -73,6 +73,6 @@ class ConfigCommandItem(object):
             raise RuntimeError(f"error: command {self._base_command} does not exist in config")
 
     def __set_config_for_user_command_args(self):
-        if len(self._user_command_args) > 0:
+        if self._user_command_args:
             Config().set_variable("user_input_args"," ".join(self._user_command_args))
 
