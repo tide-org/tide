@@ -11,6 +11,7 @@ class run_command_with_match(action_base):
     _regex_match = ''
     _lines = []
     _match_result = ''
+    _match_group = None
     _try_set_var = ''
     _try_set_array_var = ''
     _else_set = ''
@@ -45,7 +46,7 @@ class run_command_with_match(action_base):
 
     def __get_match(self):
         match_string = ''
-        for line in (self._lines or []):
+        for line in self._lines or []:
             if re.search(self._regex_match, line):
                 match = re.search(self._regex_match, line)
                 match_string = match.group(int(self._match_group))
@@ -55,7 +56,7 @@ class run_command_with_match(action_base):
 
     def __get_array_match(self):
         match_array = []
-        for line in (self._lines or []):
+        for line in self._lines or []:
             if re.search(self._regex_match, line):
                 match = re.search(self._regex_match, line)
                 match_array.append(match.group(int(self._match_group)))

@@ -3,6 +3,7 @@ import importlib
 from tide.config.config import Config
 from tide.plugin.action_base import action_base
 import tide.utils.interpolate as Interpolate
+from tide.utils.object_creator import create_object
 
 class run_python_function(action_base):
 
@@ -27,12 +28,13 @@ class run_python_function(action_base):
     def __run_function_update_variable(self):
         function_result = self._function(**self._interpolated_input_args)
         if self._set_on_return:
-            Config().get()["variables"][self._set_on_return] = function_result
+            Config().set_variable(self._set_on_return, function_result)
 
     def __update_command_args(self):
         if self._command_args:
             self._interpolated_input_args["event_input_args"] = self._command_args
 
+    # TODO - use create_object when checking test_c
     def __set_function_module_locals(self):
         self._function_module = importlib.import_module(self._function_module_name)
         self._function = getattr(sys.modules[self._function_module_name], self._function_name)

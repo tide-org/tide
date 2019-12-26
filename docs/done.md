@@ -59,3 +59,4 @@
 [x] make option for commands to not show for users (user_callable) for atide - this is an editor-specific thing from the config
 [-] rename editor references to interface - maybe later
 [x] add linting and docker container for linting
+[x] split config source into base, environment and default - possibly remove default config location as it's not really required
