@@ -29,4 +29,4 @@ class CommandOutput(object):
         if lines:
             error_buffer_name = Config().get_setting("buffers", "error_buffer_name")
             if error_buffer_name:
-                Config().get()["internal"]["buffer_caches"][error_buffer_name] = lines
+                Config().set_internal_buffer_cache(error_buffer_name, lines)

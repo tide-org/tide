@@ -17,7 +17,7 @@ class ConfigCommand(object):
 
     def __run_config_command_action(self, command_action, config_command_item):
         if self.__condition.is_ok_to_run(command_action.when_condition):
-            buffer_cache = ConfigCommandBufferCache(config_command_item.buffer_name)
             action_args = self.__converter.to_action_args(command_action.action_value, command_action.event_input_args, command_action.buffer_name)
             lines = Action.run_action(command_action.action_name, action_args)
+            buffer_cache = ConfigCommandBufferCache(config_command_item.buffer_name)
             buffer_cache.set(lines, config_command_item, command_action, action_args)
