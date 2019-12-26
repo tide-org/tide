@@ -3,8 +3,8 @@ import tide.plugin.filter as Filter
 from tide.config.config import Config
 from logging_decorator import logging
 import tide.utils.config_source as Cs
-import os
 import sys
+from os.path import dirname, abspath, join
 
 LOGGING_SETTINGS = Cs.CONFIG_OBJECT["settings"]["logging"]
 USE_SESSION_LOG_FILE = LOGGING_SETTINGS["use_session_log_file"]
@@ -13,25 +13,29 @@ SESSION_BUFFER_NAME = LOGGING_SETTINGS["session_buffer_name"]
 ADD_TIMESTAMP = LOGGING_SETTINGS["add_timestamp"]
 
 if USE_SESSION_LOG_FILE:
-    full_log_filename = os.path.abspath(SESSION_LOG_FILENAME)
-    log_path = os.path.dirname(full_log_filename)
-    if log_path == '/':
-        running_file = sys.argv[0]
-        pathname = os.path.dirname(running_file)
-        running_path = os.path.abspath(pathname)
-        full_log_filename = os.path.join(running_path, SESSION_LOG_FILENAME)
+    full_log_filename = abspath(SESSION_LOG_FILENAME)
+    if dirname(full_log_filename) == '/':
+        log_full_filename = join(abspath(dirname(sys.argv[0])), SESSION_LOG_FILENAME)
     LOG_FILE_HANDLE = open(full_log_filename, "w+")
+
+def __get_timestamp_separator():
+    return "--- {0} ---".format(datetime.datetime.utcnow())
+
+def __write_log_string_to_file(log_string):
+    if USE_SESSION_LOG_FILE:
+        if ADD_TIMESTAMP:
+            LOG_FILE_HANDLE.write(__get_timestamp_separator() + "\n")
+        LOG_FILE_HANDLE.write(log_string)
+
+def __filter_log_string_and_add_to_buffer_cache(log_string):
+    log_lines = Filter.filter_string(log_string, SESSION_BUFFER_NAME)
+    full_cache = Config().get_internal_buffer_cache(SESSION_BUFFER_NAME)
+    if ADD_TIMESTAMP:
+        full_cache.append(__get_timestamp_separator())
+    full_cache.extend(log_lines)
+    Config().set_internal_buffer_cache(SESSION_BUFFER_NAME, full_cache)
 
 @logging
 def write_to_log(log_string):
-    if USE_SESSION_LOG_FILE:
-        if ADD_TIMESTAMP:
-            LOG_FILE_HANDLE.write("--- {0} ---".format(datetime.datetime.utcnow()) + "\n")
-        LOG_FILE_HANDLE.write(log_string)
-    log_lines = Filter.filter_string(log_string, SESSION_BUFFER_NAME)
-    full_cache = Config().get().get("internal", {}).get("buffer_caches", {}).get(SESSION_BUFFER_NAME, {})
-    full_cache = Config().get()["internal"]["buffer_caches"][SESSION_BUFFER_NAME]
-    if ADD_TIMESTAMP:
-        full_cache.append("--- {0} ---".format(datetime.datetime.utcnow()))
-    full_cache.extend(log_lines)
-    Config().get()["internal"]["buffer_caches"][SESSION_BUFFER_NAME] = full_cache
+    __write_log_string_to_file(log_string)
+    __filter_log_string_and_add_to_buffer_cache(log_string)

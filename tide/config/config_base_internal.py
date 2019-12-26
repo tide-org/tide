@@ -9,6 +9,9 @@ class ConfigBaseInternal:
     def get_internal_buffer_caches(self):
         return self.get_internal().get("buffer_caches", {})
 
+    def get_internal_buffer_cache(self, buffer_cache_name):
+        return self.get_internal_buffer_caches().get(buffer_cache_name, [])
+
     def set_internal(self, variable_name, variable_value):
         self.get_internal()[variable_name] = variable_value
 
