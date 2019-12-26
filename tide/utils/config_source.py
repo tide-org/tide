@@ -22,36 +22,11 @@ def __get_config_location_from_environment_variable():
         if path_from_scripts and isdir(path_from_scripts):
             return abspath(path_from_scripts)
 
-def __get_default_config_location():
-    base_path = Ph.get_python_scripts_base_path()
-    return join(base_path, __CONFIG_PATH, __CONFIG_LOCATION_FILE)
-
-def __get_config_location_from_default_location_file():
-    config_location_location = __get_default_config_location()
-    location_config = yaml_load(config_location_location)
-    config_location = location_config[__CONFIG_LOCATION_VARIABLE]
-    if config_location:
-        base_path = Ph.get_python_scripts_base_path()
-        full_config_location = join(base_path, config_location)
-        if isdir(full_config_location):
-            return abspath(full_config_location)
-
 def __get_base_config_location():
     environment_config_path = __get_config_location_from_environment_variable()
     if environment_config_path:
         return environment_config_path
-    location_file_path = __get_config_location_from_default_location_file()
-    if location_file_path:
-        return location_file_path
     raise RuntimeError("error: unable to find a matching path for the config.\r\nplease either set the environment variable TIDE_CONFIG_LOCATION \rnor specify in the file config_location.yaml")
-
-def __get_default_config_path():
-    base_path = Ph.get_python_scripts_base_path()
-    return join(base_path, __CONFIG_PATH, __CONFIG_DEFAULTS_FILE)
-
-def __get_default_config():
-    default_config = __get_default_config_path()
-    return yaml_load(default_config)
 
 def __get_single_config(path):
     return yaml_load(path)
@@ -86,7 +61,7 @@ def __get_all_config_locations():
             base_config_path = temp_config_path
         else:
             break
-    config_locations.append(__get_default_config_path())
+    config_locations.append(join(Ph.get_python_scripts_base_path(), __CONFIG_PATH, __CONFIG_DEFAULTS_FILE))
     return config_locations[::-1]
 
 def __get_function_paths_and_add_to_sys_path():
