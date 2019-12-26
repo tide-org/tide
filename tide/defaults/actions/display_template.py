@@ -20,8 +20,8 @@ class display_template(action_base):
             template_loader = jinja2.FileSystemLoader(searchpath=templates_path)
             template_env = jinja2.Environment(loader=template_loader)
             template = template_env.get_template(template_filename)
-            config_variables = Config().get()["variables"]
+            config_variables = Config().get_variables()
             output_text = template.render(config_variables)
             if output_text:
                 output_text_array = output_text.split('\n')
-                Config().get()["internal"]["buffer_caches"][buffer_name] = output_text_array
+                Config().set_internal_buffer_cache(buffer_name, output_text_array)

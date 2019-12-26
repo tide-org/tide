@@ -8,4 +8,4 @@ class set_var(action_base):
         name = command_item.get("name", '')
         if name:
             value = command_item.get("value", '')
-            Config().get()["variables"][name] = Interpolate.interpolate_variables(value)
+            Config().set_variable(name, Interpolate.interpolate_variables(value))

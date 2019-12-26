@@ -17,5 +17,5 @@ class print_debug(action_base):
             json.dump(Config().get(), sys.stdout, indent=4)
         if buffer_name:
             print("  buffer name:\n  ")
-            json.dump(Config().get()["buffers"][buffer_name], sys.stdout, indent=4)
+            json.dump(Config().get_buffer(buffer_name), sys.stdout, indent=4)
         print("" + str(interpolated_message))
