@@ -2,6 +2,8 @@
 
 cd ../pytest_tests
 
+echo TIDE_CONFIG_LOCATION = $TIDE_CONFIG_LOCATION
+
 coverage run -m pytest --ignore=./stdio --ignore=./test_command_action.py -s -v
 coverage run -m pytest ./test_command_action.py -s -v
 coverage run -m pytest ./stdio
