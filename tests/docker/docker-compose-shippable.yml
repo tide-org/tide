@@ -1,0 +1,15 @@
+version: "2"
+
+services:
+
+  test-python-tide:
+    build:
+      context: ..
+      dockerfile: ./docker/Dockerfile
+    working_dir: /work
+    tmpfs: /tests
+    environment:
+      - PYTHONPATH=/work
+    volumes:
+      - $SHIPPABLE_BUILD_DIR:/work
+      - $SHIPPABLE_BUILD_DIR/plugins:/work/plugins

@@ -15,4 +15,9 @@ pre_ci_boot:
 
 build:
   ci:
-    - make tests
+    - echo $PWD
+    - echo $SHIPPABLE_BUILD_DIR
+    - ls -alh $SHIPPABLE_BUILD_DIR
+    - docker-compose -f $SHIPPABLE_BUILD_DIR/tests/docker/docker-compose-shippable.yml run -d --rm --service-ports test-python-tide /work/tests/scripts/run-python-tests
+    - sleep 5
+    - docker inspect docker_test-python-tide
