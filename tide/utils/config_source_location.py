@@ -20,4 +20,6 @@ def get_base_config_location():
     environment_config_path = __get_config_location_from_environment_variable()
     if environment_config_path:
         return environment_config_path
-    raise RuntimeError("error: unable to find a matching path for the config.\r\nplease either set the environment variable TIDE_CONFIG_LOCATION")
+    raise RuntimeError(f'''error: unable to find a matching path for the config.
+Please set the environment variable TIDE_CONFIG_LOCATION correctly.
+Current value is: {os.environ.get(__CONFIG_ENVIRONMENT_VARIABLE)}''')

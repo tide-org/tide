@@ -16,7 +16,6 @@ def test_object_is_type_tide():
     tide_object = Tide()
     assert type(tide_object) == type(tide.Tide())
 
-# this test is causing hang
 def test_tide_can_start():
     tide_object = Tide()
     tide_object.start()
