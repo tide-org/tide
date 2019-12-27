@@ -16,7 +16,7 @@ services:
   test-python-tide-shippable:
     build:
       context: /app
-      dockerfile: /app/tests/docker/Dockerfile-shippable
+      dockerfile: /app/tests/docker/Dockerfile
     working_dir: /app
     environment:
       - PYTHONPATH=/app
