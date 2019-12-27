@@ -17,9 +17,11 @@ build:
   ci:
     - docker volume create temp-shippable-volume
     - docker container create --name temp-shippable-container -v temp-shippable-volume:/app busybox
-    - docker cp $SHIPPABLE_BUILD_DIR temp-shippable-container:/app
+    - docker cp $SHIPPABLE_BUILD_DIR/tide temp-shippable-container:/app
     - docker run --rm -i -v=temp-shippable-volume:/tmp/myvolume busybox find /tmp/myvolume
     - docker rm temp-shippable-container
     - docker volume ls
-    - docker-compose -f $SHIPPABLE_BUILD_DIR/tests/docker/docker-compose-shippable.yml run --rm --service-ports test-python-tide sh -c "ls -alh /work" 
+    - docker build -t shippable-python - < tests/docker/Dockerfile
+    - docker run -it --rm shippable-python -v temp-shippable-volume:/work /work/tests/scripts/run-python-tests  
     - docker volume rm temp-shippable-volume
+    - docker rm shippable-python

@@ -14,5 +14,4 @@ services:
       - temp-shippable-volume:/work
 
 volumes:
-  temp-shippable-volume:
-    driver: local
+  temp-shippable-volume: {}
