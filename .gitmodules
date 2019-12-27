@@ -19,3 +19,6 @@
 [submodule "lib/yamlreader"]
 	path = lib/yamlreader
 	url = https://github.com/wilvk/yamlreader.git
+[submodule "plugins"]
+	path = plugins
+	url = https://github.com/tide-org/tide-plugins.git
