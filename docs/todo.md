@@ -1,6 +1,7 @@
-[ ] look at implementing filters as regex in config where possible. look at lex language options where not possible
 [ ] add more comprehensive tests
 [ ] implement plugins for go and python
+[ ] look at implementing filters as regex in config where possible. look at lex language options where not possible
+[ ] refactor config_command_buffer to not require so many variables
 [ ] only run buffer commands for open buffers - check editor what buffers are open
 [ ] look into using async await instead of Thread while loops - https://gist.github.com/debugtalk/3d26581686b63c28227777569c02cf2c
 [ ] export editor function code to editor.
