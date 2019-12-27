@@ -6,10 +6,10 @@ services:
     build:
       context: ..
       dockerfile: ./docker/Dockerfile
-    working_dir: /work
+    working_dir: /work/tide
     tmpfs: /tests
     environment:
-      - PYTHONPATH=/work
+      - PYTHONPATH=/work/tide
     volumes:
-      - ../..:/work
-      - ../../plugins:/work/plugins
+      - ../..:/work/tide
+      - ../../plugins:/work/tide/plugins

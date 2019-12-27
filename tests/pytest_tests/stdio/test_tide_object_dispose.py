@@ -2,7 +2,7 @@ import os
 import pytest
 import json
 import sys
-os.environ["TIDE_CONFIG_LOCATION"] = "/work/plugins/tests/test_hello_3"
+os.environ["TIDE_CONFIG_LOCATION"] = "/work/tide/plugins/tests/test_hello_3"
 sys.path.append('..')
 from pytest_tests import setup_tests
 

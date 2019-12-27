@@ -6,7 +6,7 @@ docker-compose -f ./tests/docker/docker-compose.yml run --rm --service-ports
 endef
 
 tests:
-	$(DOCKER_COMPOSE) test-python-tide sh -c "cd /work/tests/scripts && ./run-python-tests"
+	$(DOCKER_COMPOSE) test-python-tide sh -c "cd /work/tide/tests/scripts && ./run-python-tests"
 
 clean:
 	rm -rf dist
