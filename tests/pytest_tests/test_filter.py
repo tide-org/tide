@@ -1,5 +1,5 @@
 import os
-os.environ["TIDE_CONFIG_LOCATION"] = "/work/tide/plugins/tests/test_hello_7"
+os.environ["TIDE_CONFIG_LOCATION"] = "/work/tide/plugins/plugins/tests/test_hello_7"
 import pytest
 from pytest_tests import setup_tests
 import tide.plugin.filter as Filter

@@ -12,6 +12,7 @@ env:
 
 build:
   ci:
+    - git clone https://github.com/tide-org/tide-plugins $SHIPPABLE_BUILD_DIR/plugins
     - docker volume create temp-shippable-volume
     - docker container create --name temp-shippable-container -v temp-shippable-volume:/app busybox
     - docker cp $SHIPPABLE_BUILD_DIR temp-shippable-container:/app
