@@ -12,13 +12,4 @@ services:
       - PYTHONPATH=/work
     volumes:
       - ../..:/work
-      - ../../../tide-plugins/plugins:/work/plugins
-  test-python-tide-shippable:
-    build:
-      context: /app
-      dockerfile: /app/tests/docker/Dockerfile
-    working_dir: /app
-    environment:
-      - PYTHONPATH=/app
-    volumes:
-      - /app:/app
+      - ../../plugins:/work/plugins

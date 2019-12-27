@@ -5,18 +5,8 @@ docker-compose -f ./tests/docker/docker-compose.yml build
 docker-compose -f ./tests/docker/docker-compose.yml run --rm --service-ports 
 endef
 
-define DOCKER_COMPOSE_SHIPPABLE
-docker-compose -f /app/tests/docker/docker-compose.yml build
-docker-compose -f /app/tests/docker/docker-compose.yml run --rm --service-ports 
-endef
-
 tests:
 	$(DOCKER_COMPOSE) test-python-tide /work/tests/scripts/run-python-tests
-
-tests-shippable:
-	$(DOCKER_COMPOSE_SHIPPABLE) test-python-tide-shippable sh -c "echo $$PWD && ls -alh /app"
-
-#/app/tests/scripts/run-python-tests
 
 clean:
 	rm -rf dist
