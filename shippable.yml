@@ -16,5 +16,5 @@ pre_ci_boot:
 build:
   ci:
     - cp -R . /app
-    - pip install -U docker-compose
+    - ls -alh /app
     - make tests-shippable
