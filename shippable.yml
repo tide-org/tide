@@ -15,7 +15,6 @@ build:
     - docker volume create temp-shippable-volume
     - docker container create --name temp-shippable-container -v temp-shippable-volume:/app busybox
     - docker cp $SHIPPABLE_BUILD_DIR/tide temp-shippable-container:/app
-    - #docker run --rm -i -v=temp-shippable-volume:/tmp/myvolume busybox find /tmp/myvolume
     - docker rm temp-shippable-container
     - docker volume ls
     - docker build -t shippable-python - < tests/docker/Dockerfile
