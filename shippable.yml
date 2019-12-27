@@ -12,8 +12,6 @@ env:
 
 build:
   ci:
-    - pip install pyyaml twine requests nose wheel
-    - pip install -e .
     - make tests
     - python ./setup.py sdist
     - python ./setup.py bdist_wheel
