@@ -18,4 +18,5 @@ build:
     - pip install -U docker-compose
     - cp -R . /app
     - ls -alh /app
+    - ls -alh
     - make tests-shippable
