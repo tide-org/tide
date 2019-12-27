@@ -9,3 +9,9 @@ fileignoreconfig:
   checksum: e050fddf459a03fab7ae2de1af984d3d0b24962bfe36c5eaf5f86a24beb70ea3
   ignore_detectors: []
 scopeconfig: []
+
+fileignoreconfig:
+- filename: shippable.yml
+  checksum: d7b30601d629760035befdb3ccb6f3c7b0eeb5af44de024efae1d0a5228c7191
+  ignore_detectors: []
+scopeconfig: []
