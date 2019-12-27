@@ -15,7 +15,7 @@ ADD_TIMESTAMP = LOGGING_SETTINGS["add_timestamp"]
 if USE_SESSION_LOG_FILE:
     full_log_filename = abspath(SESSION_LOG_FILENAME)
     if dirname(full_log_filename) == '/':
-        log_full_filename = join(abspath(dirname(sys.argv[0])), SESSION_LOG_FILENAME)
+        full_log_filename = join(abspath(dirname(sys.argv[0])), SESSION_LOG_FILENAME)
     LOG_FILE_HANDLE = open(full_log_filename, "w+")
 
 def __get_timestamp_separator():
