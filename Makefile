@@ -9,7 +9,9 @@ tests:
 	$(DOCKER_COMPOSE) test-python-tide /work/tests/scripts/run-python-tests
 
 tests-shippable:
-	$(DOCKER_COMPOSE) test-python-tide-shippable /app/tests/scripts/run-python-tests
+	$(DOCKER_COMPOSE) test-python-tide-shippable sh -c "echo $$PWD && ls -alh"
+
+#/app/tests/scripts/run-python-tests
 
 clean:
 	rm -rf dist
