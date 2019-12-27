@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cd /work
+cd /work/tide
 
 rm -rf tide.egg-info
 rm -rf dist

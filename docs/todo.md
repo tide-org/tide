@@ -1,4 +1,3 @@
-[ ] create a build pipeline in shippable.io and add shippable.yml to repo
 [ ] look at implementing filters as regex in config where possible. look at lex language options where not possible
 [ ] add more comprehensive tests
 [ ] implement plugins for go and python

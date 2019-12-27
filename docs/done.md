@@ -63,3 +63,4 @@
 [x] clean up path_helpers and config_source and log.py
 [x] set linting rules for pylint
 [x] fix tests
+[x] create a build pipeline in shippable.io and add shippable.yml to repo
