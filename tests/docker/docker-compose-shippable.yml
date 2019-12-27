@@ -12,3 +12,7 @@ services:
       - PYTHONPATH=/work
     volumes:
       - temp-shippable-volume:/work
+
+volumes:
+  temp-shippable-volume:
+    driver: local
