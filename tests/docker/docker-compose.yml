@@ -15,7 +15,7 @@ services:
       - ../../../tide-plugins/plugins:/work/plugins
   test-python-tide-shippable:
     build:
-      context: ..
+      context: /app
       dockerfile: /app/tests/docker/Dockerfile-shippable
     working_dir: /app
     environment:

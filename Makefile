@@ -14,7 +14,7 @@ tests:
 	$(DOCKER_COMPOSE) test-python-tide /work/tests/scripts/run-python-tests
 
 tests-shippable:
-	$(DOCKER_COMPOSE) test-python-tide-shippable sh -c "cd / && find . -type d"
+	$(DOCKER_COMPOSE_SHIPPABLE) test-python-tide-shippable sh -c "echo $$PWD && ls -alh"
 
 #/app/tests/scripts/run-python-tests
 
