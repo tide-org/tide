@@ -20,9 +20,9 @@ build:
     - docker volume ls
     - docker build -t shippable-python - < tests/docker/Dockerfile
     - >- 
-        docker run --rm 
-          -v temp-shippable-volume:/work 
-          -e PYTHONPATH=/work/tide 
-          -w /work/tide 
-          shippable-python sh -c "cd /work/tide/tests/scripts && ./run-python-tests" 
+        docker run --rm \
+          -v temp-shippable-volume:/work \
+          -e PYTHONPATH=/work/tide \
+          -w /work/tide \
+          shippable-python sh -c "cd /work/tide/tests/scripts && ./run-python-tests" \
     - docker volume rm temp-shippable-volume
