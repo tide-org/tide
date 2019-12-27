@@ -1,5 +1,6 @@
-[ ] add more comprehensive tests
+[ ] fix window split in vgdb for test_c plugin
 [ ] implement plugins for go and python
+[ ] add more comprehensive tests
 [ ] look at implementing filters as regex in config where possible. look at lex language options where not possible
 [ ] refactor config_command_buffer to not require so many variables
 [ ] only run buffer commands for open buffers - check editor what buffers are open

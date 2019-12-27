@@ -1,0 +1,2 @@
+class FilterConfigObject(object):
+    pass
