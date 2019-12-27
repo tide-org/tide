@@ -18,7 +18,7 @@ build:
     - docker rm temp-shippable-container
     - docker volume ls
     - docker build -t shippable-python - < tests/docker/Dockerfile
-    - docker run --rm -v temp-shippable-volume:/work -e PYTHONPATH=/work -w /work shippable-python sh -c "cd /work/tide/tests/scripts && ./run-python-tests"
+    - docker run --rm -v temp-shippable-volume:/work -e PYTHONPATH=/work -w /work/tide shippable-python sh -c "cd /work/tide/tests/scripts && ./run-python-tests"
 #    - docker run --rm -v temp-shippable-volume:/work -e PYTHONPATH=/work -w /work shippable-python sh -c "/work/tide/tests/scripts/run-python-tests" 
     - docker volume rm temp-shippable-volume
     - docker image rm shippable-python
