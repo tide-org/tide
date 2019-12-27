@@ -21,4 +21,5 @@ build:
     - docker volume ls
     - docker-compose -f $SHIPPABLE_BUILD_DIR/tests/docker/docker-compose-shippable.yml run -d --rm --service-ports test-python-tide sh -c "ls -alh /work && sleep 10" 
     - sleep 5
+    - docker-compose -f $SHIPPABLE_BUILD_DIR/tests/docker/docker-compose-shippable.yml logs
     - docker inspect docker_test-python-tide
