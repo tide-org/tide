@@ -8,6 +8,16 @@ services:
       dockerfile: ./docker/Dockerfile
     working_dir: /work
     tmpfs: /tests
+    environment:
+      - PYTHONPATH=/work
     volumes:
       - ../..:/work
       - ../../../tide-plugins/plugins:/work/plugins
+  test-python-tide-shippable:
+    build:
+      context: ..
+      dockerfile: ./docker/Dockerfile
+    working_dir: /work
+    tmpfs: /tests
+    volumes:
+      - /app:/app

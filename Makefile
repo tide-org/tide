@@ -2,11 +2,14 @@
 
 define DOCKER_COMPOSE
 docker-compose -f ./tests/docker/docker-compose.yml build
-docker-compose -f ./tests/docker/docker-compose.yml run --rm --service-ports test-python-tide 
+docker-compose -f ./tests/docker/docker-compose.yml run --rm --service-ports 
 endef
 
 tests:
-	$(DOCKER_COMPOSE) /work/tests/scripts/run-python-tests
+	$(DOCKER_COMPOSE) test-python-tide /work/tests/scripts/run-python-tests
+
+tests-shippable:
+	$(DOCKER_COMPOSE) test-python-tide-shippable /app/tests/scripts/run-python-tests
 
 clean:
 	rm -rf dist
@@ -18,16 +21,16 @@ git-install:
 	git submodule update
 
 build:
-	$(DOCKER_COMPOSE) /work/tests/scripts/run-build-package
+	$(DOCKER_COMPOSE) test-python-tide /work/tests/scripts/run-build-package
 
 upload:
-	$(DOCKER_COMPOSE) /work/tests/scripts/run-upload-package
+	$(DOCKER_COMPOSE) test-python-tide /work/tests/scripts/run-upload-package
 
 local-dev:
 	pip install -e .
 
 docker-dev:
-	$(DOCKER_COMPOSE) sh
+	$(DOCKER_COMPOSE) test-python-tide sh
 
 pylint:
 	docker run --rm -v $(PWD)/tide:/code eeacms/pylint --rcfile=/code/.pylintrc /code
