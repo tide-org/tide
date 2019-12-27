@@ -22,6 +22,6 @@ build:
     - docker rm temp-shippable-container
     - docker volume ls
     - docker build -t shippable-python - < tests/docker/Dockerfile
-    - docker run -it --rm shippable-python -v temp-shippable-volume:/work /work/tests/scripts/run-python-tests  
+    - docker run --rm shippable-python -v temp-shippable-volume:/work /work/tests/scripts/run-python-tests  
     - docker volume rm temp-shippable-volume
     - docker rm shippable-python
