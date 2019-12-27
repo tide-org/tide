@@ -22,6 +22,6 @@ build:
     - docker rm temp-shippable-container
     - docker volume ls
     - docker build -t shippable-python - < tests/docker/Dockerfile
-    - docker run --rm shippable-python -v temp-shippable-volume:/work sh -c "echo $PWD && ls -alh && find / -type d" 
+    - docker run --rm -v temp-shippable-volume:/work shippable-python sh -c "echo $PWD && ls -alh && find / -type d" 
     - docker volume rm temp-shippable-volume
     - docker rm shippable-python
