@@ -58,12 +58,13 @@ class vim81(editor_base):
         function_file_path = ''
         test_file_path = ''
         for functions_path in Cs.FUNCTIONS_LOCATION_ARRAY:
-            test_file_path = os.path.join(functions_path, function_file)
+            test_file_path = os.path.join(functions_path, function_file + ".vim")
+            print("TF: " + test_file_path)
             if os.path.isfile(test_file_path):
                 function_file_path = test_file_path
         if not function_file_path:
             function_file_path = test_file_path
-        vim.command("source " + function_file_path + ".vim")
+        vim.command("source " + function_file_path)
         try:
             vim.command("call " + function_file + "#" + function_name + "(" + str(safe_args_dict) + ")")
         except Exception as ex:
