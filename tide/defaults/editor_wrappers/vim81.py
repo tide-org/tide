@@ -59,7 +59,6 @@ class vim81(editor_base):
         test_file_path = ''
         for functions_path in Cs.FUNCTIONS_LOCATION_ARRAY:
             test_file_path = os.path.join(functions_path, function_file + ".vim")
-            print("TF: " + test_file_path)
             if os.path.isfile(test_file_path):
                 function_file_path = test_file_path
         if not function_file_path:
