@@ -26,7 +26,7 @@ class FilterConfigObject(filter_predicate_base):
         for pre_processor in pre_processors_config or []:
             key, value = list(pre_processor.items())[0]
             if key.lower() == 'split_by' and value:
-                pre_processors_list.append(lambda s, l, v=value: l.split(v) if isinstance(l, str) else l)
+                pre_processors_list.append(lambda l, v=value: l.split(v) if isinstance(l, str) else l)
         return pre_processors_list
 
     def __set_excluded(self):

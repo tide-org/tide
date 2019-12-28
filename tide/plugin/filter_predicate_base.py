@@ -65,11 +65,7 @@ class filter_predicate_base(object):
 
     def __run_pre_processors(self, lines):
         for processor in self.pre_processors:
-            arg_count = len(getargspec(processor).args)
-            if arg_count == 2:
-                lines = processor(lines)
-            if arg_count == 3:
-                lines = processor(self, lines)
+            lines = processor(lines)
         return lines
 
     def __run_post_processors(self, lines):
