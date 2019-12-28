@@ -65,3 +65,4 @@
 [x] fix tests
 [x] create a build pipeline in shippable.io and add shippable.yml to repo
 [x] rework stdio class and rename
+[x] fix window split in vgdb for test_c plugin
