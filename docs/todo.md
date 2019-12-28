@@ -1,4 +1,5 @@
 [ ] fix window split in vgdb for test_c plugin
+[ ] refactor vim81 run_editor_function
 [ ] implement plugins for go and python
 [ ] add more comprehensive tests
 [ ] look at implementing filters as regex in config where possible. look at lex language options where not possible
