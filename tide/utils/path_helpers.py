@@ -43,7 +43,7 @@ def get_paths_for_plugin(plugin_name):
         resolved_path = __resolve_plugin_path(plugin_name, config_path)
         if resolved_path:
             plugin_paths.append(resolved_path)
-    return plugin_paths
+    return list(set(plugin_paths))
 
 def find_process_path(find_full_proc_name, main_proc_name):
     if find_full_proc_name:
