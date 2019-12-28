@@ -1,7 +1,7 @@
 import tide.utils.python_files as Pf
 from tide.logging_decorator import logging
 from tide.utils.object_creator import create_object
-import tide.utils.config_source as Cs
+import tide.plugin.filter_config_object_list as Fc
 
 @logging
 def __get_filters_list():
@@ -9,7 +9,8 @@ def __get_filters_list():
     return Pf.get_filtered_list(filter_files, base_name=True)
 
 FILTERED_BUFFERS_LIST = __get_filters_list()
-FILTERED_BUFFERS_CONFIG_LIST = list(Cs.CONFIG_OBJECT.get('filters', {}).keys())
+FILTERED_BUFFERS_CONFIG_LIST = Fc.get_config_filters_list()
+FILTERED_BUFFER_OBJECTS_DICT = Fc.create_filter_object_dict()
 
 @logging
 def filter_lines_for_buffer(lines, buffer_name):
@@ -20,8 +21,11 @@ def filter_lines_for_buffer(lines, buffer_name):
 @logging
 def filter_string(lines, filter_name):
     if filter_name.lower() in FILTERED_BUFFERS_LIST:
-        buffer_filter = create_object(filter_name)
-        return buffer_filter(lines).processed_lines
+        buffer_filter = create_object(filter_name)()
+        buffer_filter.process(lines)
+        return buffer_filter.processed_lines
     if filter_name.lower() in FILTERED_BUFFERS_CONFIG_LIST:
-        pass
+        buffer_filter = FILTERED_BUFFER_OBJECTS_DICT[filter_name.lower()]
+        buffer_filter.process(lines)
+        return buffer_filter.processed_lines
     return lines

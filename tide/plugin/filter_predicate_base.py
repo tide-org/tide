@@ -1,10 +1,11 @@
-from abc import ABC, abstractmethod
+#from abc import ABC, abstractmethod
 import re
 from tide.config.config import Config
+from inspect import getargspec, getsource
 
-class filter_predicate_base(ABC):
+class filter_predicate_base(object):
 
-    def __init__(self, lines):
+    def process(self, lines):
         self.__get_set_matches(lines, self.line_matchers_pre)
         self.processed_lines = self.__process_lines(lines)
         self.__get_set_matches(self.processed_lines, self.line_matchers_post)
@@ -12,7 +13,9 @@ class filter_predicate_base(ABC):
     def __process_lines(self, lines):
         lines = self.__run_pre_processors(lines)
         lines = self.__check_for_excluded(lines)
+        print("lines: " + str(lines))
         lines = self.__run_formatters(lines)
+        print("lines: " + str(lines))
         lines = self.__run_post_processors(lines)
         return lines
 
@@ -25,6 +28,7 @@ class filter_predicate_base(ABC):
 
     def __run_formatters(self, lines):
         for formatter in self.line_formatters:
+            print("CODE: " + str(getsource(formatter)))
             single_formatter = []
             for line in lines:
                 tmp_line = formatter(line)
@@ -61,7 +65,11 @@ class filter_predicate_base(ABC):
 
     def __run_pre_processors(self, lines):
         for processor in self.pre_processors:
-            lines = processor(lines)
+            arg_count = len(getargspec(processor).args)
+            if arg_count == 2:
+                lines = processor(lines)
+            if arg_count == 3:
+                lines = processor(self, lines)
         return lines
 
     def __run_post_processors(self, lines):
