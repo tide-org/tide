@@ -1,6 +1,6 @@
 import tide.utils.config_source as Cs
 from tide.plugin.filter_predicate_base import filter_predicate_base
-
+import re
 
 class FilterConfigObject(filter_predicate_base):
 
@@ -42,7 +42,8 @@ class FilterConfigObject(filter_predicate_base):
             key, value = list(line_formatter.items())[0]
             if key.lower() == 'replace' and value and isinstance(value, list):
                 line_formatters_list.append(lambda l, v0=value[0], v1=value[1]: l.replace(v0, v1))
-        #print("LFO: " + str(line_formatters_list))
+            if key.lower() == 'regex_capture' and isinstance(value, list):
+                line_formatters_list.append(lambda l, v0=value[0], v1=value[1]: re.search(v0, l).group(v1) if re.search(v0, l) else '')
         return line_formatters_list
 
     def __set_line_matchers_post(self):

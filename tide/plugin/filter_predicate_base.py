@@ -1,7 +1,7 @@
-#from abc import ABC, abstractmethod
 import re
 from tide.config.config import Config
 from inspect import getargspec, getsource
+import inspect
 
 class filter_predicate_base(object):
 
@@ -13,9 +13,9 @@ class filter_predicate_base(object):
     def __process_lines(self, lines):
         lines = self.__run_pre_processors(lines)
         lines = self.__check_for_excluded(lines)
-        print("lines: " + str(lines))
+        #print("lines: BF:" + str(lines))
         lines = self.__run_formatters(lines)
-        print("lines: " + str(lines))
+        #print("lines: AF:" + str(lines))
         lines = self.__run_post_processors(lines)
         return lines
 
@@ -28,7 +28,9 @@ class filter_predicate_base(object):
 
     def __run_formatters(self, lines):
         for formatter in self.line_formatters:
-            print("CODE: " + str(getsource(formatter)))
+            #print("CODE:   " + str(getsource(formatter)))
+            #print("ARG:    " + str(getargspec(formatter).args))
+            #print("PARAMS: " + str(inspect.signature(formatter).parameters.items()))
             single_formatter = []
             for line in lines:
                 tmp_line = formatter(line)
