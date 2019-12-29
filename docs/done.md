@@ -67,3 +67,4 @@
 [x] rework stdio class and rename
 [x] fix window split in vgdb for test_c plugin
 [x] fix the excluded_lines not working
+[x] look at implementing filters as regex in config where possible. look at lex language options where not possible
