@@ -10,6 +10,7 @@ class ConfigCommandItem(object):
     _event_input_args = {}
     _base_command = ''
     _buffer_name = ''
+    _calling_buffer_name = ''
     _event_name = ''
     _user_command_args = []
 
@@ -28,6 +29,14 @@ class ConfigCommandItem(object):
     @buffer_name.setter
     def buffer_name(self, value):
         self._buffer_name = value
+
+    @property
+    def calling_buffer_name(self):
+        return self._buffer_name
+
+    @calling_buffer_name.setter
+    def calling_buffer_name(self, value):
+        self._calling_buffer_name = value
 
     @property
     def event_input_args(self):
