@@ -5,13 +5,14 @@ import re
 class FilterConfigObject(filter_predicate_base):
 
     def __init__(self, filter_name):
+        self.__filter_name = filter_name
         self.__filter_config = Cs.CONFIG_OBJECT.get('filters', {}).get(filter_name, {})
-        self.__fco_pre_processors = self.__set_pre_processors()
         self.__fco_excluded_lines = self.__set_excluded_lines()
+        self.__fco_pre_processors = self.__set_pre_processors()
         self.__fco_line_formatters = self.__set_line_formatters()
         self.__set_post_processors()
-        self.__set_line_matchers_post()
-        self.__fco_line_matchers_pre = self.__set_line_matchers_pre()
+        #self.__fco_line_matchers_post = self.__set_line_matchers("line_matchers_post")
+        self.__fco_line_matchers_pre = self.__set_line_matchers("line_matchers_pre")
 
     @property
     def pre_processors(self):
@@ -29,6 +30,10 @@ class FilterConfigObject(filter_predicate_base):
     def line_matchers_pre(self):
         return self.__fco_line_matchers_pre
 
+    #@property
+    #def line_matchers_post(self):
+    #    return self.__fco_line_matchers_post
+
     def __set_pre_processors(self):
         pre_processors_config = self.__filter_config.get("pre_processors", [])
         pre_processors_list = []
@@ -39,7 +44,7 @@ class FilterConfigObject(filter_predicate_base):
         return pre_processors_list
 
     def __set_excluded_lines(self):
-        excluded_lines_config = self.__filter_config.get("pre_processors", [])
+        excluded_lines_config = self.__filter_config.get("excluded_lines", [])
         excluded_lines_list = []
         for excluded_line in excluded_lines_config or []:
             excluded_lines_list.append(excluded_line)
@@ -67,18 +72,15 @@ class FilterConfigObject(filter_predicate_base):
                 line_formatters_list.append(lambda l, v0=value[0], v1=value[1]: v1 + l if v0.lower() == 'left' else l + v1 if v0.lower() == 'right' else l)
         return line_formatters_list
 
-    def __set_line_matchers_post(self):
-        pass
-
-    def __set_line_matchers_pre(self):
-        line_matchers_pre_config = self.__filter_config.get("line_matchers_pre", [])
-        line_formatters_pre_list = []
-        for line_formatter in line_formatters_config or []:
+    def __set_line_matchers(self, filter_config_matcher_name):
+        line_matchers_config = self.__filter_config.get(filter_config_matcher_name, [])
+        line_matchers_list = []
+        for line_formatter in line_matchers_config or []:
             key, value = list(line_formatter.items())[0]
-            line_formatters_pre_list.append({
-                'variable': key,
-                'regex': value.get('regex', '')
-                'type': value.get('type', '')
+            line_matchers_list.append({
+                'variable_name': key,
+                'regex': value.get('regex', ''),
+                'type': value.get('type', ''),
                 'description': value.get('description' '')
             })
-        return line_matchers_pre
+        return line_matchers_list

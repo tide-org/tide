@@ -20,8 +20,8 @@ class filter_predicate_base(object):
         return lines
 
     def __check_for_excluded(self, lines):
-        for line in lines:
-            for excluded_line in self.excluded_lines:
+        for excluded_line in self.excluded_lines:
+            for line in lines:
                 if excluded_line in line:
                     lines.remove(line)
         return lines

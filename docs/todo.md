@@ -1,4 +1,5 @@
 [ ] look at implementing filters as regex in config where possible. look at lex language options where not possible
+[ ] prevent new objects being created every time the filters are run
 [ ] refactor vim81 run_editor_function
 [ ] implement plugins for go and python
 [ ] add more comprehensive tests
