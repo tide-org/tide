@@ -3,6 +3,8 @@
 [ ] refactor vim81 run_editor_function
 [ ] refactor filter modules to separate directory
 [ ] use __init__.py files for imports
+[ ] test on linux
+[ ] get working on windows (maybe)
 [ ] implement plugins for go and python
 [ ] add more comprehensive tests
 [ ] refactor config_command_buffer to not require so many variables
