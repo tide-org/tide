@@ -18,7 +18,7 @@ build:
     - docker cp $SHIPPABLE_BUILD_DIR temp-shippable-container:/app
     - docker rm temp-shippable-container
     - docker volume ls
-    - docker build -t shippable-python - < tests/docker/Dockerfile
+    - docker build -t shippable-python - < tests/docker/Dockerfile-tests
     - >- 
         docker run --rm \
           -v temp-shippable-volume:/work \

@@ -4,10 +4,9 @@ services:
 
   test-python-tide:
     build:
-      context: ..
-      dockerfile: ./docker/Dockerfile
-    working_dir: /work/tide
-    tmpfs: /tests
+      context: ../docker
+      dockerfile: Dockerfile-tests
+    working_dir: /work/tide/tests/scripts
     environment:
       - PYTHONPATH=/work/tide
     volumes:
