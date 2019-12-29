@@ -1,7 +1,7 @@
 from tide.config.config import Config
 from tide.command.command_action import CommandAction
 
-class ConfigConverter(object):
+class ConfigConverter:
 
     def __init__(self, base_command, buffer_name, event_name):
         self.__base_command = base_command
@@ -26,3 +26,4 @@ class ConfigConverter(object):
             for event_command in event_command_list:
                 if event_command["command"] == self.__base_command:
                     return event_command.get("input_args", [])
+        return None

@@ -1,11 +1,10 @@
 import traceback
 import pexpect
-from tide.logging_decorator import logging
 from tide.utils.singleton import singleton
 import tide.utils.path_helpers as Ph
 
 @singleton
-class CommandProcess(object):
+class CommandProcess:
 
     def __init__(self, config_settings):
         self.__settings = config_settings

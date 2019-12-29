@@ -3,7 +3,7 @@ from tide.config.config import Config
 from tide.tide_action.tide_action_single_command import TideActionSingleCommand
 
 @logging
-class TideActionBufferCommands(object):
+class TideActionBufferCommands:
 
     def __init__(self):
         self.__single_command = TideActionSingleCommand()

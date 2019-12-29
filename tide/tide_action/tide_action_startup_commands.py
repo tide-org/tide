@@ -4,7 +4,7 @@ from tide.tide_action.tide_action_single_command import TideActionSingleCommand
 from tide.tide_action.tide_action_buffer_commands import TideActionBufferCommands
 
 @logging
-class TideActionStartupCommands(object):
+class TideActionStartupCommands:
 
     def __init__(self):
         self.__single_command = TideActionSingleCommand()

@@ -68,3 +68,5 @@
 [x] fix window split in vgdb for test_c plugin
 [x] fix the excluded_lines not working
 [x] look at implementing filters as regex in config where possible. look at lex language options where not possible
+[n] prevent new objects being created every time the filters are run - use dict like for config filters
+[x] fix pylint container

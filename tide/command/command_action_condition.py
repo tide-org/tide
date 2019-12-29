@@ -2,7 +2,7 @@ from tide.config.config import Config
 from tide.logging_decorator import logging
 
 @logging
-class CommandActionCondition(object):
+class CommandActionCondition:
 
     def __init__(self):
         self.__when_condition = ''

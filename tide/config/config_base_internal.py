@@ -1,7 +1,7 @@
 from tide.logging_decorator import logging
 
 @logging
-class ConfigBaseInternal(object):
+class ConfigBaseInternal:
 
     def get_internal(self):
         return self._config_dictionary.get("internal", {})

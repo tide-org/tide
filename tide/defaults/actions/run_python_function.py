@@ -3,7 +3,6 @@ import importlib
 from tide.config.config import Config
 from tide.plugin.action_base import action_base
 import tide.utils.interpolate as Interpolate
-from tide.utils.object_creator import create_object
 
 class run_python_function(action_base):
 
@@ -19,8 +18,8 @@ class run_python_function(action_base):
     _function = None
     _interpolated_input_args = {}
 
-    def run(self, command_item, buffer_name='', command_args={}):
-        self.__set_locals(command_item, buffer_name, command_args)
+    def run(self, command_item, buffer_name='', command_args=None):
+        self.__set_locals(command_item, buffer_name, command_args or {})
         self.__set_function_module_locals()
         self.__update_command_args()
         self.__run_function_update_variable()

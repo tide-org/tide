@@ -1,13 +1,11 @@
-import fileinput
-import os
-from threading import Thread
-from stdio_lib.message_container import MessageContainer
-from tide.utils.singleton import singleton
-from tide import Tide
 import json
 import sys
 from io import StringIO
 from time import sleep
+from threading import Thread
+from stdio_lib.message_container import MessageContainer
+from tide.utils.singleton import singleton
+from tide import Tide
 import tide.utils.config_source as Cs
 
 LOOP_SLEEP_SECONDS = 0.01
@@ -40,14 +38,14 @@ def editor_request_loop(messages, stop_loop):
 def send_message_ack(request):
     event_id = request.get("event_id", "")
     command_action = request.get("command", {}).get("action", "")
-    response_object = {'command': {'action': command_action , 'value': ''}, 'has_callback': False, 'sender': 'tide', 'receiver': 'editor', 'event_id': event_id}
+    response_object = {'command': {'action': command_action, 'value': ''}, 'has_callback': False, 'sender': 'tide', 'receiver': 'editor', 'event_id': event_id}
     io = StringIO()
     json.dump(response_object, io)
     print(io.getvalue() + "\n", flush=True)
 
 
 @singleton
-class ThreadWrapper(object):
+class ThreadWrapper:
 
     def __init__(self):
         self.daemonise = Cs.CONFIG_OBJECT.get("variables", {}).get("tide_test_mode_daemonise", False)

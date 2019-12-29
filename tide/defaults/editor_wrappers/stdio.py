@@ -29,12 +29,12 @@ class stdio(editor_base):
     def get_current_buffer_line(self):
         return MessageSender.run_synchronous_message_event("get_current_buffer_line")
 
-    def run_editor_function(self, function_file, function_name, function_args={}):
+    def run_editor_function(self, function_file, function_name, function_args=None):
         return MessageSender.run_synchronous_message_event(
             'editor_function', {
                 'function_file': function_file,
                 'function_name': function_name,
-                'function_args': function_args
+                'function_args': function_args or {}
             })
 
     def send_message_to_editor(self, message_object):

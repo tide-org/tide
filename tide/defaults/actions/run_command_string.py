@@ -9,3 +9,4 @@ class run_command_string(action_base):
         variable_value = Config().get_variable(variable_name)
         if variable_value:
             return CommandHandler().run_command(variable_value, buffer_name)
+        return None

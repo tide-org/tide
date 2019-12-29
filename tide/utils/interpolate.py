@@ -8,3 +8,4 @@ def interpolate_variables(message):
     config_variables = Config().get_variables()
     if config_variables:
         return template.render(config_variables)
+    return None

@@ -1,6 +1,6 @@
+import re
 import tide.utils.config_source as Cs
 from tide.plugin.filter_predicate_base import filter_predicate_base
-import re
 
 class FilterConfigObject(filter_predicate_base):
 
@@ -11,7 +11,7 @@ class FilterConfigObject(filter_predicate_base):
         self.__fco_pre_processors = self.__set_pre_processors()
         self.__fco_line_formatters = self.__set_line_formatters()
         self.__set_post_processors()
-        #self.__fco_line_matchers_post = self.__set_line_matchers("line_matchers_post")
+        self.__fco_line_matchers_post = self.__set_line_matchers("line_matchers_post")
         self.__fco_line_matchers_pre = self.__set_line_matchers("line_matchers_pre")
 
     @property
@@ -30,9 +30,9 @@ class FilterConfigObject(filter_predicate_base):
     def line_matchers_pre(self):
         return self.__fco_line_matchers_pre
 
-    #@property
-    #def line_matchers_post(self):
-    #    return self.__fco_line_matchers_post
+    @property
+    def line_matchers_post(self):
+        return self.__fco_line_matchers_post
 
     def __set_pre_processors(self):
         pre_processors_config = self.__filter_config.get("pre_processors", [])
@@ -60,14 +60,14 @@ class FilterConfigObject(filter_predicate_base):
             key, value = list(line_formatter.items())[0]
             key_lower = key.lower()
             value_is_list = isinstance(value, list)
-            if key_lower == 'replace' and value_is_list: 
+            if key_lower == 'replace' and value_is_list:
                 line_formatters_list.append(lambda l, v0=value[0], v1=value[1]: l.replace(v0, v1))
             if key_lower == 'regex_capture' and value_is_list:
                 line_formatters_list.append(lambda l, v0=value[0], v1=value[1]: re.search(v0, l).group(v1) if re.search(v0, l) else '')
             if key_lower == 'cut' and value_is_list:
                 line_formatters_list.append(lambda l, v0=value[0], v1=value[1]: l[v0 or None:v1 or None])
             if key_lower == 'trim' and value_is_list:
-                line_formatters_list.append(lambda l, v0=value[0], v1=value[1]: l.rstrip(v1 or None) if v0.lower() == 'right' else l.lstrip(v1 or None) if v0.lower() == 'left' else l.strip(v1 or None) )
+                line_formatters_list.append(lambda l, v0=value[0], v1=value[1]: l.rstrip(v1 or None) if v0.lower() == 'right' else l.lstrip(v1 or None) if v0.lower() == 'left' else l.strip(v1 or None))
             if key_lower == 'add' and value_is_list:
                 line_formatters_list.append(lambda l, v0=value[0], v1=value[1]: v1 + l if v0.lower() == 'left' else l + v1 if v0.lower() == 'right' else l)
         return line_formatters_list

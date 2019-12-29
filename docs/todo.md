@@ -1,4 +1,5 @@
-[ ] prevent new objects being created every time the filters are run - use dict like for config filters
+[ ] untangle config_source path_hlpers cyclic dependency
+[ ] move command_action_condition and command_action_converter to config_command path
 [ ] refactor vim81 run_editor_function
 [ ] implement plugins for go and python
 [ ] add more comprehensive tests

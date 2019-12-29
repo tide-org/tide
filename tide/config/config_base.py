@@ -4,7 +4,7 @@ import tide.utils.config_source as Cs
 from tide.logging_decorator import logging
 
 @logging
-class ConfigBase(object):
+class ConfigBase:
 
     def __init__(self, editor_wrapper_name=''):
         self._config_dictionary = None

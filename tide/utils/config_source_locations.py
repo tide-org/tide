@@ -1,7 +1,6 @@
 from os.path import abspath, isdir, join
-import tide.utils.path_helpers as Ph
 from yamlreader import yaml_load
-import tide.utils.sys_path_container as SPC
+import tide.utils.path_helpers as Ph
 import tide.utils.config_source_location as CSL
 
 __CONFIG_DEFAULTS_FILE = "defaults/default_config.yaml"

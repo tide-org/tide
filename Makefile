@@ -30,4 +30,4 @@ docker-dev:
 	$(DOCKER_COMPOSE) test-python-tide sh
 
 pylint:
-	docker run --rm -v $(PWD)/tide:/code eeacms/pylint --rcfile=/code/.pylintrc /code
+	$(DOCKER_COMPOSE) pylint pylint *

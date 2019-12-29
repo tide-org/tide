@@ -1,7 +1,7 @@
 from tide.logging_decorator import logging
 
 @logging
-class ConfigBaseVariables(object):
+class ConfigBaseVariables:
 
     def get_variables(self):
         return self._config_dictionary.get("variables", {})

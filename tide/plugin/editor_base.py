@@ -24,6 +24,6 @@ class editor_base(ABC):
         raise NotImplementedError('send_message_to_editor() must be implemented')
 
     @abstractmethod
-    def stop_tide():
+    def stop_tide(self):
         # does not need to be concrete for every implementation of editor
         pass

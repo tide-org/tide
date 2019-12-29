@@ -1,10 +1,9 @@
 from tide.config.config import Config
-from tide.command.command_action import CommandAction
-from logging_decorator import logging
+from tide.logging_decorator import logging
 from tide.config_command.config_converter import ConfigConverter
 
 @logging
-class ConfigCommandItem(object):
+class ConfigCommandItem:
 
     _command = ''
     _event_input_args = {}
@@ -83,5 +82,4 @@ class ConfigCommandItem(object):
 
     def __set_config_for_user_command_args(self):
         if self._user_command_args:
-            Config().set_variable("user_input_args"," ".join(self._user_command_args))
-
+            Config().set_variable("user_input_args", " ".join(self._user_command_args))

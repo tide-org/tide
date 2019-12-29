@@ -1,19 +1,16 @@
 import traceback
 from tide.utils.singleton import singleton
-from tide.config.config import Config
-from tide.config_command.config_command_item import ConfigCommandItem
 from tide.command.command_process import CommandProcess
 from tide.command.command_output import CommandOutput
 from tide.command.command_process_config import CommandProcessConfig
-from tide.logging_decorator import logging
 
 @singleton
-class CommandHandler(object):
+class CommandHandler:
 
     def __init__(self):
         self._child = None
         self.__command_output = CommandOutput()
-        self.__command_process_config = CommandProcessConfig() 
+        self.__command_process_config = CommandProcessConfig()
         self.__command_process = CommandProcess(self.__command_process_config)
 
     def spawn_process(self, startup_commands):

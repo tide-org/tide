@@ -1,6 +1,6 @@
 import json
 
-class MessageContainer(object):
+class MessageContainer:
 
     tide_callback_messages = {}
 
@@ -39,3 +39,4 @@ class MessageContainer(object):
         if len(self.editor_callback_messages) > 0:
             key = list(self.editor_callback_messages.keys())[0]
             return self.editor_callback_messages.pop(key)
+        return None

@@ -2,7 +2,7 @@ from tide.config.config import Config
 from tide.logging_decorator import logging
 
 @logging
-class ConfigCommandBufferCache(object):
+class ConfigCommandBufferCache:
 
     def __init__(self, buffer_name):
         self.__error_line = "no buffer name found. command_action_name: {ca_type} command_action: {ca_dict}"

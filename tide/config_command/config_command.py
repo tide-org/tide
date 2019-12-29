@@ -5,7 +5,7 @@ from tide.command.command_action_condition import CommandActionCondition
 from tide.command.command_action_converter import CommandActionConverter
 
 @logging
-class ConfigCommand(object):
+class ConfigCommand:
 
     def __init__(self):
         self.__condition = CommandActionCondition()

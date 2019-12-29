@@ -17,13 +17,13 @@ class ActionableDict(dict):
         else:
             _value = value
         super(ActionableDict, self).__setitem__(item, _value)
-        if self.callback != None:
+        if self.callback is not None:
             self.callback(self.__traverse_parents(item), _value)
 
     def __traverse_parents(self, item):
         test_item = self
         parent_keys = [item]
-        while hasattr(test_item, 'parent') and test_item.parent != None:
+        while hasattr(test_item, 'parent') and test_item.parent is not None:
             for key, value in test_item.parent.items():
                 if value == test_item:
                     parent_keys.append(key)

@@ -1,7 +1,7 @@
 from logging_decorator import logging
 
 @logging
-class CommandAction(object):
+class CommandAction:
 
     def __init__(self, command_action, buffer_name):
         self.__command_action = command_action

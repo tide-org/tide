@@ -1,15 +1,9 @@
-import importlib
-import sys
-import os
-from os import listdir
-from os.path import isfile, join
-from pathlib import Path
 from logging_decorator import logging
 import tide.utils.python_files as Pf
 from tide.utils.object_creator import create_object
 
 @logging
-class EditorWrapper(object):
+class EditorWrapper:
 
     _editor_name = ''
     _editor_object = None
@@ -45,8 +39,8 @@ class EditorWrapper(object):
     def get_current_buffer_line(self):
         return self._editor_object.get_current_buffer_line(self._editor_object)
 
-    def run_editor_function(self, function_file, function_name, args_dict={}):
-        return self._editor_object.run_editor_function(self._editor_object, function_file, function_name, args_dict)
+    def run_editor_function(self, function_file, function_name, args_dict=None):
+        return self._editor_object.run_editor_function(self._editor_object, function_file, function_name, args_dict or {})
 
     def send_message_to_editor(self, message_object):
         return self._editor_object.send_message_to_editor(self._editor_object, message_object)

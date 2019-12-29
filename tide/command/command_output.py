@@ -4,7 +4,7 @@ from tide.config.config import Config
 from tide.logging_decorator import logging
 
 @logging
-class CommandOutput(object):
+class CommandOutput:
 
     def handle_output_filtering(self, buffer_name='', output_string=''):
         Log.write_to_log(output_string)

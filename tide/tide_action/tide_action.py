@@ -8,7 +8,7 @@ from tide.tide_action.tide_action_startup_commands import TideActionStartupComma
 from tide.tide_action.tide_action_single_command import TideActionSingleCommand
 
 @logging
-class TideAction(object):
+class TideAction:
 
     def __init__(self, editor_wrapper_name):
         Config(editor_wrapper_name)

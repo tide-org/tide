@@ -1,6 +1,6 @@
 from tide.config.config import Config
 
-class CommandProcessConfig(object):
+class CommandProcessConfig:
 
     def __init__(self):
         self.default_args = Config().get_setting("process", "main_process_default_arguments")

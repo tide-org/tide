@@ -7,7 +7,7 @@ from tide.utils.singleton import singleton
 from tide_action.tide_action import TideAction
 
 @singleton
-class Tide(object):
+class Tide:
 
     def __init__(self, editor_wrapper_name=''):
         self.__tide_action = TideAction(editor_wrapper_name)

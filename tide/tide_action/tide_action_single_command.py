@@ -4,7 +4,7 @@ from tide.config_command.config_command_item import ConfigCommandItem
 from tide.config.config import Config
 
 @logging
-class TideActionSingleCommand(object):
+class TideActionSingleCommand:
 
     def run(self, command, buffer_name='', event_name=''):
         if command:

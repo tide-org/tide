@@ -1,4 +1,4 @@
-class CommandActionConverter(object):
+class CommandActionConverter:
 
     def __init__(self):
         pass

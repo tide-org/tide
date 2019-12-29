@@ -1,7 +1,7 @@
 from tide.logging_decorator import logging
 
 @logging
-class ConfigBaseBuffers(object):
+class ConfigBaseBuffers:
 
     def get_buffer(self, buffer_name):
         return self._config_dictionary.get("buffers", {}).get(buffer_name, {})
