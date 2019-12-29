@@ -13,7 +13,7 @@ def __resolve_plugin_path(plugin_name, config_path):
         return abspath(start_path)
     if start_path:
         plugin_path = __get_plugin_path(start_path, config_path)
-        if isdir(plugin_path):
+        if plugin_path and isdir(plugin_path):
             return abspath(plugin_path)
 
 def __validate_plugin_name(plugin_name):
@@ -31,7 +31,6 @@ def __get_plugin_path(start_path, config_path):
     trimmed_path = join(dirname(config_path), start_path)
     if isdir(trimmed_path):
         return trimmed_path
-    raise RuntimeError(f"error: unable to get plugin path for: {str(config_path)} and: {str(start_path)}")
 
 def get_python_scripts_base_path():
     return abspath(join(dirname(os.path.realpath(__file__)), ".."))
