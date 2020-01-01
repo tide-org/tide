@@ -4,6 +4,7 @@
 [ ] refactor filter modules to separate directory
 [ ] use __init__.py files for imports
 [ ] test on linux
+[ ] have option to send partial updates to editor to prevents large payloads across the wire
 [ ] get working on windows (maybe)
 [ ] implement plugins for go and python
 [ ] add more comprehensive tests
