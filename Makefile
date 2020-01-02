@@ -6,7 +6,7 @@ docker-compose -f ./tests/docker/docker-compose.yml run --rm --service-ports
 endef
 
 tests:
-	$(DOCKER_COMPOSE) test-python-tide ./run-python-tests
+	$(DOCKER_COMPOSE) test ./run-python-tests
 
 clean:
 	rm -rf dist
@@ -18,16 +18,16 @@ git-install:
 	git submodule update
 
 build:
-	$(DOCKER_COMPOSE) test-python-tide ./run-build-package
+	$(DOCKER_COMPOSE) test ./run-build-package
 
 upload:
-	$(DOCKER_COMPOSE) test-python-tide ./run-upload-package
+	$(DOCKER_COMPOSE) test ./run-upload-package
 
 local-dev:
 	pip install -e .
 
 docker-dev:
-	$(DOCKER_COMPOSE) test-python-tide sh
+	$(DOCKER_COMPOSE) test sh
 
 pylint:
 	$(DOCKER_COMPOSE) pylint pylint *

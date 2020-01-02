@@ -2,7 +2,7 @@ import os
 import shutil
 from os.path import abspath, join, isdir, dirname
 from yamlreader import yaml_load
-import tide.utils.config_source as Cs
+import tide.utils.config_source_config as CSC
 
 VALID_PLUGIN_NAMES = ['actions', 'config', 'editor_wrappers', 'filters', 'functions', 'templates']
 
@@ -33,13 +33,10 @@ def __get_plugin_path(start_path, config_path):
         return trimmed_path
     return None
 
-def get_python_scripts_base_path():
-    return abspath(join(dirname(os.path.realpath(__file__)), ".."))
-
 def get_paths_for_plugin(plugin_name):
     __validate_plugin_name(plugin_name)
     plugin_paths = []
-    for config_path in Cs.CONFIG_LOCATION_ARRAY:
+    for config_path in CSC.get_all_config_locations():
         resolved_path = __resolve_plugin_path(plugin_name, config_path)
         if resolved_path:
             plugin_paths.append(resolved_path)

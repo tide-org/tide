@@ -1,6 +1,5 @@
-from os.path import abspath, isdir, join
+from os.path import abspath, isdir, join, dirname, realpath
 from yamlreader import yaml_load
-import tide.utils.path_helpers as Ph
 import tide.utils.config_source_location as CSL
 
 __CONFIG_DEFAULTS_FILE = "defaults/default_config.yaml"
@@ -29,5 +28,14 @@ def get_all_config_locations():
             base_config_path = temp_config_path
         else:
             break
-    config_locations.append(join(Ph.get_python_scripts_base_path(), __CONFIG_DEFAULTS_FILE))
+    config_locations.append(join(abspath(join(dirname(realpath(__file__)), "..")), __CONFIG_DEFAULTS_FILE))
     return config_locations[::-1]
+
+def get_all_configs():
+    full_config = {}
+    for config_path in get_all_config_locations():
+        if not full_config:
+            full_config = yaml_load(config_path)
+        else:
+            full_config = yaml_load(config_path, full_config)
+    return full_config

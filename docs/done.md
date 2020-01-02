@@ -69,4 +69,5 @@
 [x] fix the excluded_lines not working
 [x] look at implementing filters as regex in config where possible. look at lex language options where not possible
 [n] prevent new objects being created every time the filters are run - use dict like for config filters
+[x] untangle config_source path_hlpers cyclic dependency
 [x] fix pylint container

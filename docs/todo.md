@@ -1,4 +1,3 @@
-[ ] untangle config_source path_hlpers cyclic dependency
 [ ] move command_action_condition and command_action_converter to config_command path
 [ ] refactor vim81 run_editor_function
 [ ] refactor filter modules to separate directory
