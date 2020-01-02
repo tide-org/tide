@@ -4,7 +4,7 @@ import pytest
 os.environ["TIDE_CONFIG_LOCATION"] = "/work/tide/plugins/plugins/tests/test_hello_4"
 from pytest_tests import setup_tests
 from tide.config.config import Config
-from tide.command.command_action import CommandAction
+from tide.command_action.command_action import CommandAction
 
 
 def test_does_not_raise_exception_on_initialisation():

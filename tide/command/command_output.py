@@ -26,8 +26,5 @@ class CommandOutput:
     def __handle_output_for_errors(self, lines):
         if self.__error_filter_name:
             lines = Filter.filter_string(lines, self.__error_filter_name)
-        self.__add_lines_to_error_buffer(lines)
-
-    def __add_lines_to_error_buffer(self, lines):
         if lines and self.__error_buffer_name:
             Config().set_internal_buffer_cache(self.__error_buffer_name, lines)

@@ -1,8 +1,8 @@
 import tide.plugin.action as Action
 from tide.logging_decorator import logging
 from tide.config_command.config_command_buffer_cache import ConfigCommandBufferCache
-from tide.command.command_action_condition import CommandActionCondition
-from tide.command.command_action_converter import CommandActionConverter
+from tide.command_action.command_action_condition import CommandActionCondition
+from tide.command_action.command_action_converter import CommandActionConverter
 
 @logging
 class ConfigCommand:

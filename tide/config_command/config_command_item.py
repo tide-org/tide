@@ -66,7 +66,7 @@ class ConfigCommandItem:
     @property
     def command_action_list(self):
         convert = ConfigConverter(self._base_command, self._buffer_name, self._event_name)
-        return convert.to_action_list()
+        return convert.to_command_action_list()
 
     def __split_command(self, value):
         split_command = value.split(' ')

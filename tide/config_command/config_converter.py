@@ -1,5 +1,5 @@
 from tide.config.config import Config
-from tide.command.command_action import CommandAction
+from tide.command_action.command_action import CommandAction
 
 class ConfigConverter:
 
@@ -8,7 +8,7 @@ class ConfigConverter:
         self.__buffer_name = buffer_name
         self.__event_name = event_name
 
-    def to_action_list(self):
+    def to_command_action_list(self):
         command_action_list = Config().get_command_steps(self.__base_command)
         updated_command_action_list = []
         for command_action_config in command_action_list:
