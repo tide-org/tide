@@ -1,11 +1,7 @@
 import os
 import tide.utils.config_source as Cs
 from tide.plugin.editor_base import editor_base
-
-try:
-    import vim
-except:
-    pass
+import vim
 
 
 class vim81(editor_base):
@@ -24,17 +20,11 @@ class vim81(editor_base):
         if isinstance(value, str):
             string_value = "'" + string_value + "'"
         let_string += " = " + string_value
-        try:
-            vim.command(let_string)
-        except:
-            pass
+        vim.command(let_string)
 
     def set_editor_dictionary(self, config_dictionary):
         config_string = self.__string_replace_for_vim(self, config_dictionary)
-        try:
-            vim.command("let g:vg_config_dictionary = " + config_string)
-        except:
-            pass
+        vim.command("let g:vg_config_dictionary = " + config_string)
 
     def __string_replace_for_vim(self, string_value):
         for match, replacement in self._replacement_dictionary.items():
@@ -42,16 +32,10 @@ class vim81(editor_base):
         return string_value
 
     def get_current_buffer_name(self):
-        try:
-            return vim.eval('expand("%")')
-        except:
-            pass
+        return vim.eval('expand("%")')
 
     def get_current_buffer_line(self):
-        try:
-            return vim.eval('line(".")')
-        except:
-            pass
+        return vim.eval('line(".")')
 
     def run_editor_function(self, function_file, function_name, args_dict={}):
         safe_args_dict = self.__string_replace_for_vim(self, args_dict)

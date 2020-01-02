@@ -1,5 +1,5 @@
 import tide.plugin.filter as Filter
-import log as Log
+import tide.log as Log
 from tide.config.config import Config
 from tide.logging_decorator import logging
 

@@ -72,3 +72,5 @@
 [x] untangle config_source path_hlpers cyclic dependency
 [x] fix pylint container
 [n] move command_action_condition and command_action_converter to config_command path
+[x] refactor vim81 run_editor_function
+[n] refactor filter modules to separate directory
