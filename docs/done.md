@@ -71,3 +71,4 @@
 [n] prevent new objects being created every time the filters are run - use dict like for config filters
 [x] untangle config_source path_hlpers cyclic dependency
 [x] fix pylint container
+[n] move command_action_condition and command_action_converter to config_command path
