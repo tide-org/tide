@@ -1,6 +1,5 @@
-[ ] implement plugins for go and python
-[ ] add more comprehensive tests
-[ ] refactor config_command_buffer to not require so many variables
+[ ] implement plugin for python
+[ ] implement plugin for go
 [ ] use __init__.py files for imports
 [ ] have option to send partial updates to editor to prevents large payloads across the wire
 [ ] test on linux

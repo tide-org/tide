@@ -74,3 +74,5 @@
 [n] move command_action_condition and command_action_converter to config_command path
 [x] refactor vim81 run_editor_function
 [n] refactor filter modules to separate directory
+[x] add more comprehensive tests (some, not all done)
+[x] refactor config_command_buffer to not require so many variables
