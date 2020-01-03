@@ -1,10 +1,4 @@
 fileignoreconfig:
-- filename: bin/dev-environment
-  checksum: 0fee5970805375664a6c7805c0c247c594ac2bf4777180a8057116c4ea070c4a
-  ignore_detectors: []
-scopeconfig: []
-
-fileignoreconfig:
 - filename: docs/todo.md
   checksum: e050fddf459a03fab7ae2de1af984d3d0b24962bfe36c5eaf5f86a24beb70ea3
   ignore_detectors: []
@@ -13,5 +7,11 @@ scopeconfig: []
 fileignoreconfig:
 - filename: shippable.yml
   checksum: d7b30601d629760035befdb3ccb6f3c7b0eeb5af44de024efae1d0a5228c7191
+  ignore_detectors: []
+scopeconfig: []
+
+fileignoreconfig:
+- filename: Makefile
+  checksum: 3f68d835993adbc3e20650992cb11517647faf0925165315e62679cf0d2d712d
   ignore_detectors: []
 scopeconfig: []
