@@ -15,3 +15,9 @@ fileignoreconfig:
   checksum: 3f68d835993adbc3e20650992cb11517647faf0925165315e62679cf0d2d712d
   ignore_detectors: []
 scopeconfig: []
+
+fileignoreconfig:
+- filename: Makefile
+  checksum: 0d8bfe287a1177cd8edff1087aea26c60ae6ff4ae5937ec657d3478cdf6ce262
+  ignore_detectors: []
+scopeconfig: []
