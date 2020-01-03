@@ -1,6 +1,5 @@
 import sys
 import tide.utils.path_helpers as Ph
-import tide.utils.config_source_location as CSL
 import tide.utils.config_source_config as CSC
 import tide.utils.sys_path_container as SPC
 

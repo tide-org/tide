@@ -9,7 +9,7 @@ class ConfigBase:
     def __init__(self, editor_wrapper_name=''):
         self._config_dictionary = None
         self.__editor_wrapper_name = editor_wrapper_name or Cs.CONFIG_OBJECT["settings"]["editor"]["name"]
-        self._editor_wrapper = self._editor_wrapper if hasattr(self, "_editor_wrapper") else EditorWrapper(self.__editor_wrapper_name)
+        self.__editor_wrapper = self.__editor_wrapper if hasattr(self, "__editor_wrapper") else EditorWrapper(self.__editor_wrapper_name)
         self.__set_config_dictionary()
 
     def __set_config_dictionary(self):
@@ -22,9 +22,9 @@ class ConfigBase:
 
     def set(self):
         if not self._config_dictionary:
-            callback = self._editor_wrapper.get_set_dictionary_value_callback()
+            callback = self.__editor_wrapper.get_set_dictionary_value_callback()
             self._config_dictionary = ActionableDict(Cs.CONFIG_OBJECT, callback)
-            self._editor_wrapper.set_editor_dictionary(self._config_dictionary)
+            self.__editor_wrapper.set_editor_dictionary(self._config_dictionary)
             self.__set_internals()
 
     def __set_internals(self):
@@ -32,4 +32,4 @@ class ConfigBase:
         self._config_dictionary["internal"] = {"buffer_caches": {session_buffer: []}, "variables": {}}
 
     def get_editor_wrapper(self):
-        return self._editor_wrapper
+        return self.__editor_wrapper
