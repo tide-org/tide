@@ -39,10 +39,11 @@ def test__can_run_command_and_return_lines():
         command_handler = CommandHandler()
         command_handler.spawn_process()
         result = command_handler.run_command("echo hi")
-        assert result == 'echo hi\r\nhi\r\n/work/tide/tests/pytest_tests # \x1b[6n'
+        assert result == ['echo hi\r', 'hi\r', '/work/tide/tests/pytest_tests # \x1b[6n']
     except Exception as ex:
         pytest.fail("error initialising CommandHandler: " + str(ex))
 
+# note: running CommandHandler().run_command() does not set the associated buffer
 def test__can_run_command_and_set_session_log_buffer():
     try:
         from tide.config.config import Config
