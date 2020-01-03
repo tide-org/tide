@@ -41,3 +41,7 @@ vim_c: export TIDE_CONFIG_LOCATION=/Users/willvk/source/wilvk/vgdb/plugins/atom/
 vim_c:
 	brew unlink gdb && brew link gdb_tim
 	vim
+
+vim_python: export TIDE_CONFIG_LOCATION=/Users/willvk/source/wilvk/vgdb/plugins/atom/python/
+vim_python:
+	vim
