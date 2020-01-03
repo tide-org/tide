@@ -13,7 +13,7 @@ class CommandHandler:
         self.__command_process_config = CommandProcessConfig()
         self.__command_process = CommandProcess(self.__command_process_config)
 
-    def spawn_process(self, startup_commands):
+    def spawn_process(self, startup_commands=''):
         try:
             self.__command_process.spawn_process(startup_commands)
             self.__get_output_and_handle_filtering()
