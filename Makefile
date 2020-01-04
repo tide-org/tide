@@ -32,16 +32,16 @@ docker-dev:
 pylint:
 	$(DOCKER_COMPOSE) pylint pylint *
 
-vim_assembly: export TIDE_CONFIG_LOCATION=/Users/willvk/source/wilvk/vgdb/plugins/atom/assembly_filter/config/
+vim_assembly: export TIDE_CONFIG_LOCATION=$(shell pwd)/plugins/atom/assembly_filter/config/
 vim_assembly:
 	brew unlink gdb_tim && brew link gdb
 	vim
 
-vim_c: export TIDE_CONFIG_LOCATION=/Users/willvk/source/wilvk/vgdb/plugins/atom/test_c_filter/
+vim_c: export TIDE_CONFIG_LOCATION=$(shell pwd)/plugins/atom/test_c_filter/
 vim_c:
 	brew unlink gdb && brew link gdb_tim
 	vim
 
-vim_python: export TIDE_CONFIG_LOCATION=/Users/willvk/source/wilvk/vgdb/plugins/atom/python/
+vim_python: export TIDE_CONFIG_LOCATION=$(shell pwd)/plugins/atom/python/
 vim_python:
 	vim
