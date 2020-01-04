@@ -1,4 +1,5 @@
-[ ] fix tests for vim - vgdb
+[ ] add print to stdout logging function using colourised tty [INFO] [module] [message] ..
+[ ] fix assembly not stepping through to third page of disassembly
 [ ] fix regex_match feeezing test_c_filters when no match after run for vg_locals
 [ ] have ability for buffer to be able to set filter by name (would override filter for buffer if it exists)
 [ ] have the ability to show info at startup for settings, etc.

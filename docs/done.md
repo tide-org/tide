@@ -77,3 +77,4 @@
 [x] add more comprehensive tests (some, not all done)
 [x] refactor config_command_buffer to not require so many variables
 [n] possibly move buffer_cache setting closer to command_output - currently only in config_command_buffer_cache
+[x] fix tests for vim - vgdb
