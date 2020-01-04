@@ -7,12 +7,12 @@ class FilterConfigObject(filter_predicate_base):
     def __init__(self, filter_name):
         self.__filter_name = filter_name
         self.__filter_config = Cs.CONFIG_OBJECT.get('filters', {}).get(filter_name, {})
-        self.__fco_excluded_lines = self.__set_excluded_lines()
         self.__fco_pre_processors = self.__set_pre_processors()
-        self.__fco_line_formatters = self.__set_line_formatters()
-        self.__set_post_processors()
-        self.__fco_line_matchers_post = self.__set_line_matchers("line_matchers_post")
+        self.__fco_excluded_lines = self.__set_excluded_lines()
         self.__fco_line_matchers_pre = self.__set_line_matchers("line_matchers_pre")
+        self.__fco_line_formatters = self.__set_line_formatters()
+        self.__fco_post_processors = self.__set_post_processors()
+        self.__fco_line_matchers_post = self.__set_line_matchers("line_matchers_post")
 
     @property
     def pre_processors(self):

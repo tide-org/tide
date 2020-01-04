@@ -3,6 +3,7 @@ import importlib
 from tide.config.config import Config
 from tide.plugin.action_base import action_base
 import tide.utils.interpolate as Interpolate
+from tide.print_to_stdout import PrintToStdout as PTS
 
 class run_python_function(action_base):
 
@@ -23,6 +24,7 @@ class run_python_function(action_base):
         self.__set_function_module_locals()
         self.__update_command_args()
         self.__run_function_update_variable()
+        PTS.info("RUN_PYTHON_FUNCTION", self._function_name, buffer_name, command_item)
 
     def __run_function_update_variable(self):
         function_result = self._function(**self._interpolated_input_args)

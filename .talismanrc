@@ -21,3 +21,9 @@ fileignoreconfig:
   checksum: 0d8bfe287a1177cd8edff1087aea26c60ae6ff4ae5937ec657d3478cdf6ce262
   ignore_detectors: []
 scopeconfig: []
+
+fileignoreconfig:
+- filename: tests/scripts/gdb_tim.rb
+  checksum: 329d8c9a5c429306f4cb4110c2cc13f295db45b808d94acbc4aa43b23fec8ab0
+  ignore_detectors: []
+scopeconfig: []

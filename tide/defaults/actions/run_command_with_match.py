@@ -2,6 +2,7 @@ import re
 from tide.config.config import Config
 from tide.command.command_handler import CommandHandler
 from tide.plugin.action_base import action_base
+from tide.print_to_stdout import PrintToStdout as PTS
 
 class run_command_with_match(action_base):
 
@@ -17,6 +18,7 @@ class run_command_with_match(action_base):
     _else_set = ''
 
     def run(self, command_item, buffer_name=''):
+        PTS.info("RUN_COMMAND_WITH_MATCH", command_item["command"], buffer_name, command_item)
         self.__set_locals(command_item, buffer_name)
         self._lines = CommandHandler().run_command(self._command_item_command)
         if self._try_set_var:
@@ -24,6 +26,7 @@ class run_command_with_match(action_base):
         if self._try_set_array_var:
             self.__get_array_match()
         self.__try_set_variable()
+        PTS.info("*RUN_COMMAND_WITH_MATCH", command_item["command"], buffer_name, "Match: '" + self._regex_match + "', Var: '" + self._try_set_var + "', Result: '" + self._match_result + self._try_set_array_var + "'")
 
     def __try_set_variable(self):
         if self._match_result:

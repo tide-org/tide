@@ -1,6 +1,7 @@
 from tide.plugin.action_base import action_base
 import tide.utils.interpolate as Interpolate
 from tide.config.config import Config
+from tide.print_to_stdout import PrintToStdout as PTS
 
 class run_editor_function(action_base):
 
@@ -17,6 +18,7 @@ class run_editor_function(action_base):
             self._event_input_args = self.__get_interpolated_args(self._event_input_args)
         if self._function_args:
             self._function_args = self.__get_interpolated_args(self._function_args)
+        PTS.info("RUN_EDITOR_FUNCTION", self._function_name, buffer_name, command_item)
         return self.__run_command()
 
     def __run_command(self):
