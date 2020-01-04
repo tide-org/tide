@@ -1,3 +1,8 @@
+[ ] fix tests for vim - vgdb
+[ ] fix regex_match feeezing test_c_filters when no match after run for vg_locals
+[ ] have ability for buffer to be able to set filter by name (would override filter for buffer if it exists)
+[ ] have the ability to show info at startup for settings, etc.
+    and have ability to log actions, filters, functions, etc to a buffer to make debugging easier
 [ ] implement plugin for python
 [ ] fix buffer jitter in atide on vg_code
 [ ] use __init__.py files for imports
