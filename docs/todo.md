@@ -1,4 +1,5 @@
 [ ] add print to stdout logging function using colourised tty [INFO] [module] [message] ..
+[ ] add option for logging to output to a buffer_cache instead of stdout
 [ ] fix assembly not stepping through to third page of disassembly
 [ ] fix regex_match feeezing test_c_filters when no match after run for vg_locals
 [ ] have ability for buffer to be able to set filter by name (would override filter for buffer if it exists)
