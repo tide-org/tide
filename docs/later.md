@@ -7,3 +7,4 @@
 [d] diagram process flows for filters and commands
 [d] write a setup tutorial
 [d] write documentation
+[l] add option for logging to output to a buffer_cache instead of stdout

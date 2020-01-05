@@ -78,3 +78,9 @@
 [x] refactor config_command_buffer to not require so many variables
 [n] possibly move buffer_cache setting closer to command_output - currently only in config_command_buffer_cache
 [x] fix tests for vim - vgdb
+[x] add print to stdout logging function using colourised tty [INFO] [module] [message] ..
+[x] fix assembly not stepping through to third page of disassembly
+[x] have the ability to show info at startup for settings, etc.
+[x]  and have ability to log actions, filters, functions, etc to a buffer to make debugging easier
+[x] fix up tests for command_handler_2
+[l] have ability for buffer to be able to set filter by name (would override filter for buffer if it exists)
