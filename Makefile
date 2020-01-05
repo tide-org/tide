@@ -12,6 +12,7 @@ clean:
 	rm -rf dist
 	rm -rf tide.egg-info
 	rm -rf build
+	rm -rf ./lib
 
 git-install:
 	git submodule init
