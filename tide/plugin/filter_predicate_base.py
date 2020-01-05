@@ -1,12 +1,17 @@
 import re
 from tide.config.config import Config
+from tide.print_to_stdout import PrintToStdout as PTS
 
 class filter_predicate_base:
 
     def process(self, lines):
+        PTS.line("FILTER_PROCESS", 'START', '', '', '') 
+        for raw_line in lines.split("\n") if isinstance(lines, str) else lines:
+            PTS.line("RAW_LINE", '', '', '', raw_line)
         self.__get_set_matches(lines, self.line_matchers_pre)
         self.processed_lines = self.__process_lines(lines)
         self.__get_set_matches(self.processed_lines, self.line_matchers_post)
+        PTS.line("FILTER_PROCESS", 'END', '', '', self.processed_lines) 
 
     def __process_lines(self, lines):
         lines = self.__run_pre_processors(lines)
@@ -37,6 +42,7 @@ class filter_predicate_base:
 
     def __get_set_matches(self, lines, line_matchers):
         for matcher in line_matchers:
+            PTS.line("GET_SET_MATCHES", '', '', matcher, lines)
             matcher_type = matcher['type'].lower()
             if matcher_type == 'array':
                 self.__iterate_lines_for_array_match(lines, matcher)
@@ -44,18 +50,27 @@ class filter_predicate_base:
                 self.__iterate_lines_for_bool_match(lines, matcher)
 
     def __iterate_lines_for_bool_match(self, lines, matcher):
+        match_regex = matcher['regex']
+        match_variable = matcher["variable_name"]
         for line in lines:
-            match = re.search(matcher['regex'], line)
+            match = re.search(match_regex, line)
             if match:
+                PTS.line("MATCH_BOOL", match_variable, match_regex, True, line)
                 Config().get_variables()[matcher["variable_name"]] = 1
                 return
+            PTS.line("MATCH_BOOL", match_variable, match_regex, False, line)
 
     def __iterate_lines_for_array_match(self, lines, matcher):
         matches_list = []
+        match_regex = matcher['regex']
+        match_variable = matcher["variable_name"]
         for line in lines:
             match = re.search(matcher['regex'], line)
             if match:
+                PTS.line("MATCH_ARRAY", match_variable, match_regex, match.group(1), line)
                 matches_list.append(match.group(1))
+            else:
+                PTS.line("MATCH_ARRAY", match_variable, match_regex, None, line)
         Config().get_variables()[matcher["variable_name"]] = matches_list
 
     def __run_pre_processors(self, lines):
