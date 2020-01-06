@@ -8,3 +8,5 @@
 [d] write a setup tutorial
 [d] write documentation
 [l] add option for logging to output to a buffer_cache instead of stdout
+[x] investigate and fix multiple breakpoints appearing from target restarting - was the ttl
+[x] trim, pad, wrap, colour the stdout logging

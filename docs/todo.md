@@ -1,5 +1,6 @@
 [ ] implement plugin for python
-[ ] trim, pad, wrap, colour the stdout logging
+[ ] abstract all top-level config fields into a processor to allow user-defined top-level fields with custom logic.
+[ ] abstract the command_handler into an interface called source_interface
 [ ] fix regex_match feeezing test_c_filters when no match after run for vg_locals
 [ ] fix buffer jitter in atide on vg_code
 [ ] use __init__.py files for imports

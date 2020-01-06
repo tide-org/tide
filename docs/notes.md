@@ -1,0 +1,1 @@
+- decreasing the stream ttl in settings to below 0.02 causes the breakpoints to fail (add random piets) as it is sending new commands before the last one has finished, causing an overlap in the stream between commands
