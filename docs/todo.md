@@ -1,4 +1,4 @@
-[ ] implement plugin for python
+[ ] implement plugin for python - to use pdb module
 [ ] abstract all top-level config fields into a processor to allow user-defined top-level fields with custom logic.
 [ ] abstract the command_handler into an interface called source_interface
 [ ] fix regex_match feeezing test_c_filters when no match after run for vg_locals
