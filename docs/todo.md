@@ -1,4 +1,8 @@
 [ ] implement plugin for python - to use pdb module
+[ ] allow run_command_with_match to match on multiple groups in line for array - e.g in python break lists breakpoints and line and filename need to be caught together
+[ ] add internal variables that can be used for things
+[ ] allow run_command_with_match to match multiple groups in the same string - e.g. where in python can get file name and line number from the same line
+[ ] changg run_command to use interpolation and convert run_command_string to use run_command
 [ ] abstract all top-level config fields into a processor to allow user-defined top-level fields with custom logic.
 [ ] abstract the command_handler into an interface called source_interface
 [ ] fix regex_match feeezing test_c_filters when no match after run for vg_locals
