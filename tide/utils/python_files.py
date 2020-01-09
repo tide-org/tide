@@ -15,7 +15,7 @@ def get_filtered_list(path_list, base_name=False):
                 filtered_list.append(path_file)
     return list(set(filtered_list))
 
-def get_valid_files_from_paths_for_plugin_and_add_to_sys_path(plugin, recurse=False):
+def get_valid_files_from_paths_for_plugin_and_add_to_sys_path(plugin, recurse=False, ignore_path_files=False):
     paths_list = Ph.get_paths_for_plugin(plugin)
     path_files = []
     all_files = []
@@ -24,7 +24,9 @@ def get_valid_files_from_paths_for_plugin_and_add_to_sys_path(plugin, recurse=Fa
             path_files.extend([join(single_path, f) for f in listdir(single_path) if isfile(join(single_path, f))])
         else:
             path_files.extend([f for f in listdir(single_path) if isfile(join(single_path, f))])
-        if path_files and single_path not in sys.path:
+        if (path_files or ignore_path_files) and single_path not in sys.path:
             SPC.insert(single_path)
         all_files.extend(path_files)
+    if ignore_path_files:
+        return paths_list
     return list(set(all_files))
