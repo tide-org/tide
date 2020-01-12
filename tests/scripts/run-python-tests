@@ -2,7 +2,10 @@
 
 cd ../pytest_tests
 
-coverage run -m pytest --ignore=./stdio --ignore=./test_command_action.py --ignore=./test_command_handler_1.py --ignore=./test_command_handler_2.py -s -v
+coverage run -m pytest ./test_run_command_with_match_1.py -s -v
+coverage run -m pytest ./test_run_command_with_match_2.py -s -v
+
+coverage run -m pytest --ignore=./stdio --ignore=./test_command_action.py --ignore=./test_command_handler_1.py --ignore=./test_command_handler_2.py --ignore=./test_run_command_with_match_1.py --ignore=./test_run_command_with_match_2.py -s -v
 coverage run -m pytest ./test_command_action.py -s -v
 coverage run -m pytest ./test_command_handler_1.py -s -v
 coverage run -m pytest ./test_command_handler_2.py -s -v

@@ -7,7 +7,7 @@ import pytest
 
 def test__run_command_with_match_on_hex():
     try:
-       tide_handler = Tide() 
+       tide_handler = Tide('test_mock')
        tide_handler.start()
        tide_handler.run_config_command("test_command")
        result = Config().get_variable("test_match_variable")
