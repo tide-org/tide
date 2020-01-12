@@ -84,3 +84,4 @@
 [x]  and have ability to log actions, filters, functions, etc to a buffer to make debugging easier
 [x] fix up tests for command_handler_2
 [l] have ability for buffer to be able to set filter by name (would override filter for buffer if it exists)
+[x] add tests for run_command_with_match
