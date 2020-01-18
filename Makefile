@@ -25,7 +25,7 @@ upload:
 	$(DOCKER_COMPOSE) test ./run-upload-package
 
 local-dev:
-	pip install -e .
+	pip3 install -e . --user
 
 docker-dev:
 	$(DOCKER_COMPOSE) test sh
@@ -33,16 +33,20 @@ docker-dev:
 pylint:
 	$(DOCKER_COMPOSE) pylint pylint *
 
-vim_assembly: export TIDE_CONFIG_LOCATION=$(shell pwd)/plugins/atom/assembly_filter/config/
+vim_assembly: export TIDE_CONFIG_LOCATION=$(shell pwd)/../tide-plugins/plugins/atom/assembly_filter/config/
 vim_assembly:
-	brew unlink gdb_tim && brew link gdb
+	if [ "$(uname)" == "Darwin" ]; then
+		brew unlink gdb_tim && brew link gdb
+	fi
 	vim
 
-vim_c: export TIDE_CONFIG_LOCATION=$(shell pwd)/plugins/atom/test_c_filter/
+vim_c: export TIDE_CONFIG_LOCATION=$(shell pwd)/../tide-plugins/plugins/atom/test_c_filter/
 vim_c:
-	brew unlink gdb && brew link gdb_tim
+	if [ "$(uname)" == "Darwin" ]; then
+		brew unlink gdb && brew link gdb_tim
+	fi
 	vim
 
-vim_python: export TIDE_CONFIG_LOCATION=$(shell pwd)/plugins/atom/python/
+vim_python: export TIDE_CONFIG_LOCATION=$(shell pwd)/../tide-plugins/plugins/atom/python/
 vim_python:
 	vim
