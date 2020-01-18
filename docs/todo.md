@@ -1,4 +1,5 @@
 [ ] implement environment variables as tide variables
+[ ] create a dev environment setup section to the Makefile
 [ ] allow interpolation in settings - e.g file location for source
 [ ] add internal variables that can be used for things - e.g. path locations
 [ ] allow run_command_with_match to match on multiple groups in line for array - e.g in python break lists breakpoints and line and filename need to be caught together
