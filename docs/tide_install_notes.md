@@ -4,6 +4,7 @@
 
 make sure gnu build tools are installed to be able to run Make
 
+docker is required for tests
 
 
 ## clone the repos:
