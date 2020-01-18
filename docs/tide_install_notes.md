@@ -30,6 +30,8 @@ export TIDE_CONFIG_LOCATION=$(pwd)/tide-plugins/plugins/atom/test_c_filter/
 
 tide
 
+there will be some json output to stdou
+
 Ctrl-C, Ctrl-C
 
 # run python in vim:
