@@ -85,3 +85,4 @@
 [x] fix up tests for command_handler_2
 [l] have ability for buffer to be able to set filter by name (would override filter for buffer if it exists)
 [x] add tests for run_command_with_match
+[x] implement plugin for python - to use pdb module
