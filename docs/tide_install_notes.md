@@ -54,3 +54,9 @@ to step into the code:
 
 :VgRunConfigCommand step
 
+
+## running tests
+
+from the tide base path, run `make tests`
+
+from the vgdb base path, run `make tests`
