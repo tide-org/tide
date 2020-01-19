@@ -6,7 +6,7 @@
 UNAME_S := $(shell uname -s)
 
 define DOCKER_COMPOSE
-docker-compose -f ./tests/docker/docker-compose.yml build
+docker-compose -f ./tests/docker/docker-compose.yml build > /dev/null
 docker-compose -f ./tests/docker/docker-compose.yml run --rm --service-ports
 endef
 
