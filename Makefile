@@ -15,10 +15,25 @@ tests:
 	$(DOCKER_COMPOSE) test ./run-python-tests
 
 clean:
+	rm -rf ./.pytest_cache
 	rm -rf dist
 	rm -rf tide.egg-info
 	rm -rf build
 	rm -rf ./lib
+	rm -rf ./tide-org
+	find . -name __pycache__ -type directory -exec rm -rf {} \;
+
+full-install:
+ifeq ($(UNAME_S),Darwin)
+	/usr/bin/ruby -e "$(shell curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install > /dev/null)"
+	brew install --build-from-source ./tests/scripts/gdb_tim.rb
+endif
+	$(MAKE) clean
+	git clone https://github.com/tide-org/vgdb ./tide-org/vgdb
+	git clone https://github.com/tide-org/atide ./tide-org/atide
+	git clone https://github.com/tide-org/tide-plugins ./tide-org/tide-plugins
+	git clone https://github.com/tide-org/tide-docs ./tide-org/tide-docs
+	$(MAKE) git-install
 
 git-install:
 	git submodule init
