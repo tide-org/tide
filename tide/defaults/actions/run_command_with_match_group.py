@@ -47,5 +47,5 @@ class run_command_with_match_group(action_base):
                 match_string = match.group(int(match_item["match_group"]))
         match_item["result"] = match_string
         if not match_string:
-            match_item["result"] = match_item["else_set"] 
+            match_item["result"] = match_item["else_set"]
         return match_item

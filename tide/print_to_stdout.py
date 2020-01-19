@@ -9,7 +9,7 @@ class PrintToStdout:
             heading_text = "[INFO]"
             command_type_text = "[" + str(command_type) + "]"
             command_text = "[" + str(command) + "]"
-            buffer_text  = "[" + str(buffer_name) + "]"
+            buffer_text = "[" + str(buffer_name) + "]"
             value_text = str(value)
             command_type_text = command_type_text.ljust(28) if ljust else command_type_text
             command_text = command_text.ljust(28) if ljust else command_text
@@ -33,5 +33,3 @@ class PrintToStdout:
                 process_or_match_on_text = process_or_match_on_text.ljust(28)
                 result_text = result_text.ljust(10)
             print(heading_text, filter_type_text, process_or_match_text, process_or_match_on_text, result_text, raw_value_text)
-
-        

@@ -1,4 +1,3 @@
-import os
 import shutil
 from os.path import abspath, join, isdir, dirname
 from yamlreader import yaml_load

@@ -5,13 +5,13 @@ from tide.print_to_stdout import PrintToStdout as PTS
 class filter_predicate_base:
 
     def process(self, lines):
-        PTS.line("FILTER_PROCESS", 'START', '', '', '') 
+        PTS.line("FILTER_PROCESS", 'START', '', '', '')
         for raw_line in lines.split("\n") if isinstance(lines, str) else lines:
             PTS.line("RAW_LINE", '', '', '', raw_line)
         self.__get_set_matches(lines, self.line_matchers_pre)
         self.processed_lines = self.__process_lines(lines)
         self.__get_set_matches(self.processed_lines, self.line_matchers_post)
-        PTS.line("FILTER_PROCESS", 'END', '', '', self.processed_lines) 
+        PTS.line("FILTER_PROCESS", 'END', '', '', self.processed_lines)
 
     def __process_lines(self, lines):
         lines = self.__run_pre_processors(lines)
