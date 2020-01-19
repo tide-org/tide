@@ -5,6 +5,7 @@ RUN apk update
 RUN apk add build-base
 RUN apk add libffi-dev
 RUN apk add libressl-dev
+RUN apk add git
 
 RUN pip install --upgrade pip
 

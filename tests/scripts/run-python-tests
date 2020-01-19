@@ -1,6 +1,11 @@
 #!/bin/sh
 
-cd ../pytest_tests
+cd ../..
+
+rm -rf ./plugins
+git clone https://github.com/tide-org/tide-plugins ./plugins
+
+cd tests/pytest_tests
 
 coverage run -m pytest ./test_run_command_with_match_1.py -s -v
 coverage run -m pytest ./test_run_command_with_match_2.py -s -v

@@ -7,10 +7,11 @@ UNAME_S := $(shell uname -s)
 
 define DOCKER_COMPOSE
 docker-compose -f ./tests/docker/docker-compose.yml build
-docker-compose -f ./tests/docker/docker-compose.yml run --rm --service-ports 
+docker-compose -f ./tests/docker/docker-compose.yml run --rm --service-ports
 endef
 
 tests:
+	$(MAKE) git-install
 	$(DOCKER_COMPOSE) test ./run-python-tests
 
 clean:

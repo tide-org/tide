@@ -12,7 +12,6 @@ services:
       - PYTHONPATH=/work/tide
     volumes:
       - ../..:/work/tide
-      - ../../plugins:/work/tide/plugins/plugins
   pylint:
     build:
       context: ../docker
