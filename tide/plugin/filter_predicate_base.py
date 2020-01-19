@@ -83,8 +83,6 @@ class filter_predicate_base:
             lines = processor(lines)
         return lines
 
-    # the following properties/methods are intended to be overwritten
-
     @property
     def excluded_lines(self):
         return []

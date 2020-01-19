@@ -24,8 +24,7 @@ class CommandHandler:
     def run_command(self, command, buffer_name=''):
         try:
             self.__command_process.send_command_to_process(command)
-            lines = self.__get_output_and_handle_filtering(buffer_name)
-            return lines
+            return self.__get_output_and_handle_filtering(buffer_name)
         except Exception as ex:
             print(f"error in command_handler.run_command(): {str(ex)}\n{traceback.format_exc()}")
 
