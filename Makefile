@@ -37,7 +37,7 @@ docker-dev:
 	$(DOCKER_COMPOSE) test sh
 
 pylint:
-	$(DOCKER_COMPOSE) pylint pylint *
+	$(DOCKER_COMPOSE) pylint sh -c "pylint /work/tide/*"
 
 
 vim_assembly: export TIDE_CONFIG_LOCATION=$(shell pwd)/../tide-plugins/plugins/atom/assembly_filter/config/
