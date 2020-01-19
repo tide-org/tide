@@ -1,4 +1,9 @@
+# see here for setting up brew links: https://blog.seso.io/posts/gdb-on-macos/
+# and ./tests/scripts/gdb_tim.rb for the brew formula
+
 .PHONY: tests clean git-install build upload local-dev docker-dev pylint
+
+UNAME_S := $(shell uname -s)
 
 define DOCKER_COMPOSE
 docker-compose -f ./tests/docker/docker-compose.yml build
@@ -33,22 +38,19 @@ docker-dev:
 pylint:
 	$(DOCKER_COMPOSE) pylint pylint *
 
+
 vim_assembly: export TIDE_CONFIG_LOCATION=$(shell pwd)/../tide-plugins/plugins/atom/assembly_filter/config/
 vim_assembly:
-	if [ "$(uname)" == "Darwin" ]; then
-		# see here for setting up brew links: https://blog.seso.io/posts/gdb-on-macos/
-		# and ./tests/scripts/gdb_tim.rb for the brew formula
-		brew unlink gdb_tim && brew link gdb
-	fi
+ifeq ($(UNAME_S),Darwin)
+	brew unlink gdb_tim && brew link gdb
+endif
 	vim
 
 vim_c: export TIDE_CONFIG_LOCATION=$(shell pwd)/../tide-plugins/plugins/atom/test_c_filter/
 vim_c:
-	if [ "$(uname)" == "Darwin" ]; then
-		# see here for setting up brew links: https://blog.seso.io/posts/gdb-on-macos/
-		# and ./tests/scripts/gdb_tim.rb for the brew formula
-		brew unlink gdb && brew link gdb_tim
-	fi
+ifeq ($(UNAME_S),Darwin)
+	brew unlink gdb && brew link gdb_tim
+endif
 	vim
 
 vim_python: export TIDE_CONFIG_LOCATION=$(shell pwd)/../tide-plugins/plugins/atom/python/
