@@ -1,3 +1,4 @@
+[ ] fix tests
 [ ] fix vg_template updating after step for test_c - showing old line numbers e.g. 6 instead of 7
 [ ] implement environment variables as tide variables
 [ ] create a dev environment setup section to the Makefile
