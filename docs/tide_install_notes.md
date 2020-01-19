@@ -60,3 +60,19 @@ to step into the code:
 from the tide base path, run `make tests`
 
 from the vgdb base path, run `make tests`
+
+
+
+# Dev install MacOs
+
+## prerequisites
+
+Install XCode tools for the 'make' command.
+
+Install Docker and docker-compose for tests, etc.
+
+Install brew to install gdb
+
+Install the `./tests/scripts/gdb_tim.rb` brew formula to allow switching between remote-capable gdb and local MacOS capable gdb.
+
+
