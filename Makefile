@@ -34,7 +34,7 @@ endif
 git-install:
 	git submodule init
 	git submodule sync
-	git submodule update --remote --rebase
+	git submodule update --remote --rebase --recursive
 
 build:
 	$(DOCKER_COMPOSE) test ./run-build-package
