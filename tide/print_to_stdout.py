@@ -18,7 +18,7 @@ class PrintToStdout:
             print(heading_text, command_type_text, command_text, buffer_text, value_text)
 
     def line(filter_type, process_or_match, process_or_match_on, result, raw_value):
-        if Config().get_setting("debugging", "print_to_stdout"):
+        if Config().get_setting("debugging", "print_to_stdout") and Config().get_setting("debugging", "print_to_stdout_filters"):
             heading_text = "[INFO]"
             filter_type_text = "[" + str(filter_type) + "]"
             process_or_match_text = "[" + str(process_or_match) + "]"
