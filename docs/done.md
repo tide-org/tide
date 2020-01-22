@@ -88,3 +88,4 @@
 [x] implement plugin for python - to use pdb module
 [x] fix tests
 [x] test on linux
+[x] fix vg_template updating after step for test_c - showing old line numbers e.g. 6 instead of 7

@@ -21,7 +21,7 @@ clean:
 	rm -rf build
 	rm -rf ./lib
 	rm -rf ./tide-org
-	find . -name __pycache__ -type directory -exec rm -rf {} \;
+	find . -name __pycache__ -type directory -exec rm -rf {} \; || true
 
 full-install:
 ifeq ($(UNAME_S),Darwin)
@@ -29,15 +29,12 @@ ifeq ($(UNAME_S),Darwin)
 	brew install --build-from-source ./tests/scripts/gdb_tim.rb
 endif
 	$(MAKE) clean
-	git clone https://github.com/tide-org/vgdb ./tide-org/vgdb
-	git clone https://github.com/tide-org/atide ./tide-org/atide
-	git clone https://github.com/tide-org/tide-plugins ./tide-org/tide-plugins
-	git clone https://github.com/tide-org/tide-docs ./tide-org/tide-docs
 	$(MAKE) git-install
 
 git-install:
 	git submodule init
-	git submodule update
+	git submodule sync
+	git submodule update --remote --rebase
 
 build:
 	$(DOCKER_COMPOSE) test ./run-build-package
@@ -54,21 +51,23 @@ docker-dev:
 pylint:
 	$(DOCKER_COMPOSE) pylint sh -c "pylint /work/tide/*"
 
-
-vim_assembly: export TIDE_CONFIG_LOCATION=$(shell pwd)/../tide-plugins/plugins/atom/assembly_filter/config/
+vim_assembly: export TIDE_CONFIG_LOCATION=$(shell pwd)/tide-org/tide-plugins/plugins/atom/assembly_filter/config/
 vim_assembly:
 ifeq ($(UNAME_S),Darwin)
 	brew unlink gdb_tim && brew link gdb
 endif
+	$(MAKE) git-install
 	vim
 
-vim_c: export TIDE_CONFIG_LOCATION=$(shell pwd)/../tide-plugins/plugins/atom/test_c_filter/
+vim_c: export TIDE_CONFIG_LOCATION=$(shell pwd)/tide-org/tide-plugins/plugins/atom/test_c_filter/
 vim_c:
 ifeq ($(UNAME_S),Darwin)
 	brew unlink gdb && brew link gdb_tim
 endif
+	$(MAKE) git-install
 	vim
 
-vim_python: export TIDE_CONFIG_LOCATION=$(shell pwd)/../tide-plugins/plugins/atom/python/
+vim_python: export TIDE_CONFIG_LOCATION=$(shell pwd)/tide-org/tide-plugins/plugins/atom/python/
 vim_python:
+	$(MAKE) git-install
 	vim

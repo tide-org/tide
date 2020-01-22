@@ -19,6 +19,15 @@
 [submodule "lib/yamlreader"]
 	path = lib/yamlreader
 	url = https://github.com/wilvk/yamlreader.git
-[submodule "plugins"]
-	path = plugins
-	url = https://github.com/tide-org/tide-plugins.git
+[submodule "tide-org/vgdb"]
+	path = tide-org/vgdb
+	url = https://github.com/tide-org/vgdb
+[submodule "tide-org/atide"]
+	path = tide-org/atide
+	url = https://github.com/tide-org/atide
+[submodule "tide-org/tide-plugins"]
+	path = tide-org/tide-plugins
+	url = https://github.com/tide-org/tide-plugins
+[submodule "tide-org/tide-docs"]
+	path = tide-org/tide-docs
+	url = https://github.com/tide-org/tide-docs
