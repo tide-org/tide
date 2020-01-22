@@ -56,7 +56,6 @@ vim_assembly:
 ifeq ($(UNAME_S),Darwin)
 	brew unlink gdb_tim && brew link gdb
 endif
-	$(MAKE) git-install
 	vim
 
 vim_c: export TIDE_CONFIG_LOCATION=$(shell pwd)/tide-org/tide-plugins/plugins/atom/test_c_filter/
@@ -64,10 +63,8 @@ vim_c:
 ifeq ($(UNAME_S),Darwin)
 	brew unlink gdb && brew link gdb_tim
 endif
-	$(MAKE) git-install
 	vim
 
 vim_python: export TIDE_CONFIG_LOCATION=$(shell pwd)/tide-org/tide-plugins/plugins/atom/python/
 vim_python:
-	$(MAKE) git-install
 	vim
