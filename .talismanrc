@@ -27,3 +27,18 @@ fileignoreconfig:
   checksum: 329d8c9a5c429306f4cb4110c2cc13f295db45b808d94acbc4aa43b23fec8ab0
   ignore_detectors: []
 scopeconfig: []
+
+fileignoreconfig:
+- filename: tide-org/tide-docs
+  checksum: f0dbfdbefda79fa45d71a4db72b599693380b08ac8686fd05f1f399b756b2d93
+  ignore_detectors: []
+- filename: tide-org/vgdb
+  checksum: 4ecd7c6a2d3a325039a1db6a599f0b319cdeaeae57f3181ed65932d1b77fc4d5
+  ignore_detectors: []
+- filename: tide-org/tide-plugins
+  checksum: c50ba9030a4fdd8f55b58ca60087cd12addab6f4671933ad1ad0468b6c570cf3
+  ignore_detectors: []
+- filename: tide-org/atide
+  checksum: 87420b6f202886945abeb3b9601c5c50607c3cf35e62fe8792325c748d989c96
+  ignore_detectors: []
+scopeconfig: []
