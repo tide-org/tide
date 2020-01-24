@@ -35,6 +35,7 @@ git-install:
 	git submodule init
 	git submodule sync
 	git submodule update --remote --rebase --recursive
+	git submodule foreach 'git checkout master'
 
 build:
 	$(DOCKER_COMPOSE) test ./run-build-package
