@@ -92,3 +92,5 @@
 [x] fix buffer jitter in atide on vg_code
 [x] fix atide not updating template for test_c
 [x] create a dev environment setup section to the Makefile - install all other repos, dependencies, etc.
+[x] fix python plugin not setting breakpoint and continue not running
+[x] allow run_command_with_match to match on multiple groups in line for array - e.g in python break lists breakpoints and line and filename need to be caught together
