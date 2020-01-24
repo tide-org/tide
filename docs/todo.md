@@ -1,6 +1,6 @@
 [ ] fix python plugin not setting breakpoint and continue not running
 [ ] implement environment variables as tide variables
-[ ] create a dev environment setup section to the Makefile - install all other repos, dependencies, etc.
+[ ] python - function_args vs event_input_args - use function_args.  (also understand and document)
 [ ] allow interpolation in settings - e.g file location for source
 [ ] add internal variables that can be used for things - e.g. path locations
 [ ] allow run_command_with_match to match on multiple groups in line for array - e.g in python break lists breakpoints and line and filename need to be caught together
@@ -9,7 +9,6 @@
 [ ] abstract all top-level config fields into a processor to allow user-defined top-level fields with custom logic.
 [ ] abstract the command_handler into an interface called handler_interface
 [ ] fix regex_match feeezing test_c_filters when no match after run for vg_locals
-[ ] fix buffer jitter in atide on vg_code
 [ ] use __init__.py files for imports
 [ ] implement plugin for go
 [ ] have option to send partial updates to editor to prevent large payloads across the wire

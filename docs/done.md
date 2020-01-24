@@ -89,3 +89,6 @@
 [x] fix tests
 [x] test on linux
 [x] fix vg_template updating after step for test_c - showing old line numbers e.g. 6 instead of 7
+[x] fix buffer jitter in atide on vg_code
+[x] fix atide not updating template for test_c
+[x] create a dev environment setup section to the Makefile - install all other repos, dependencies, etc.
