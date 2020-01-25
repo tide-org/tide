@@ -1,5 +1,4 @@
 [ ] implement environment variables as tide variables
-[ ] get/test python plugin working in atide
 [ ] put all atide functions in relevant plugins and pass to editor in config_dictionary
 [ ] python - function_args vs event_input_args - use function_args.  (also understand and document)
 [ ] allow interpolation in settings - e.g file location for source
