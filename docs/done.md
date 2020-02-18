@@ -95,3 +95,4 @@
 [x] fix python plugin not setting breakpoint and continue not running
 [x] allow run_command_with_match to match on multiple groups in line for array - e.g in python break lists breakpoints and line and filename need to be caught together
 [x] get/test python plugin working in atide
+[n] abstract the command_handler into an interface called handler_interface
