@@ -14,6 +14,10 @@ tests:
 	$(MAKE) git-install
 	$(DOCKER_COMPOSE) test ./run-python-tests
 
+vim-tests:
+	$(MAKE) git-install
+	cd ./tide-org/vgdb && $(MAKE) tide-install-git $(MAKE) tests
+
 clean:
 	rm -rf ./.pytest_cache
 	rm -rf dist

@@ -1,5 +1,11 @@
 fileignoreconfig:
 - filename: docs/todo.md
+  checksum: 5ad0d6fd37963064eef3b62962c32c888f2be6348697a35e42fe77ef02938971
+  ignore_detectors: []
+scopeconfig: []
+
+fileignoreconfig:
+- filename: docs/todo.md
   checksum: e050fddf459a03fab7ae2de1af984d3d0b24962bfe36c5eaf5f86a24beb70ea3
   ignore_detectors: []
 scopeconfig: []
@@ -61,5 +67,20 @@ fileignoreconfig:
   ignore_detectors: []
 - filename: tide-org/tide-plugins
   checksum: c50ba9030a4fdd8f55b58ca60087cd12addab6f4671933ad1ad0468b6c570cf3
+  ignore_detectors: []
+scopeconfig: []
+
+fileignoreconfig:
+- filename: tide-org/atide
+  checksum: 87420b6f202886945abeb3b9601c5c50607c3cf35e62fe8792325c748d989c96
+  ignore_detectors: []
+- filename: tide-org/vgdb
+  checksum: 4ecd7c6a2d3a325039a1db6a599f0b319cdeaeae57f3181ed65932d1b77fc4d5
+  ignore_detectors: []
+scopeconfig: []
+
+fileignoreconfig:
+- filename: docs/todo.md
+  checksum: 5ad0d6fd37963064eef3b62962c32c888f2be6348697a35e42fe77ef02938971
   ignore_detectors: []
 scopeconfig: []

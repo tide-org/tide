@@ -96,3 +96,6 @@
 [x] allow run_command_with_match to match on multiple groups in line for array - e.g in python break lists breakpoints and line and filename need to be caught together
 [x] get/test python plugin working in atide
 [n] abstract the command_handler into an interface called handler_interface
+[x] change run_command to use interpolation and convert run_command_string to use run_command
+[x] fix tide crashing after make vim_python finishes debugging
+[n] add templates to config
